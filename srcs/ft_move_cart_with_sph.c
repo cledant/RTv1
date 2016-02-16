@@ -1,29 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_init_scene.c                                    :+:      :+:    :+:   */
+/*   ft_move_cart_with_sph.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/16 09:25:57 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/16 19:38:01 by cledant          ###   ########.fr       */
+/*   Created: 2016/02/16 18:48:53 by cledant           #+#    #+#             */
+/*   Updated: 2016/02/16 19:59:39 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_init_scene(t_mlx *e)
+void	ft_move_cart_with_sph(double (*cart)[3], double radius,
+			double angle[2])
 {
-	t_sphere	*sp_scene;
-	t_camera	*cam_scene;
+	double	sin_phi;
 
-	cam_scene = e->cam;
-	sp_scene = e->sph;
-	sp_scene->total_sp = 1;
-	sp_scene->coord[0] = 0;
-	sp_scene->coord[1] = 0;
-	sp_scene->coord[2] = 0;
-	cam_scene->coord[0] = -250;
-	cam_scene->coord[1] = 0;
-	cam_scene->coord[2] = 0;
-	cam_scene->angle[0] = M_PI_2;
-	cam_scene->angle[1] = M_PI;
+	sin_phi = sin(angle[1]);
+	(*cart)[0] = (*cart)[0] + radius * sin_phi * cos(angle[0]);
+	(*cart)[1] = (*cart)[1] + radius * sin_phi * sin(angle[0]);
+	(*cart)[2] = (*cart)[2] + radius * cos(angle[1]);
 }

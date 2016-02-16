@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/15 17:33:23 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/16 09:32:29 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/16 19:38:59 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,7 @@ typedef struct	s_sphere
 typedef struct	s_camera
 {
 	double	coord[3];
-	double	rotation[3];
-	double	translation[3];
+	double	angle[2];
 }				t_camera;
 
 typedef struct	s_mlx
@@ -43,7 +42,7 @@ typedef struct	s_mlx
 	void		*win;
 	void		*img;
 	int			render;
-	size_t		dist_to_proj_plane;
+	double		dist_to_proj_plane;
 	t_camera	cam;
 	t_sphere	sph;
 }				t_mlx;
@@ -52,5 +51,7 @@ int				expose_hook(t_mlx *e);
 int				key_hook(int keycode, t_mlx *e);
 void			ft_draw_image(t_mlx *e);
 void			ft_init_scene(t_mlx *e);
+void			ft_move_cart_with_sph(double (*cart)[3],
+					double radius, double angle[2])
 
 #endif

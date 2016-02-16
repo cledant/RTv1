@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/11 10:42:33 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/16 09:32:20 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/16 18:39:00 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ int				main(void)
 	if (main_part1(&e) == 0)
 		return (0);
 	e.render = 0;
+	e.dist_to_proj_plane = (WIN_X / 2) / (tan((M_PI * (FOV / 
+						(double)2) / (double)180)));
 	ft_init_scene(&e);
 	mlx_key_hook(e.mlx, keyhook, &e);
 	mlx_expose_hook(e.mlx, expose_hook, &e);
