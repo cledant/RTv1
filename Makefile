@@ -6,7 +6,7 @@
 #    By: cledant <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/26 10:40:13 by cledant           #+#    #+#              #
-#    Updated: 2016/02/16 09:32:24 by cledant          ###   ########.fr        #
+#    Updated: 2016/02/17 19:43:55 by cledant          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ LIBFT_PATH = ./libft
 
 LIBMLX_PATH = ./minilibx_macos
 
-SRC_NAME = main.c ft_hook.c ft_draw_image.c ft_init_scene.c
+SRC_NAME = main.c ft_hook.c ft_draw_image.c ft_init_scene.c ft_calc_int_sphere.c
 
 SRC_PATH = ./srcs/
 

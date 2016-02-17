@@ -6,11 +6,11 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/11 10:42:33 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/17 14:39:24 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/17 19:47:03 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "wolf3d.h"
+#include "RTv1.h"
 
 static int		main_part1(t_mlx *e)
 {
@@ -20,7 +20,7 @@ static int		main_part1(t_mlx *e)
 		ft_putendl("Error");
 		return (0);
 	}
-	e->win = mlx_new_window(e->mlx, WIN_X, WIN_Y, "Wolf_3D");
+	e->win = mlx_new_window(e->mlx, WIN_X, WIN_Y, "RT_v1");
 	if (e->win == NULL)
 	{
 		ft_putendl("Error");
@@ -39,14 +39,16 @@ static int		main_part1(t_mlx *e)
 int				main(void)
 {
 	t_mlx		e;
+	int			var[3];
 
 	if (main_part1(&e) == 0)
 		return (0);
 	e.render = 0;
 	e.dist_to_proj_plane = (WIN_X / 2) / (tan((M_PI * (FOV / 
 						(double)2) / (double)180)));
+	e.c_img = mlx_get_data_addr(e.img, &(var[0]), &(var[1]), &(var[2]));
 	ft_init_scene(&e);
-	mlx_key_hook(e.mlx, keyhook, &e);
+	mlx_key_hook(e.mlx, key_hook, &e);
 	mlx_expose_hook(e.mlx, expose_hook, &e);
 	mlx_loop(e.mlx);
 	return (0);
