@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/11 11:27:39 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/17 19:48:04 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/18 11:15:20 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,9 @@ int				expose_hook(t_mlx *e)
 	{
 		if (gettimeofday(&(s_ms[0]), NULL) == -1)
 			ft_error_routine(1, e);
+		ft_putendl("avant img");
 		ft_draw_image(e);
+		ft_putendl("apres img");
 		if (gettimeofday(&(s_ms[1]), NULL) == -1)
 			ft_error_routine(1, e);
 		ms[0] = s_ms[0].tv_sec * 1000 + s_ms[0].tv_usec / 1000;
@@ -46,8 +48,9 @@ int				expose_hook(t_mlx *e)
 			ft_strdel(&s_fps);
 			ft_error_routine(0, e);
 		}
+		e->render = 1;
 		mlx_put_image_to_window(e->mlx, e->win, e->img, 0, 0);
-		mlx_string_put(e->mlx, e->win, WIN_X - 200, 50, 0x00FFFFFF, disp_fps);
+		mlx_string_put(e->mlx, e->win, WIN_X - 300, 50, 0x00FFFFFF, disp_fps);
 		ft_strdel(&s_fps);
 		ft_strdel(&disp_fps);
 	}
@@ -61,6 +64,10 @@ int		key_hook(int keycode, t_mlx *e)
 		mlx_destroy_image(e->mlx, e->img);
 		mlx_clear_window(e->mlx, e->win);
 		mlx_destroy_window(e->mlx, e->win);
+		if (e->sph != NULL)
+			free(e->sph);
+		if (e->cam != NULL)
+			free(e->cam);
 		free(e->mlx);
 		exit(0);
 	}
