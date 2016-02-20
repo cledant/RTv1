@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/11 11:27:39 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/18 11:15:20 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/20 11:23:01 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,10 +64,10 @@ int		key_hook(int keycode, t_mlx *e)
 		mlx_destroy_image(e->mlx, e->img);
 		mlx_clear_window(e->mlx, e->win);
 		mlx_destroy_window(e->mlx, e->win);
-		if (e->sph != NULL)
-			free(e->sph);
 		if (e->cam != NULL)
 			free(e->cam);
+		if (e->obj_list != NULL)
+			ft_lstdel(&(e->obj_list), &ft_lstfree_malloc);
 		free(e->mlx);
 		exit(0);
 	}

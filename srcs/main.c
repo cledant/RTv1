@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/11 10:42:33 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/18 10:09:16 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/20 10:04:40 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,6 @@ int				main(void)
 	if (main_part1(&e) == 0)
 		return (0);
 	e.render = 0;
-	e.dist_to_proj_plane = (WIN_X / 2) / (tan((M_PI * (FOV / 
-						(double)2) / (double)180)));
 	e.c_img = mlx_get_data_addr(e.img, &(var[0]), &(var[1]), &(var[2]));
 	if ((e.cam = (t_camera *)malloc(1 * sizeof(t_camera))) == NULL)
 	{
@@ -53,16 +51,10 @@ int				main(void)
 		key_hook(MLX_KEY_ESC, &e);
 		return (0);
 	}
-	if ((e.sph = (t_sphere *)malloc(1 * sizeof(t_sphere))) == NULL)
-	{
-		ft_putendl("Not enough memory");
-		key_hook(MLX_KEY_ESC, &e);
-		return (0);
-	}
+	e.obj_list = NULL;
 	ft_init_scene(&e);
 	mlx_key_hook(e.win, key_hook, &e);
 	mlx_expose_hook(e.win, expose_hook, &e);
-	ft_putendl("coucou");
 	mlx_loop(e.mlx);
 	return (0);
 }

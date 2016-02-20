@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/15 17:33:23 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/19 10:44:49 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/20 10:51:28 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,16 +52,18 @@ typedef struct	s_mlx
 	void		*img;
 	char		*c_img;
 	int			render;
-	double		dist_to_proj_plane;
 	t_camera	*cam;
-	t_sphere	*sph;
+	t_list		*obj_list;
 }				t_mlx;
 
 int				expose_hook(t_mlx *e);
 int				key_hook(int keycode, t_mlx *e);
+void			ft_lstfree_malloc(void *content, size_t size);
+t_sphere		*ft_sphere_new(int coloration, double origin[3], double size);
 void			ft_draw_image(t_mlx *e);
 void			ft_init_scene(t_mlx *e);
-int				ft_calc_int_sphere(t_mlx *e, double cur_dir[3], double (*coord)[3]);
+int				ft_calc_int_sphere(t_sphere *sphere, t_camera *camera,
+										double cur_dir[3], double *dist);
 void			ft_rot_x(double (*vec)[3], double angle);
 void			ft_rot_y(double (*vec)[3], double angle);
 void			ft_rot_z(double (*vec)[3], double angle);

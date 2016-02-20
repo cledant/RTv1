@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 09:25:57 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/19 15:44:26 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/20 11:50:32 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,70 @@
 
 void	ft_init_scene(t_mlx *e)
 {
-	t_sphere	*sp_scene;
+	t_sphere	*sphere;
+	t_list		*begin;
+	t_list		*member;
 	t_camera	*cam_scene;
 	double		angle[2];
+	double		tmp_coord[3];
 
 	cam_scene = e->cam;
-	sp_scene = e->sph;
-	sp_scene->color = 0x00FF0000;
-	sp_scene->coord[0] = 0;
-	sp_scene->coord[1] = 0;
-	sp_scene->coord[2] = 0;
-	sp_scene->radius = 1;
-	cam_scene->coord[0] = -500;
-	cam_scene->coord[1] = 0;
+	if ((begin = ft_lstnew(NULL, 0)) == NULL)
+	{
+		ft_putendl("Not enough memory");
+		key_hook(MLX_KEY_ESC, e);
+	}
+	e->obj_list = begin;
+	tmp_coord[0] = 0;
+	tmp_coord[1] = 0;
+	tmp_coord[2] = 0;
+	if ((sphere = ft_sphere_new(0x00FF0000, tmp_coord, 1)) == NULL)
+	{
+		ft_putendl("Not enough memory");
+		key_hook(MLX_KEY_ESC, e);	
+	}
+	begin->content = sphere;
+	begin->content_size = 0;
+	if ((member = ft_lstnew(NULL, 0)) == NULL)
+	{
+		ft_putendl("Not enough memory");
+		key_hook(MLX_KEY_ESC, e);
+	}
+	tmp_coord[0] = -3;
+	tmp_coord[1] = 0;
+	tmp_coord[2] = 0;
+	if ((sphere = ft_sphere_new(0x0000FF00, tmp_coord, 3)) == NULL)
+	{
+		free(member);
+		ft_putendl("Not enough memory");
+		key_hook(MLX_KEY_ESC, e);	
+	}
+	member->content = sphere;
+	member->content_size = 0;
+	ft_lstpushback(begin, member);
+	if ((member = ft_lstnew(NULL, 0)) == NULL)
+	{
+		ft_putendl("Not enough memory");
+		key_hook(MLX_KEY_ESC, e);
+	}
+	tmp_coord[0] = 5;
+	tmp_coord[1] = 0;
+	tmp_coord[2] = 0;
+	if ((sphere = ft_sphere_new(0x000000FF, tmp_coord, 2)) == NULL)
+	{
+		free(member);
+		ft_putendl("Not enough memory");
+		key_hook(MLX_KEY_ESC, e);	
+	}
+	member->content = sphere;
+	member->content_size = 0;
+	ft_lstpushback(begin, member);
+	//debut init camera
+	cam_scene->coord[0] = -100;
+	cam_scene->coord[1] = -500;
 	cam_scene->coord[2] = 0;
-	cam_scene->camera_size[0] = 5;
-	cam_scene->camera_size[1] = 5;
+	cam_scene->camera_size[0] = 10;
+	cam_scene->camera_size[1] = 10;
 	cam_scene->camera_size[2] = 1;
 	cam_scene->camera_look_at[0] = 0;
 	cam_scene->camera_look_at[1] = 0;
@@ -100,4 +148,5 @@ void	ft_init_scene(t_mlx *e)
 													(double)2)));
 	cam_scene->x_inc = cam_scene->camera_size[0] / (double)WIN_X;
 	cam_scene->y_inc = cam_scene->camera_size[1] / (double)WIN_Y;
+	//fin camera
 }
