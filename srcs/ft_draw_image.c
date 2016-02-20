@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 08:49:40 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/20 11:42:00 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/20 14:46:30 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_draw_image(t_mlx *e)
 {
-	int			counter[2];
+	int			counter[3];
 	double		cur_dir[3];
 	double		val_cur_dir;
 	double		norm_cur_dir[3];
@@ -56,11 +56,17 @@ void	ft_draw_image(t_mlx *e)
 				{		
 					if (ft_calc_int_sphere(lst->content, camera, 
 								norm_cur_dir, &dist) == 1)
-						ft_memcpy(e->c_img + counter[1] * 4 + counter[0] *
-								4 * WIN_X, &((t_sphere *)(lst->content))->color,
-									sizeof(int));
-					lst = lst->next;
+						counter[2] = ((t_sphere *)(lst->content))->color;
 				}
+				else if (lst->content_size == 1)
+				{
+					if (ft_calc_int_plane(lst->content, camera, 
+								norm_cur_dir, &dist) == 1)
+						counter[2] = ((t_plane *)(lst->content))->color;
+				}
+				ft_memcpy(e->c_img + counter[1] * 4 + counter[0] * 4 * WIN_X,
+								&counter[2], sizeof(int));
+				lst = lst->next;
 			}
 			dist = 1000000;
 			lst = e->obj_list;

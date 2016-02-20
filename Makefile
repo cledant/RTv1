@@ -6,7 +6,7 @@
 #    By: cledant <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/26 10:40:13 by cledant           #+#    #+#              #
-#    Updated: 2016/02/20 11:13:19 by cledant          ###   ########.fr        #
+#    Updated: 2016/02/20 14:19:12 by cledant          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,8 @@ LIBFT_PATH = ./libft
 LIBMLX_PATH = ./minilibx_macos
 
 SRC_NAME = main.c ft_hook.c ft_draw_image.c ft_init_scene.c ft_calc_int_sphere.c \
-		   ft_rot_x.c ft_rot_y.c ft_rot_z.c ft_lstfree_malloc.c ft_sphere_new.c
+		   ft_rot_x.c ft_rot_y.c ft_rot_z.c ft_lstfree_malloc.c ft_sphere_new.c \
+		   ft_plane_new.c ft_calc_int_plane.c
 
 SRC_PATH = ./srcs/
 
