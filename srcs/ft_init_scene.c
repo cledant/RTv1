@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 09:25:57 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/20 16:19:51 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/20 20:04:51 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	ft_init_scene(t_mlx *e)
 	tmp_coord[0] = 0;
 	tmp_coord[1] = 0;
 	tmp_coord[2] = 0;
-	if ((sphere = ft_sphere_new(0x00FF0000, tmp_coord, 2)) == NULL)
+	if ((sphere = ft_sphere_new(0x00FF0000, tmp_coord, 3)) == NULL)
 	{
 		ft_putendl("Not enough memory");
 		key_hook(MLX_KEY_ESC, e);	
@@ -137,7 +137,7 @@ void	ft_init_scene(t_mlx *e)
 	//debut init camera
 	cam_scene->coord[0] = 500;
 	cam_scene->coord[1] = 500;
-	cam_scene->coord[2] = 500;
+	cam_scene->coord[2] = 0;
 	cam_scene->camera_size[0] = 20;
 	cam_scene->camera_size[1] = 20;
 	cam_scene->camera_size[2] = 1;
@@ -176,8 +176,8 @@ void	ft_init_scene(t_mlx *e)
 	}
 	else
 	{
-		ft_rot_y(&cam_scene->up_vec, -angle[0] - M_PI_2);
-		printf("angle[0] = %f\n", -angle[0] - M_PI_2);
+		ft_rot_y(&cam_scene->up_vec, angle[0] - M_PI_2);
+		printf("angle[0] = %f\n", angle[0] - M_PI_2);
 	}
 	printf("angle[1] = %f\n", angle[1]);
 	ft_rot_z(&cam_scene->up_vec, angle[1]);

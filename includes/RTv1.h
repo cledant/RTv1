@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/15 17:33:23 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/20 14:20:02 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/20 18:35:30 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@
 # define MLX_KEY_ESC 53
 # define WIN_X 1000
 # define WIN_Y 1000
-# define FOV 90
 
 typedef struct	s_sphere
 {
