@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/17 18:02:06 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/20 11:15:31 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/21 18:53:37 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ int		ft_calc_int_sphere(t_sphere *sphere, t_camera *camera,
 //	printf("CUR_DIR[2] = %f\n", cur_dir[2]);
 	var[0] = (cur_dir[0] * cur_dir[0]) + (cur_dir[1] * cur_dir[1]) +
 				(cur_dir[2] * cur_dir[2]);
-	var[1] = 2 *(cur_dir[0] * (camera->coord[0] - sphere->coord[0]) +
-					cur_dir[1] * (camera->coord[1] - sphere->coord[1]) +
-						cur_dir[2] * (camera->coord[2] - sphere->coord[2]));
+	var[1] = 2 *(cur_dir[0] * -(camera->coord[0] - sphere->coord[0]) +
+					cur_dir[1] * -(camera->coord[1] - sphere->coord[1]) +
+						cur_dir[2] * -(camera->coord[2] - sphere->coord[2]));
 	var[2] = ((camera->coord[0] - sphere->coord[0]) * (camera->coord[0] -
 				sphere->coord[0]) + (camera->coord[1] - sphere->coord[1]) *
 					(camera->coord[1] - sphere->coord[1]) + (camera->coord[2] -
@@ -41,8 +41,11 @@ int		ft_calc_int_sphere(t_sphere *sphere, t_camera *camera,
 	{
 		length[0] = (-var[1] / (2 * var[0]));
 		if (length[0] < *dist)
+		{
 			*dist = length[0];
-		return (1);
+			return (1);
+		}
+		return (0);
 	}
 	else
 	{
@@ -51,13 +54,19 @@ int		ft_calc_int_sphere(t_sphere *sphere, t_camera *camera,
 		if (length[1] < length[0])
 		{
 			if (length[1] < *dist)
+			{
 				*dist = length[1];
+				return(1);
+			}
 		}
 		else
 		{
 			if (length[0] < *dist)
+			{
 				*dist = length[0];
+				return(1);
+			}
 		}
-		return(1);
+		return (0);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 09:25:57 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/21 16:06:58 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/21 18:53:34 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,7 +152,7 @@ void	ft_init_scene(t_mlx *e)
 //	member->content_size = 1;
 //	ft_lstpushback(begin, member);
 	//debut init camera
-	cam_scene->coord[0] = 500;
+	cam_scene->coord[0] = 0;
 	cam_scene->coord[1] = 500;
 	cam_scene->coord[2] = 0;
 	cam_scene->camera_size[0] = 20;
@@ -174,32 +174,50 @@ void	ft_init_scene(t_mlx *e)
 	printf("dir_vec = %f\n", cam_scene->norm_dir_vec[1]);
 	printf("dir_vec = %f\n", cam_scene->norm_dir_vec[2]);
 	// debut triangle ortho
-	if (cam_scene->norm_dir_vec[0] == 0)
+	angle[0] = atan(cam_scene->norm_dir_vec[2] / cam_scene->norm_dir_vec[0]);
+	angle[1] = atan(cam_scene->norm_dir_vec[1] / cam_scene->norm_dir_vec[0]);
+	cam_scene->up_vec[0] = 0;
+	cam_scene->up_vec[1] = 0;
+	cam_scene->up_vec[2] = -1;
+	cam_scene->right_vec[0] = 0;
+	cam_scene->right_vec[1] = -1;
+	cam_scene->right_vec[2] = 0;
+	if (angle[0] == 0 && angle[1] == 0)
 	{
-		if (cam_scene->norm_dir_vec[2] > 0)
-			angle[0] = M_PI_2;
+		printf("angle[0] = %f\n", angle[0]);
+		printf("angle[1] = %f\n", angle[1]);
+		if (cam_scene->norm_dir_vec[0] > 0)
+		{
+			ft_rot_y(&cam_scene->up_vec, angle[0]);
+			ft_rot_z(&cam_scene->up_vec, angle[1] + M_PI);	
+			ft_rot_y(&cam_scene->right_vec, angle[0]);
+			ft_rot_z(&cam_scene->right_vec, angle[1] + M_PI);
+		}
 		else
-			angle[0] = -M_PI_2;
-		if (cam_scene->norm_dir_vec[1] > 0)
-			angle[1] = M_PI_2;
-		else
-			angle[1] = -M_PI_2;
+		{
+			ft_rot_y(&cam_scene->up_vec, angle[0]);
+			ft_rot_z(&cam_scene->up_vec, angle[1]);	
+			ft_rot_y(&cam_scene->right_vec, angle[0]);
+			ft_rot_z(&cam_scene->right_vec, angle[1]);
+		}
 	}
 	else
 	{
-		angle[0] = atan(cam_scene->norm_dir_vec[2] / cam_scene->norm_dir_vec[0]);
-		angle[1] = atan(cam_scene->norm_dir_vec[1] / cam_scene->norm_dir_vec[0]);
+		if (isnan(angle[1]) == 1 && cam_scene->norm_dir_vec[2] < 0)
+			angle[1] = -M_PI_2;
+		else if (isnan(angle[1]) == 1)
+			angle[1] = M_PI_2;
+		if (isnan(angle[0]) == 1 && cam_scene->norm_dir_vec[1] < 0)
+			angle[0] = -M_PI_2;
+		else if (isnan(angle[0]) == 1)
+			angle[0] = M_PI_2;
+		printf("angle[0] = %f\n", angle[0]);
+		printf("angle[1] = %f\n", angle[1]);
+		ft_rot_y(&cam_scene->up_vec, angle[0]);
+		ft_rot_z(&cam_scene->up_vec, angle[1]);	
+		ft_rot_y(&cam_scene->right_vec, angle[0]);
+		ft_rot_z(&cam_scene->right_vec, angle[1]);
 	}
-	cam_scene->up_vec[0] = 1;
-	cam_scene->up_vec[1] = 0;
-	cam_scene->up_vec[2] = 0;
-	ft_rot_y(&cam_scene->up_vec, angle[0]);
-	printf("angle[0] = %f\n", angle[0]);
-	printf("angle[1] = %f\n", angle[1]);
-	ft_rot_z(&cam_scene->up_vec, angle[1]);
-	cam_scene->right_vec[0] = (cam_scene->norm_dir_vec[1] * cam_scene->up_vec[2] - cam_scene->norm_dir_vec[2] * cam_scene->up_vec[1]);
-	cam_scene->right_vec[1] = (cam_scene->norm_dir_vec[2] * cam_scene->up_vec[0] - cam_scene->norm_dir_vec[0] * cam_scene->up_vec[2]);
-	cam_scene->right_vec[2] = (cam_scene->norm_dir_vec[0] * cam_scene->up_vec[1] - cam_scene->norm_dir_vec[1] * cam_scene->up_vec[0]);
 	// fin triangle ortho
 	printf("up_vec = %f\n", cam_scene->up_vec[0]);
 	printf("up_vec = %f\n", cam_scene->up_vec[1]);
