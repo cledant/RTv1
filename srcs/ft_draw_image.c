@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 08:49:40 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/20 18:38:50 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/21 12:08:46 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,10 @@ void	ft_draw_image(t_mlx *e)
 								norm_cur_dir, &dist) == 1)
 						counter[2] = ((t_plane *)(lst->content))->color;
 				}
-				ft_memcpy(e->c_img + counter[1] * 4 + counter[0] * 4 * WIN_X,
-								&counter[2], sizeof(int));
+				if (counter[2] != 0x00000000)
+					ft_memcpy(e->c_img + counter[1] * 4 + counter[0] * 4 * WIN_X,
+									&counter[2], sizeof(int));
+				counter[2] = 0x00000000;
 				lst = lst->next;
 			}
 			dist = 1000000;
