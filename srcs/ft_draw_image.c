@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 08:49:40 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/22 18:02:31 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/22 20:01:38 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,37 +79,40 @@ void	ft_draw_image(t_mlx *e)
 				{
 					while (lst != NULL)
 					{
-						if (lst != obj_lst)
+						if (lst != obj_int)
 						{
 							if (lst->content_size == 0)
 							{
-								if (ft_has_sph_intersection() == 0)
+								if (ft_has_sph_int(lst->content,
+											light->content, int_coord) == 0)
 									counter[2] = counter[2] +
 					ft_sphere_difflight(lst->content, light->content, int_coord);
 							}
 							else if (lst->content_size == 1)
 							{
-								if (ft_has_plane_intersection() == 0)
+								if (ft_has_plane_int(lst->content,
+											light->content, int_coord) == 0)
 									counter[2] = counter[2] +
 					ft_plane_difflight(lst->content, light->content, int_coord);
 							}	
 						}
-						if (lst == int_obj)
+						else
 						{
-							if (int_obj->content_size == 0)
-								counter[2] = counter[2] + ft_sphere_ambiant();
-							else if (lst->content_size == 1)
-									counter[2] = counter[2] + ft_plane_ambiant();
+							if (obj_int->content_size == 0)
+					counter[2] = counter[2] + ft_sphere_ambiant(int_obj->content);
+							else if (obj_int->content_size == 1)
+					counter[2] = counter[2] + ft_plane_ambiant(int_obj->content);
 						}
 						lst = lst->next;
 					}
 					lst = e->obj_lst;
 					light = light->next;
 				}
+				if (counter[2] != 0x00000000)
+					ft_memcpy(e->c_img + counter[1] * 4 + counter[0] * 4 * WIN_X,
+									&counter[2], sizeof(int));
+				counter[2] = 0x00000000;
 			}
-			if (counter[2] != 0x00000000)
-				ft_memcpy(e->c_img + counter[1] * 4 + counter[0] * 4 * WIN_X,
-								&counter[2], sizeof(int));
 			obj_int = NULL;
 			dist = 1000000;
 			lst = e->obj_list;

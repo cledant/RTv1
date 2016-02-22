@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 09:25:57 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/22 16:42:02 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/22 18:38:32 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ void	ft_init_scene(t_mlx *e)
 	double		tmp_coord[3];
 	double		tmp_vec[3];
 
-	e->ambiant_light = 0x00111111;
 	cam_scene = e->cam;
 	if ((begin = ft_lstnew(NULL, 0)) == NULL)
 	{
