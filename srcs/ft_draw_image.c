@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 08:49:40 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/22 13:49:23 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/22 18:02:31 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	ft_draw_image(t_mlx *e)
 	double		dist;
 	t_camera	*camera;
 	t_list		*lst;
+	t_list		*light;
 
 	obj_int = NULL;
 	camera = e->cam;
@@ -70,17 +71,46 @@ void	ft_draw_image(t_mlx *e)
 				lst = lst->next;
 			}
 			if (obj_int != NULL)
-				ft_calc_int_pos(dist, cur_vec, &int_coord);
-			while (lst != NULL)
 			{
-				
+				lst = e->obj_lst;
+				counter[2] = 0x00000000;
+				ft_calc_int_pos(dist, cur_vec, &int_coord);
+				while (light != NULL)
+				{
+					while (lst != NULL)
+					{
+						if (lst != obj_lst)
+						{
+							if (lst->content_size == 0)
+							{
+								if (ft_has_sph_intersection() == 0)
+									counter[2] = counter[2] +
+					ft_sphere_difflight(lst->content, light->content, int_coord);
+							}
+							else if (lst->content_size == 1)
+							{
+								if (ft_has_plane_intersection() == 0)
+									counter[2] = counter[2] +
+					ft_plane_difflight(lst->content, light->content, int_coord);
+							}	
+						}
+						if (lst == int_obj)
+						{
+							if (int_obj->content_size == 0)
+								counter[2] = counter[2] + ft_sphere_ambiant();
+							else if (lst->content_size == 1)
+									counter[2] = counter[2] + ft_plane_ambiant();
+						}
+						lst = lst->next;
+					}
+					lst = e->obj_lst;
+					light = light->next;
+				}
 			}
-			counter[2] = ft_getlight();
 			if (counter[2] != 0x00000000)
 				ft_memcpy(e->c_img + counter[1] * 4 + counter[0] * 4 * WIN_X,
 								&counter[2], sizeof(int));
 			obj_int = NULL;
-			counter[2] = 0x00000000;
 			dist = 1000000;
 			lst = e->obj_list;
 			counter[1]++;

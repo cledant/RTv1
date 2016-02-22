@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 09:25:57 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/22 12:50:18 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/22 16:42:02 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,31 @@ void	ft_init_scene(t_mlx *e)
 {
 	t_sphere	*sphere;
 	t_plane		*plane;
+	t_light		*light;
 	t_list		*begin;
 	t_list		*member;
 	t_camera	*cam_scene;
 	double		tmp_coord[3];
 	double		tmp_vec[3];
 
+	e->ambiant_light = 0x00111111;
 	cam_scene = e->cam;
+	if ((begin = ft_lstnew(NULL, 0)) == NULL)
+	{
+		ft_putendl("Not enough memory");
+		key_hook(MLX_KEY_ESC, e);
+	}
+	e->light_list = begin;
+	tmp_coord[0] = 1000;
+	tmp_coord[1] = 1000;
+	tmp_coord[2] = 1000;
+	if ((light = ft_light_new(tmp_coord, 0x00FFFFFF)) == NULL)
+	{
+		ft_putendl("Not enough memory");
+		key_hook(MLX_KEY_ESC, e);	
+	}
+	begin->content = light;
+	begin->content_size = 0;
 	if ((begin = ft_lstnew(NULL, 0)) == NULL)
 	{
 		ft_putendl("Not enough memory");
@@ -37,6 +55,7 @@ void	ft_init_scene(t_mlx *e)
 		ft_putendl("Not enough memory");
 		key_hook(MLX_KEY_ESC, e);	
 	}
+	ft_sphere_material(0.5, 0.5, 0.5, sphere);
 	begin->content = sphere;
 	begin->content_size = 0;
 	if ((member = ft_lstnew(NULL, 0)) == NULL)
@@ -53,6 +72,7 @@ void	ft_init_scene(t_mlx *e)
 		ft_putendl("Not enough memory");
 		key_hook(MLX_KEY_ESC, e);	
 	}
+	ft_sphere_material(0.5, 0.5, 0.5, sphere);
 	member->content = sphere;
 	member->content_size = 0;
 	ft_lstpushback(begin, member);
@@ -70,6 +90,7 @@ void	ft_init_scene(t_mlx *e)
 		ft_putendl("Not enough memory");
 		key_hook(MLX_KEY_ESC, e);	
 	}
+	ft_sphere_material(0.5, 0.5, 0.5, sphere);
 	member->content = sphere;
 	member->content_size = 0;
 	ft_lstpushback(begin, member);
@@ -87,6 +108,7 @@ void	ft_init_scene(t_mlx *e)
 		ft_putendl("Not enough memory");
 		key_hook(MLX_KEY_ESC, e);	
 	}
+	ft_sphere_material(0.5, 0.5, 0.5, sphere);
 	member->content = sphere;
 	member->content_size = 0;
 	ft_lstpushback(begin, member);
@@ -107,6 +129,7 @@ void	ft_init_scene(t_mlx *e)
 		ft_putendl("Not enough memory");
 		key_hook(MLX_KEY_ESC, e);	
 	}
+	ft_plane_material(0.5, 0.5, 0.5, plane);
 	member->content = plane;
 	member->content_size = 1;
 	ft_lstpushback(begin, member);
@@ -127,6 +150,7 @@ void	ft_init_scene(t_mlx *e)
 		ft_putendl("Not enough memory");
 		key_hook(MLX_KEY_ESC, e);	
 	}
+	ft_plane_material(0.5, 0.5, 0.5, plane);
 	member->content = plane;
 	member->content_size = 1;
 	ft_lstpushback(begin, member);
@@ -147,6 +171,7 @@ void	ft_init_scene(t_mlx *e)
 		ft_putendl("Not enough memory");
 		key_hook(MLX_KEY_ESC, e);	
 	}
+	ft_plane_material(0.5, 0.5, 0.5, plane);
 	member->content = plane;
 	member->content_size = 1;
 	ft_lstpushback(begin, member);

@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/11 11:27:39 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/20 11:23:01 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/22 16:41:31 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,8 @@ int		key_hook(int keycode, t_mlx *e)
 			free(e->cam);
 		if (e->obj_list != NULL)
 			ft_lstdel(&(e->obj_list), &ft_lstfree_malloc);
+		if (e->light_list != NULL)
+			ft_lstdel(&(e->light_list), &ft_lstfree_malloc);
 		free(e->mlx);
 		exit(0);
 	}
