@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/15 17:33:23 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/20 18:35:30 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/22 09:31:38 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,5 +77,6 @@ int				ft_calc_int_plane(t_plane *plane, t_camera *camera,
 void			ft_rot_x(double (*vec)[3], double angle);
 void			ft_rot_y(double (*vec)[3], double angle);
 void			ft_rot_z(double (*vec)[3], double angle);
+void			ft_scalar_product(double v1[3], double v2[3], double (*res)[3]);
 
 #endif
