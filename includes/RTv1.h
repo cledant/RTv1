@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/15 17:33:23 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/22 09:31:38 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/22 13:49:26 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,12 @@ typedef struct	s_plane
 	double	coord[3];
 	double	factor[3];
 }				t_plane;
+
+typedef struct	s_light
+{
+	int		color;
+	double	coord[3];
+}				t_light;
 
 typedef struct	s_camera
 {

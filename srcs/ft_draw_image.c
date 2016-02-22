@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 08:49:40 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/22 11:29:49 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/22 13:49:23 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,13 @@ void	ft_draw_image(t_mlx *e)
 	double		cur_dir[3];
 	double		val_cur_dir;
 	double		norm_cur_dir[3];
+	double		int_coord[3];
+	void		*obj_int;
 	double		dist;
 	t_camera	*camera;
 	t_list		*lst;
 
+	obj_int = NULL;
 	camera = e->cam;
 	lst = e->obj_list;
 	counter[0] = 0;
@@ -55,21 +58,29 @@ void	ft_draw_image(t_mlx *e)
 				if (lst->content_size == 0)
 				{		
 					if (ft_calc_int_sphere(lst->content, camera, 
-								norm_cur_dir, &dist) == 1)
-						counter[2] = ((t_sphere *)(lst->content))->color;
+								norm_cur_dir, &dist) == 1)	
+						obj_int = lst;
 				}
 				else if (lst->content_size == 1)
 				{
 					if (ft_calc_int_plane(lst->content, camera, 
 								norm_cur_dir, &dist) == 1)
-						counter[2] = ((t_plane *)(lst->content))->color;
+						obj_int = lst;
 				}
-				if (counter[2] != 0x00000000)
-					ft_memcpy(e->c_img + counter[1] * 4 + counter[0] * 4 * WIN_X,
-									&counter[2], sizeof(int));
-				counter[2] = 0x00000000;
 				lst = lst->next;
 			}
+			if (obj_int != NULL)
+				ft_calc_int_pos(dist, cur_vec, &int_coord);
+			while (lst != NULL)
+			{
+				
+			}
+			counter[2] = ft_getlight();
+			if (counter[2] != 0x00000000)
+				ft_memcpy(e->c_img + counter[1] * 4 + counter[0] * 4 * WIN_X,
+								&counter[2], sizeof(int));
+			obj_int = NULL;
+			counter[2] = 0x00000000;
 			dist = 1000000;
 			lst = e->obj_list;
 			counter[1]++;
