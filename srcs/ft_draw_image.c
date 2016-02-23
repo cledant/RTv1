@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 08:49:40 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/23 09:35:20 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/23 14:05:05 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,13 +97,13 @@ void	ft_draw_image(t_mlx *e)
 					ft_plane_difflight(lst->content, light->content, int_coord);
 							}	
 						}
-						else
-						{
-							if (lst->content_size == 0)
-					counter[2] = counter[2] + ft_sphere_ambiant(lst->content);
-							else if (lst->content_size == 1)
-					counter[2] = counter[2] + ft_plane_ambiant(lst->content);
-						}
+				//		else
+				//		{
+				//			if (lst->content_size == 0)
+				//	counter[2] = counter[2] + ft_sphere_ambiant(lst->content);
+				//			else if (lst->content_size == 1)
+				//	counter[2] = counter[2] + ft_plane_ambiant(lst->content);
+				//		}
 						lst = lst->next;
 					}
 					lst = e->obj_list;
@@ -117,6 +117,7 @@ void	ft_draw_image(t_mlx *e)
 			obj_int = NULL;
 			dist = 1000000;
 			lst = e->obj_list;
+			light = e->light_list;
 			counter[1]++;
 		}
 		counter[1] = 0;

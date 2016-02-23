@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/22 17:46:38 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/22 18:19:59 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/23 14:43:41 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ int		ft_sphere_difflight(t_sphere *obj, t_light *light, double int_coord[3])
 	angle = norm_vec_normal[0] * norm_vec_light[0] + 
 				norm_vec_normal[1] * norm_vec_light[1] +
 					norm_vec_normal[2] * norm_vec_light[2];
+//	printf("COLOR = %x\n", (int)(light->color * obj->diffuse * obj->color * angle));
 	if (angle < 0)
 		return (0x00000000);
 	else
