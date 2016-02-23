@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 09:25:57 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/23 13:52:06 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/23 18:08:21 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@ void	ft_init_scene(t_mlx *e)
 		key_hook(MLX_KEY_ESC, e);
 	}
 	e->light_list = begin;
-	tmp_coord[0] = 4;
-	tmp_coord[1] = 4;
-	tmp_coord[2] = 4;
+	tmp_coord[0] = -8;
+	tmp_coord[1] = 0;
+	tmp_coord[2] = 0;
 	if ((light = ft_light_new(tmp_coord, 0x00FFFFFF)) == NULL)
 	{
 		ft_putendl("Not enough memory");
@@ -132,27 +132,27 @@ void	ft_init_scene(t_mlx *e)
 //	member->content = plane;
 //	member->content_size = 1;
 //	ft_lstpushback(begin, member);
-	if ((member = ft_lstnew(NULL, 0)) == NULL)
-	{
-		ft_putendl("Not enough memory");
-		key_hook(MLX_KEY_ESC, e);
-	}
-	tmp_coord[0] = 0;
-	tmp_coord[1] = 0;
-	tmp_coord[2] = 0;
-	tmp_vec[0] = 0;
-	tmp_vec[1] = 0;
-	tmp_vec[2] = 1;
-	if ((plane = ft_plane_new(0x0000AAAA, tmp_coord, tmp_vec)) == NULL)
-	{
-		free(member);
-		ft_putendl("Not enough memory");
-		key_hook(MLX_KEY_ESC, e);	
-	}
-	ft_plane_material(0.1, 0.5, 0.5, plane);
-	member->content = plane;
-	member->content_size = 1;
-	ft_lstpushback(begin, member);
+//	if ((member = ft_lstnew(NULL, 0)) == NULL)
+//	{
+//		ft_putendl("Not enough memory");
+//		key_hook(MLX_KEY_ESC, e);
+//	}
+//	tmp_coord[0] = 0;
+//	tmp_coord[1] = 0;
+//	tmp_coord[2] = 0;
+//	tmp_vec[0] = 0;
+//	tmp_vec[1] = 0;
+//	tmp_vec[2] = 1;
+//	if ((plane = ft_plane_new(0x0000AAAA, tmp_coord, tmp_vec)) == NULL)
+//	{
+//		free(member);
+//		ft_putendl("Not enough memory");
+//		key_hook(MLX_KEY_ESC, e);	
+//	}
+//	ft_plane_material(0.1, 0.5, 0.5, plane);
+//	member->content = plane;
+//	member->content_size = 1;
+//	ft_lstpushback(begin, member);
 //	if ((member = ft_lstnew(NULL, 0)) == NULL)
 //	{
 //		ft_putendl("Not enough memory");

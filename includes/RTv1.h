@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/15 17:33:23 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/23 09:35:51 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/23 17:58:26 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ int				ft_plane_has_int(t_plane *plane, t_light *light,
 					double cur_dir[3]);
 int				ft_calc_int_plane(t_plane *plane, t_camera *camera,
 					double cur_dir[3], double *dist);
-void			ft_calc_int_pos(double dist, double cur_vec[3],
+void			ft_calc_int_pos(double dist, double cur_vec[3], double coord_cam[3],
 					double (*int_coord)[3]);
 void			ft_draw_image(t_mlx *e);
 void			ft_init_scene(t_mlx *e);
