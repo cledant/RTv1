@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 08:49:40 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/22 20:01:38 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/23 09:35:20 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	ft_draw_image(t_mlx *e)
 	t_list		*light;
 
 	obj_int = NULL;
+	light = e->light_list;
 	camera = e->cam;
 	lst = e->obj_list;
 	counter[0] = 0;
@@ -72,9 +73,9 @@ void	ft_draw_image(t_mlx *e)
 			}
 			if (obj_int != NULL)
 			{
-				lst = e->obj_lst;
+				lst = e->obj_list;
 				counter[2] = 0x00000000;
-				ft_calc_int_pos(dist, cur_vec, &int_coord);
+				ft_calc_int_pos(dist, cur_dir, &int_coord);
 				while (light != NULL)
 				{
 					while (lst != NULL)
@@ -83,14 +84,14 @@ void	ft_draw_image(t_mlx *e)
 						{
 							if (lst->content_size == 0)
 							{
-								if (ft_has_sph_int(lst->content,
+								if (ft_sphere_has_int(lst->content,
 											light->content, int_coord) == 0)
 									counter[2] = counter[2] +
 					ft_sphere_difflight(lst->content, light->content, int_coord);
 							}
 							else if (lst->content_size == 1)
 							{
-								if (ft_has_plane_int(lst->content,
+								if (ft_plane_has_int(lst->content,
 											light->content, int_coord) == 0)
 									counter[2] = counter[2] +
 					ft_plane_difflight(lst->content, light->content, int_coord);
@@ -98,14 +99,14 @@ void	ft_draw_image(t_mlx *e)
 						}
 						else
 						{
-							if (obj_int->content_size == 0)
-					counter[2] = counter[2] + ft_sphere_ambiant(int_obj->content);
-							else if (obj_int->content_size == 1)
-					counter[2] = counter[2] + ft_plane_ambiant(int_obj->content);
+							if (lst->content_size == 0)
+					counter[2] = counter[2] + ft_sphere_ambiant(lst->content);
+							else if (lst->content_size == 1)
+					counter[2] = counter[2] + ft_plane_ambiant(lst->content);
 						}
 						lst = lst->next;
 					}
-					lst = e->obj_lst;
+					lst = e->obj_list;
 					light = light->next;
 				}
 				if (counter[2] != 0x00000000)

@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/15 17:33:23 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/22 20:14:31 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/23 09:35:51 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,11 +78,12 @@ typedef struct	s_mlx
 int				expose_hook(t_mlx *e);
 int				key_hook(int keycode, t_mlx *e);
 void			ft_lstfree_malloc(void *content, size_t size);
-t_light			ft_light_new(double loc[3], int color);
+t_light			*ft_light_new(double loc[3], int color);
 t_sphere		*ft_sphere_new(int coloration, double origin[3], double size);
 void			ft_sphere_material(double amb, double diff, double spec,
 					t_sphere *sph);
-int				ft_sphere_difflight(t_sphere *obj, t_light, double int_coord[3]);
+int				ft_sphere_difflight(t_sphere *obj, t_light *light,
+					double int_coord[3]);
 int				ft_sphere_ambiant(t_sphere *sph);
 int				ft_calc_int_sphere(t_sphere *sphere, t_camera *camera,
 					double cur_dir[3], double *dist);
