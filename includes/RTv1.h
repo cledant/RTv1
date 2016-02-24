@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/15 17:33:23 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/23 17:58:26 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/24 19:49:44 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,8 +84,12 @@ void			ft_sphere_material(double amb, double diff, double spec,
 					t_sphere *sph);
 int				ft_sphere_difflight(t_sphere *obj, t_light *light,
 					double int_coord[3]);
+int				ft_sphere_is_light_interrupt(t_light *light, t_sphere *sph,
+					double int_coord[3]);
 int				ft_sphere_ambiant(t_sphere *sph);
 int				ft_calc_int_sphere(t_sphere *sphere, t_camera *camera,
+					double cur_dir[3], double *dist);
+int				ft_calc_int_sphere_light(t_sphere *sphere, t_light *light,
 					double cur_dir[3], double *dist);
 int				ft_sphere_has_int(t_sphere *sphere, t_light *light,
 					double cur_dir[3]);

@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 08:49:40 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/24 13:08:49 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/24 21:36:10 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_draw_image(t_mlx *e)
 {
-	int			counter[3];
+	int			counter[4];
 	double		cur_dir[3];
 	double		val_cur_dir;
 	double		norm_cur_dir[3];
@@ -58,21 +58,25 @@ void	ft_draw_image(t_mlx *e)
 				if (lst->content_size == 0)
 				{		
 					if (ft_calc_int_sphere(lst->content, camera, 
-								norm_cur_dir, &dist) == 1)	
+								norm_cur_dir, &dist) == 1)
+					{
 						obj_int = lst;
+					}
 				}
 				else if (lst->content_size == 1)
 				{
 					if (ft_calc_int_plane(lst->content, camera, 
 								norm_cur_dir, &dist) == 1)
+					{
 						obj_int = lst;
+					}
 				}
 				lst = lst->next;
 			}
 			if (obj_int != NULL)
 			{
-				printf("LIGNE = %d\n", counter[0]);
-				printf("COLONNE = %d\n", counter[1]);
+//				printf("LIGNE = %d\n", counter[0]);
+//				printf("COLONNE = %d\n", counter[1]);
 				lst = e->obj_list;
 				counter[2] = 0x00000000;
 				ft_calc_int_pos(dist, norm_cur_dir, camera->coord, &int_coord);
@@ -84,11 +88,15 @@ void	ft_draw_image(t_mlx *e)
 						{
 							if (lst->content_size == 0)
 							{
-								if (ft_sphere_has_int(lst->content,
-											light->content, int_coord) == 0)
+								if (ft_sphere_is_light_interrupt(light->content, 
+										lst->content, int_coord) == 0)
 								{
-									counter[2] = counter[2] +
-					ft_sphere_difflight(((t_list *)obj_int)->content, light->content, int_coord);
+									counter[2] =
+					ft_sphere_difflight(((t_list *)(obj_int))->content, light->content, int_coord);
+								}
+								else
+								{
+									counter[3] = 1;
 								}
 							}
 							else if (lst->content_size == 1)
@@ -101,26 +109,27 @@ void	ft_draw_image(t_mlx *e)
 								}
 							}	
 						}
-						else
-						{
-							if (lst->content_size == 0)
-							{
-					counter[2] = counter[2] + ft_sphere_ambiant(lst->content);
-							}
+//						else
+//						{
+//							if (lst->content_size == 0)
+//							{
+//					counter[2] = ft_sphere_ambiant(lst->content);
+//							}
 				//			else if (lst->content_size == 1)
 				//	counter[2] = counter[2] + ft_plane_ambiant(lst->content);
-						}
+//						}
 						lst = lst->next;
 					}
 					lst = e->obj_list;
 					light = light->next;
 				}
-				if (counter[2] != 0x00000000)
+				if (counter[2] != 0x00000000 && counter[3] == 0)
 				{
 					ft_memcpy(e->c_img + counter[1] * 4 + counter[0] * 4 * WIN_X,
 									&counter[2], sizeof(int));
 				}
 				counter[2] = 0x00000000;
+				counter[3] = 0;
 			}
 			obj_int = NULL;
 			dist = 1000000;

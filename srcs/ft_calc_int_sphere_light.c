@@ -6,13 +6,13 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/17 18:02:06 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/24 19:50:58 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/24 19:50:49 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RTv1.h"
 
-int		ft_calc_int_sphere(t_sphere *sphere, t_camera *camera,
+int		ft_calc_int_sphere_light(t_sphere *sphere, t_light *camera,
 								double cur_dir[3], double *dist)
 {
 	double		var[3];

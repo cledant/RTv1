@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 09:25:57 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/24 12:25:47 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/24 21:20:41 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@ void	ft_init_scene(t_mlx *e)
 		key_hook(MLX_KEY_ESC, e);
 	}
 	e->light_list = begin;
-	tmp_coord[0] = 0;
+	tmp_coord[0] = 10.5;
 	tmp_coord[1] = 0;
-	tmp_coord[2] = 10;
+	tmp_coord[2] = 0;
 	if ((light = ft_light_new(tmp_coord, 0x00FFFFFF)) == NULL)
 	{
 		ft_putendl("Not enough memory");
@@ -49,7 +49,7 @@ void	ft_init_scene(t_mlx *e)
 	tmp_coord[0] = 0;
 	tmp_coord[1] = 0;
 	tmp_coord[2] = 0;
-	if ((sphere = ft_sphere_new(0x00AA0000, tmp_coord, 3)) == NULL)
+	if ((sphere = ft_sphere_new(0x00AA0000, tmp_coord, 2)) == NULL)
 	{
 		ft_putendl("Not enough memory");
 		key_hook(MLX_KEY_ESC, e);	
