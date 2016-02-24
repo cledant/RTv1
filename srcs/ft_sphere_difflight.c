@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/22 17:46:38 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/23 14:43:41 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/24 10:45:18 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,12 @@ int		ft_sphere_difflight(t_sphere *obj, t_light *light, double int_coord[3])
 	vector[0] = int_coord[0] - light->coord[0];
 	vector[1] = int_coord[1] - light->coord[1];
 	vector[2] = int_coord[2] - light->coord[2];
+//	printf("light coord = %f\n", light->coord[0]);
+//	printf("light coord = %f\n", light->coord[1]);
+//	printf("light coord = %f\n", light->coord[2]);
+//	printf("int coord = %f\n", int_coord[0]);
+//	printf("int coord = %f\n", int_coord[1]);
+//	printf("int coord = %f\n", int_coord[2]);
 	norm = sqrt(vector[0] * vector[0] + vector[1] * vector[1] + 
 			vector[2] * vector[2]);
 	norm_vec_light[0] = vector[0] / norm;
@@ -36,12 +42,13 @@ int		ft_sphere_difflight(t_sphere *obj, t_light *light, double int_coord[3])
 	norm_vec_normal[0] = vector[0] / norm;
 	norm_vec_normal[1] = vector[1] / norm;
 	norm_vec_normal[2] = vector[2] / norm;
-	angle = norm_vec_normal[0] * norm_vec_light[0] + 
-				norm_vec_normal[1] * norm_vec_light[1] +
-					norm_vec_normal[2] * norm_vec_light[2];
+	angle = -norm_vec_normal[0] * norm_vec_light[0] + 
+				-norm_vec_normal[1] * norm_vec_light[1] +
+					-norm_vec_normal[2] * norm_vec_light[2];
+	printf("cos angle = %f\n", angle);
 //	printf("COLOR = %x\n", (int)(light->color * obj->diffuse * obj->color * angle));
 	if (angle < 0)
 		return (0x00000000);
 	else
-		return (light->color * obj->diffuse * angle);
+		return (obj->color * obj->diffuse * angle);
 }
