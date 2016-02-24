@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 08:49:40 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/24 10:47:13 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/24 13:08:49 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@ void	ft_draw_image(t_mlx *e)
 //	printf("camera.up_left_vec = %f\n", camera->up_left_win[0]);
 //	printf("camera.up_left_vec = %f\n", camera->up_left_win[1]);
 //	printf("camera.up_left_vec = %f\n", camera->up_left_win[2]);
-//	while (counter[0] < WIN_Y)
+	while (counter[0] < WIN_Y)
 	{
-//		while (counter[1] < WIN_X)
+		while (counter[1] < WIN_X)
 		{
 			cur_dir[0] = camera->up_left_win[0] + counter[1] * camera->x_inc *
 				camera->right_vec[0] - counter[0] * camera->y_inc *

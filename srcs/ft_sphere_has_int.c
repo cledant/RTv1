@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/22 19:30:24 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/24 10:05:29 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/24 11:48:01 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,5 @@ int		ft_sphere_has_int(t_sphere *sphere, t_light *light,
 	else if (det == 0)
 		return (1);
 	else
-	return(1);
+		return(1);
 }

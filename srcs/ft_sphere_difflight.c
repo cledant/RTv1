@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/22 17:46:38 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/24 10:45:18 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/24 13:19:38 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int		ft_sphere_difflight(t_sphere *obj, t_light *light, double int_coord[3])
 	double	norm_vec_light[3];
 	double	norm_vec_normal[3];
 	double	angle;
+	int		ret_color[5];
 
 	vector[0] = int_coord[0] - light->coord[0];
 	vector[1] = int_coord[1] - light->coord[1];
@@ -46,9 +47,25 @@ int		ft_sphere_difflight(t_sphere *obj, t_light *light, double int_coord[3])
 				-norm_vec_normal[1] * norm_vec_light[1] +
 					-norm_vec_normal[2] * norm_vec_light[2];
 	printf("cos angle = %f\n", angle);
-//	printf("COLOR = %x\n", (int)(light->color * obj->diffuse * obj->color * angle));
 	if (angle < 0)
 		return (0x00000000);
 	else
-		return (obj->color * obj->diffuse * angle);
+	{
+		ret_color[0] = (light->color & 0xFF000000);
+		ret_color[0] = ret_color[0] >> (4 * 6);
+		ret_color[0] = ret_color[0] * obj->diffuse * angle;
+		ret_color[0] = ret_color[0] << (4 * 6);
+		ret_color[1] = (light->color & 0x00FF0000);
+		ret_color[1] = ret_color[1] >> (4 * 4);
+		ret_color[1] = ret_color[1] * obj->diffuse * angle;
+		ret_color[1] = ret_color[1] << (4 * 4);
+		ret_color[2] = (light->color & 0x0000FF00);
+		ret_color[2] = ret_color[2] >> (4 * 2);
+		ret_color[2] = ret_color[2] * obj->diffuse * angle;
+		ret_color[2] = ret_color[2] << (4 * 2);
+		ret_color[3] = (light->color & 0x000000FF) * obj->diffuse * angle;
+		ret_color[4] = ret_color[0] | ret_color[1] | ret_color[2] | ret_color[3];
+//		printf("COLOR = %x\n", ret_color[4]);
+		return (ret_color[4]);
+	}
 }
