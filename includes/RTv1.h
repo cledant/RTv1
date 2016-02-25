@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/15 17:33:23 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/24 19:49:44 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/25 12:19:56 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ typedef struct	s_sphere
 	double	diffuse;
 	double	ambiant;
 	double	specular;
+	double	shiny;
 }				t_sphere;
 
 typedef struct	s_plane
@@ -40,6 +41,7 @@ typedef struct	s_plane
 	double	diffuse;
 	double	ambiant;
 	double	specular;
+	double	shiny;
 }				t_plane;
 
 typedef struct	s_light

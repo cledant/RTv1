@@ -6,13 +6,14 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/22 17:46:38 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/25 12:04:10 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/25 13:31:07 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RTv1.h"
 
-int		ft_sphere_difflight(t_sphere *obj, t_light *light, double int_coord[3])
+int		ft_sphere_difflight(t_sphere *obj, t_light *light, double int_coord[3],
+			double cam_vector[3])
 {
 	double	vector[3];
 	double	norm;
@@ -24,6 +25,9 @@ int		ft_sphere_difflight(t_sphere *obj, t_light *light, double int_coord[3])
 	int		ambiant_color[5];
 	double	factor_color[2];
 	double	ratio[2];
+	double	norm_vec_reflec[3];
+	double	spec_angle;
+	int		spec_color[5];
 
 	vector[0] = int_coord[0] - light->coord[0];
 	vector[1] = int_coord[1] - light->coord[1];
@@ -55,18 +59,18 @@ int		ft_sphere_difflight(t_sphere *obj, t_light *light, double int_coord[3])
 		angle = 0;
 	ambiant_color[0] = (obj->color & 0xFF000000);
 	ambiant_color[0] = ambiant_color[0] >> (4 * 6);
-	ambiant_color[0] = ambiant_color[0] * obj->ambiant;
+	ambiant_color[0] = ambiant_color[0] * obj->ambiant * 0.5;
 	ambiant_color[0] = ambiant_color[0] << (4 * 6);
 	ambiant_color[1] = (obj->color & 0x00FF0000);
 	ambiant_color[1] = ambiant_color[1] >> (4 * 4);
-	ambiant_color[1] = ambiant_color[1] * obj->ambiant;
+	ambiant_color[1] = ambiant_color[1] * obj->ambiant * 0.5;
 	ambiant_color[1] = ambiant_color[1] << (4 * 4);
 	ambiant_color[2] = (obj->color & 0x0000FF00);
 	ambiant_color[2] = ambiant_color[2] >> (4 * 2);
-	ambiant_color[2] = ambiant_color[2] * obj->ambiant;
+	ambiant_color[2] = ambiant_color[2] * obj->ambiant * 0.5;
 	ambiant_color[2] = ambiant_color[2] << (4 * 2);
 	ambiant_color[3] = (obj->color & 0x000000FF);
-	ambiant_color[3] = ambiant_color[3] * obj->ambiant;
+	ambiant_color[3] = ambiant_color[3] * obj->ambiant * 0.5;
 	//c1
 	if (angle > 0)
 	{
@@ -81,7 +85,7 @@ int		ft_sphere_difflight(t_sphere *obj, t_light *light, double int_coord[3])
 		ret_color[0] = (int)((factor_color[0] * ratio[0] + 
 			factor_color[1] * ratio[1]) * 255);
 //		ret_color[0] = factor_color[0] * factor_color[1] * 255;
-		ret_color[0] = ret_color[0] * obj->diffuse * angle;
+		ret_color[0] = ret_color[0] * obj->diffuse * angle * 0.5;
 		ret_color[0] = ret_color[0] << (4 * 6);
 		//c2
 		obj_color[1] = (obj->color & 0x00FF0000);
@@ -93,7 +97,7 @@ int		ft_sphere_difflight(t_sphere *obj, t_light *light, double int_coord[3])
 		ret_color[1] = (int)((factor_color[0] * ratio[0] + 
 				factor_color[1] * ratio[1]) * 255);
 //		ret_color[1] = factor_color[0] * factor_color[1] * 255;
-		ret_color[1] = ret_color[1] * obj->diffuse * angle;
+		ret_color[1] = ret_color[1] * obj->diffuse * angle * 0.5;
 		ret_color[1] = ret_color[1] << (4 * 4);
 		//c3
 		obj_color[2] = (obj->color & 0x0000FF00);
@@ -105,7 +109,7 @@ int		ft_sphere_difflight(t_sphere *obj, t_light *light, double int_coord[3])
 		ret_color[2] = (int)((factor_color[0] * ratio[0] + 
 				factor_color[1] * ratio[1]) * 255);
 //			ret_color[2] = factor_color[0] * factor_color[1] * 255;
-		ret_color[2] = ret_color[2] * obj->diffuse * angle;
+		ret_color[2] = ret_color[2] * obj->diffuse * angle * 0.5;
 		ret_color[2] = ret_color[2] << (4 * 2);
 		//c4
 		obj_color[3] = (obj->color & 0x000000FF);
@@ -115,10 +119,34 @@ int		ft_sphere_difflight(t_sphere *obj, t_light *light, double int_coord[3])
 		ret_color[3] = (int)((factor_color[0] * ratio[0] + 
 				factor_color[1] * ratio[1]) * 255);
 	//		ret_color[3] = factor_color[0] * factor_color[1] * 255;
-		ret_color[3] = ret_color[3] * obj->diffuse * angle;
+		ret_color[3] = ret_color[3] * obj->diffuse * angle * 0.5;
 		//total
 		ret_color[4] = ret_color[0] + ret_color[1] + ret_color[2] + ret_color[3];
 	//		printf("COLOR = %x\n", ret_color[4]);
+	//specuclar
+	norm_vec_reflec[0] = 2 * angle * norm_vec_norm[0] - norm_light_vec[0];
+	norm_vec_reflec[1] = 2 * angle * norm_vec_norm[1] - norm_light_vec[1];
+	norm_vec_reflec[2] = 2 * angle * norm_vec_norm[2] - norm_light_vec[2];
+	spec_angle = norm_vec_reflec[0] * cam_vector[0] +  norm_vec_reflec[1] *
+		cam_vector[1] + norm_vec_reflec[2] * cam_vector[2];
+	spec_color[0] = (obj->color & 0xFF000000);
+	spec_color[0] = spec_color[0] >> (4 * 6);
+	spec_color[0] = spec_color[0] * obj->specular * pow(spec_angle, obj->shiny)
+		* 0.334;
+	spec_color[0] = spec_color[0] << (4 * 6);
+	spec_color[1] = (obj->color & 0x00FF0000);
+	spec_color[1] = spec_color[1] >> (4 * 4);
+	spec_color[1] = spec_color[1] * obj->specular * pow(spec_angle, obj->shiny)
+		* 0.334;
+	spec_color[2] = spec_color[2] << (4 * 2);
+	spec_color[2] = (obj->color & 0x0000FF00);
+	spec_color[2] = spec_color[2] >> (4 * 2);
+	spec_color[2] = spec_color[2] * obj->specular * pow(spec_angle, obj->shiny)
+		* 0.334;
+	spec_color[2] = spec_color[2] << (4 * 4);
+	spec_color[3] = (obj->color & 0x000000FF);
+	spec_color[3] = spec_color[1] * obj->specular * pow(spec_angle, obj->shiny)
+		* 0.334;
 	}
 	else
 	{
@@ -128,6 +156,7 @@ int		ft_sphere_difflight(t_sphere *obj, t_light *light, double int_coord[3])
 		ret_color[3] = 0;
 	}
 	ret_color[4] = ambiant_color[0] + ret_color[0] + ambiant_color[1] + ret_color[1]
-		+ ambiant_color[2] + ret_color[2] + ambiant_color[3] + ret_color[3];
+		+ ambiant_color[2] + ret_color[2] + ambiant_color[3] + ret_color[3] +
+		spec_color[0] + spec_color[1] + spec_color[2] + spec_color[3];
 	return (ret_color[4]);
 }
