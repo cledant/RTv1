@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 09:25:57 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/25 09:34:22 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/25 12:02:33 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	ft_init_scene(t_mlx *e)
 		ft_putendl("Not enough memory");
 		key_hook(MLX_KEY_ESC, e);	
 	}
-	ft_sphere_material(0.1, 1, 0.5, sphere);
+	ft_sphere_material(0.1, 0.9, 0.5, sphere);
 	begin->content = sphere;
 	begin->content_size = 0;
 	if ((member = ft_lstnew(NULL, 0)) == NULL)
@@ -71,7 +71,7 @@ void	ft_init_scene(t_mlx *e)
 		ft_putendl("Not enough memory");
 		key_hook(MLX_KEY_ESC, e);	
 	}
-	ft_sphere_material(0.1, 1, 0.5, sphere);
+	ft_sphere_material(0.1, 0.9, 0.5, sphere);
 	member->content = sphere;
 	member->content_size = 0;
 	ft_lstpushback(begin, member);
@@ -89,7 +89,7 @@ void	ft_init_scene(t_mlx *e)
 		ft_putendl("Not enough memory");
 		key_hook(MLX_KEY_ESC, e);	
 	}
-	ft_sphere_material(0.1, 1, 0.5, sphere);
+	ft_sphere_material(0.1, 0.9, 0.5, sphere);
 	member->content = sphere;
 	member->content_size = 0;
 	ft_lstpushback(begin, member);
@@ -107,7 +107,7 @@ void	ft_init_scene(t_mlx *e)
 		ft_putendl("Not enough memory");
 		key_hook(MLX_KEY_ESC, e);	
 	}
-	ft_sphere_material(0.1, 1, 0.5, sphere);
+	ft_sphere_material(0.1, 0.9, 0.5, sphere);
 	member->content = sphere;
 	member->content_size = 0;
 	ft_lstpushback(begin, member);
@@ -176,8 +176,8 @@ void	ft_init_scene(t_mlx *e)
 //	ft_lstpushback(begin, member);
 	//debut init camera
 	cam_scene->coord[0] = 500;
-	cam_scene->coord[1] = 0;
-	cam_scene->coord[2] = 0;
+	cam_scene->coord[1] = 500;
+	cam_scene->coord[2] = 500;
 	cam_scene->camera_size[0] = 20;
 	cam_scene->camera_size[1] = 20;
 	cam_scene->camera_size[2] = 1;

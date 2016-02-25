@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 08:49:40 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/25 09:00:17 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/25 11:05:10 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ void	ft_draw_image(t_mlx *e)
 								}
 								else
 								{
-									counter[3] = 1;
+									counter[2] = ft_sphere_ambiant(lst->content);
 								}
 							}
 							else if (lst->content_size == 1)
@@ -123,7 +123,7 @@ void	ft_draw_image(t_mlx *e)
 					lst = e->obj_list;
 					light = light->next;
 				}
-				if (counter[2] != 0x00000000 && counter[3] == 0)
+				if (counter[2] != 0x00000000)
 				{
 					ft_memcpy(e->c_img + counter[1] * 4 + counter[0] * 4 * WIN_X,
 									&counter[2], sizeof(int));
