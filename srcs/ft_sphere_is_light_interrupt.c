@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/24 17:50:44 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/24 21:40:30 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/25 08:59:56 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,20 @@ int		ft_sphere_is_light_interrupt(t_light *light, t_sphere *sph,
 	double	dist;
 
 	dist = 1000000;
+//	printf("int coord %f\n", int_coord[0]);
+//	printf("int coord %f\n", int_coord[1]);
+//	printf("int coord %f\n", int_coord[2]);
+//	printf("int coord %f\n", light->coord[0]);
+//	printf("int coord %f\n", light->coord[1]);
+//	printf("int coord %f\n", light->coord[2]);
 	vector[0] = int_coord[0]  - light->coord[0];
 	vector[1] = int_coord[1]  - light->coord[1];
 	vector[2] = int_coord[2]  - light->coord[2];
 	norm = sqrt(vector[0] * vector[0] + vector[1] * vector[1] + 
 			vector[2] * vector[2]);
-	norm_light[0] = vector[0] / norm;
-	norm_light[1] = vector[1] / norm;
-	norm_light[2] = vector[2] / norm;
+	norm_light[0] = -vector[0] / norm;
+	norm_light[1] = -vector[1] / norm;
+	norm_light[2] = -vector[2] / norm;
 //	ft_putendl("TEST LIGHT");
 	if (ft_calc_int_sphere_light(sph, light,
 				norm_light, &dist) == 1)
@@ -41,5 +47,7 @@ int		ft_sphere_is_light_interrupt(t_light *light, t_sphere *sph,
 			return (1);
 	}
 	else
+	{
 		return (0);
+	}
 }
