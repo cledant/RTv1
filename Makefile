@@ -6,7 +6,7 @@
 #    By: cledant <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/26 10:40:13 by cledant           #+#    #+#              #
-#    Updated: 2016/02/24 19:49:19 by cledant          ###   ########.fr        #
+#    Updated: 2016/02/25 18:56:54 by cledant          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,12 +25,13 @@ LIBFT_PATH = ./libft
 LIBMLX_PATH = ./minilibx_macos
 
 SRC_NAME = main.c ft_hook.c ft_draw_image.c ft_init_scene.c ft_calc_int_sphere.c \
-		   ft_rot_x.c ft_rot_y.c ft_rot_z.c ft_lstfree_malloc.c ft_sphere_new.c \
+		   ft_lstfree_malloc.c ft_sphere_new.c \
 		   ft_plane_new.c ft_calc_int_plane.c ft_scalar_product.c ft_calc_int_pos.c \
-		   ft_light_new.c ft_plane_ambiant.c ft_plane_difflight.c ft_plane_has_int.c \
-		   ft_plane_material.c ft_sphere_material.c ft_sphere_ambiant.c \
-		   ft_sphere_difflight.c ft_sphere_has_int.c ft_sphere_is_light_interrupt.c \
-		   ft_calc_int_sphere_light.c
+		   ft_light_new.c ft_plane_getlight.c ft_plane_has_int.c \
+		   ft_plane_material.c ft_sphere_material.c ft_getlight.c \
+		   ft_sphere_has_int.c ft_sphere_is_light_interrupt.c \
+		   ft_calc_int_sphere_light.c ft_sphere_getlight.c ft_plane_ambiant.c \
+		   ft_sphere_ambiant.c
 
 SRC_PATH = ./srcs/
 

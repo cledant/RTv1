@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 09:25:57 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/25 13:31:09 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/25 19:00:46 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,8 @@ void	ft_init_scene(t_mlx *e)
 		ft_putendl("Not enough memory");
 		key_hook(MLX_KEY_ESC, e);	
 	}
-	ft_sphere_material(0.1, 0.9, 0.5, sphere);
+	ft_sphere_material(0.1, 0.9, 1, sphere);
+	sphere->shiny = 100;
 	begin->content = sphere;
 	begin->content_size = 0;
 	if ((member = ft_lstnew(NULL, 0)) == NULL)
@@ -71,7 +72,8 @@ void	ft_init_scene(t_mlx *e)
 		ft_putendl("Not enough memory");
 		key_hook(MLX_KEY_ESC, e);	
 	}
-	ft_sphere_material(0.1, 0.9, 0.5, sphere);
+	ft_sphere_material(0.1, 0.9, 1, sphere);
+	sphere->shiny = 100;
 	member->content = sphere;
 	member->content_size = 0;
 	ft_lstpushback(begin, member);
@@ -89,7 +91,8 @@ void	ft_init_scene(t_mlx *e)
 		ft_putendl("Not enough memory");
 		key_hook(MLX_KEY_ESC, e);	
 	}
-	ft_sphere_material(0.1, 0.9, 0.5, sphere);
+	ft_sphere_material(0.1, 0.9, 1, sphere);
+	sphere->shiny = 100;
 	member->content = sphere;
 	member->content_size = 0;
 	ft_lstpushback(begin, member);
@@ -107,73 +110,77 @@ void	ft_init_scene(t_mlx *e)
 		ft_putendl("Not enough memory");
 		key_hook(MLX_KEY_ESC, e);	
 	}
-	ft_sphere_material(0.1, 0.9, 0.5, sphere);
+	ft_sphere_material(0.1, 0.9, 1, sphere);
+	sphere->shiny = 100;
 	member->content = sphere;
 	member->content_size = 0;
 	ft_lstpushback(begin, member);
-//	if ((member = ft_lstnew(NULL, 0)) == NULL)
-//	{
-//		ft_putendl("Not enough memory");
-//		key_hook(MLX_KEY_ESC, e);
-//	}
-//	tmp_coord[0] = 0;
-//	tmp_coord[1] = 0;
-//	tmp_coord[2] = 0;
-//	tmp_vec[0] = 1;
-//	tmp_vec[1] = 0;
-//	tmp_vec[2] = 0;
-//	if ((plane = ft_plane_new(0x00AAAAAA, tmp_coord, tmp_vec)) == NULL)
-//	{
-//		free(member);
-//		ft_putendl("Not enough memory");
-//		key_hook(MLX_KEY_ESC, e);	
-//	}
-//	ft_plane_material(0.1, 0.5, 0.5, plane);
-//	member->content = plane;
-//	member->content_size = 1;
-//	ft_lstpushback(begin, member);
-//	if ((member = ft_lstnew(NULL, 0)) == NULL)
-//	{
-//		ft_putendl("Not enough memory");
-//		key_hook(MLX_KEY_ESC, e);
-//	}
-//	tmp_coord[0] = 0;
-//	tmp_coord[1] = 0;
-//	tmp_coord[2] = 0;
-//	tmp_vec[0] = 0;
-//	tmp_vec[1] = 0;
-//	tmp_vec[2] = 1;
-//	if ((plane = ft_plane_new(0x0000AAAA, tmp_coord, tmp_vec)) == NULL)
-//	{
-//		free(member);
-//		ft_putendl("Not enough memory");
-//		key_hook(MLX_KEY_ESC, e);	
-//	}
-//	ft_plane_material(0.1, 0.5, 0.5, plane);
-//	member->content = plane;
-//	member->content_size = 1;
-//	ft_lstpushback(begin, member);
-//	if ((member = ft_lstnew(NULL, 0)) == NULL)
-//	{
-//		ft_putendl("Not enough memory");
-//		key_hook(MLX_KEY_ESC, e);
-//	}
-//	tmp_coord[0] = 0;
-//	tmp_coord[1] = 0;
-//	tmp_coord[2] = 0;
-//	tmp_vec[0] = 0;
-//	tmp_vec[1] = 1;
-//	tmp_vec[2] = 0;
-//	if ((plane = ft_plane_new(0x00AAAA00, tmp_coord, tmp_vec)) == NULL)
-//	{
-//		free(member);
-//		ft_putendl("Not enough memory");
-//		key_hook(MLX_KEY_ESC, e);	
-//	}
-//	ft_plane_material(0.1, 0.5, 0.5, plane);
-//	member->content = plane;
-//	member->content_size = 1;
-//	ft_lstpushback(begin, member);
+	if ((member = ft_lstnew(NULL, 0)) == NULL)
+	{
+		ft_putendl("Not enough memory");
+		key_hook(MLX_KEY_ESC, e);
+	}
+	tmp_coord[0] = 0;
+	tmp_coord[1] = 0;
+	tmp_coord[2] = 0;
+	tmp_vec[0] = 1;
+	tmp_vec[1] = 0;
+	tmp_vec[2] = 0;
+	if ((plane = ft_plane_new(0x00AAAAAA, tmp_coord, tmp_vec)) == NULL)
+	{
+		free(member);
+		ft_putendl("Not enough memory");
+		key_hook(MLX_KEY_ESC, e);	
+	}
+	ft_plane_material(0.5, 0.9, 0, plane);
+	plane->shiny = 100;
+	member->content = plane;
+	member->content_size = 1;
+	ft_lstpushback(begin, member);
+	if ((member = ft_lstnew(NULL, 0)) == NULL)
+	{
+		ft_putendl("Not enough memory");
+		key_hook(MLX_KEY_ESC, e);
+	}
+	tmp_coord[0] = 0;
+	tmp_coord[1] = 0;
+	tmp_coord[2] = 0;
+	tmp_vec[0] = 0;
+	tmp_vec[1] = 0;
+	tmp_vec[2] = 1;
+	if ((plane = ft_plane_new(0x0000AAAA, tmp_coord, tmp_vec)) == NULL)
+	{
+		free(member);
+		ft_putendl("Not enough memory");
+		key_hook(MLX_KEY_ESC, e);	
+	}
+	ft_plane_material(0.5, 0.9, 0, plane);
+	plane->shiny = 100;
+	member->content = plane;
+	member->content_size = 1;
+	ft_lstpushback(begin, member);
+	if ((member = ft_lstnew(NULL, 0)) == NULL)
+	{
+		ft_putendl("Not enough memory");
+		key_hook(MLX_KEY_ESC, e);
+	}
+	tmp_coord[0] = 0;
+	tmp_coord[1] = 0;
+	tmp_coord[2] = 0;
+	tmp_vec[0] = 0;
+	tmp_vec[1] = 1;
+	tmp_vec[2] = 0;
+	if ((plane = ft_plane_new(0x00AAAA00, tmp_coord, tmp_vec)) == NULL)
+	{
+		free(member);
+		ft_putendl("Not enough memory");
+		key_hook(MLX_KEY_ESC, e);	
+	}
+	ft_plane_material(0.5, 0.9, 0, plane);
+	plane->shiny = 100;
+	member->content = plane;
+	member->content_size = 1;
+	ft_lstpushback(begin, member);
 	//debut init camera
 	cam_scene->coord[0] = 500;
 	cam_scene->coord[1] = 500;

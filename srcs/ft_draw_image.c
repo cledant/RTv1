@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 08:49:40 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/25 13:31:11 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/25 18:53:34 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 void	ft_draw_image(t_mlx *e)
 {
-	int			counter[4];
+	int			counter[5];
 	double		cur_dir[3];
 	double		val_cur_dir;
 	double		norm_cur_dir[3];
 	double		int_coord[3];
-	void		*obj_int;
+	t_list		*obj_int;
 	double		dist;
 	t_camera	*camera;
 	t_list		*lst;
@@ -92,11 +92,13 @@ void	ft_draw_image(t_mlx *e)
 										lst->content, int_coord) == 0)
 								{
 									counter[2] =
-					ft_sphere_difflight(((t_list *)(obj_int))->content, light->content, int_coord);
+					ft_getlight(obj_int, light->content, 
+							int_coord, norm_cur_dir);
 								}
 								else
 								{
-									counter[2] = ft_sphere_ambiant(lst->content);
+									counter[4] = ft_sphere_ambiant(lst->content);
+									counter[3] = 1;
 								}
 							}
 							else if (lst->content_size == 1)
@@ -104,29 +106,31 @@ void	ft_draw_image(t_mlx *e)
 								if (ft_plane_has_int(lst->content,
 											light->content, int_coord) == 0)
 								{
-									counter[2] = counter[2] +
-					ft_plane_difflight(lst->content, light->content, int_coord);
+									counter[2] =
+					ft_getlight(obj_int, light->content, int_coord,
+							norm_cur_dir);
+								}
+								else
+								{
+									counter[4] = ft_plane_ambiant(lst->content);
+									counter[3] = 1;
 								}
 							}	
 						}
-//						else
-//						{
-//							if (lst->content_size == 0)
-//							{
-//					counter[2] = ft_sphere_ambiant(lst->content);
-//							}
-				//			else if (lst->content_size == 1)
-				//	counter[2] = counter[2] + ft_plane_ambiant(lst->content);
-//						}
 						lst = lst->next;
 					}
 					lst = e->obj_list;
 					light = light->next;
 				}
-				if (counter[2] != 0x00000000)
+				if (counter[2] != 0x00000000 && counter[3] == 0)
 				{
 					ft_memcpy(e->c_img + counter[1] * 4 + counter[0] * 4 * WIN_X,
 									&counter[2], sizeof(int));
+				}
+				else if (counter[3] == 1)
+				{
+					ft_memcpy(e->c_img + counter[1] * 4 + counter[0] * 4 * WIN_X,
+									&counter[4], sizeof(int));
 				}
 				counter[2] = 0x00000000;
 				counter[3] = 0;
