@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 09:25:57 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/25 09:03:51 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/25 09:34:22 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	ft_init_scene(t_mlx *e)
 	tmp_coord[0] = 0;
 	tmp_coord[1] = 0;
 	tmp_coord[2] = 0;
-	if ((sphere = ft_sphere_new(0x00AA0000, tmp_coord, 2)) == NULL)
+	if ((sphere = ft_sphere_new(0x00FF0000, tmp_coord, 3)) == NULL)
 	{
 		ft_putendl("Not enough memory");
 		key_hook(MLX_KEY_ESC, e);	
@@ -65,7 +65,7 @@ void	ft_init_scene(t_mlx *e)
 	tmp_coord[0] = 0;
 	tmp_coord[1] = 0;
 	tmp_coord[2] = 8;
-	if ((sphere = ft_sphere_new(0x0000AA00, tmp_coord, 2)) == NULL)
+	if ((sphere = ft_sphere_new(0x0000FF00, tmp_coord, 2)) == NULL)
 	{
 		free(member);
 		ft_putendl("Not enough memory");
@@ -83,7 +83,7 @@ void	ft_init_scene(t_mlx *e)
 	tmp_coord[0] = 8;
 	tmp_coord[1] = 0;
 	tmp_coord[2] = 0;
-	if ((sphere = ft_sphere_new(0x000000AA, tmp_coord, 2)) == NULL)
+	if ((sphere = ft_sphere_new(0x000000FF, tmp_coord, 2)) == NULL)
 	{
 		free(member);
 		ft_putendl("Not enough memory");
@@ -101,7 +101,7 @@ void	ft_init_scene(t_mlx *e)
 	tmp_coord[0] = 0;
 	tmp_coord[1] = 8;
 	tmp_coord[2] = 0;
-	if ((sphere = ft_sphere_new(0x00AA00AA, tmp_coord, 2)) == NULL)
+	if ((sphere = ft_sphere_new(0x00FF00FF, tmp_coord, 2)) == NULL)
 	{
 		free(member);
 		ft_putendl("Not enough memory");
@@ -176,8 +176,8 @@ void	ft_init_scene(t_mlx *e)
 //	ft_lstpushback(begin, member);
 	//debut init camera
 	cam_scene->coord[0] = 500;
-	cam_scene->coord[1] = 500;
-	cam_scene->coord[2] = 500;
+	cam_scene->coord[1] = 0;
+	cam_scene->coord[2] = 0;
 	cam_scene->camera_size[0] = 20;
 	cam_scene->camera_size[1] = 20;
 	cam_scene->camera_size[2] = 1;
