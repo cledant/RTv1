@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/15 17:33:23 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/25 18:56:22 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/25 20:05:11 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,7 @@ int				ft_calc_int_plane(t_plane *plane, t_camera *camera,
 void			ft_calc_int_pos(double dist, double cur_vec[3], double coord_cam[3],
 					double (*int_coord)[3]);
 int				ft_plane_ambiant(t_plane *obj);
+int				ft_mix_color(int color1, int color2, double ratio1);
 void			ft_draw_image(t_mlx *e);
 void			ft_init_scene(t_mlx *e);
 void			ft_scalar_product(double v1[3], double v2[3], double (*res)[3]);

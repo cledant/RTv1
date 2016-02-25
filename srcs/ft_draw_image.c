@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 08:49:40 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/25 18:53:34 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/25 20:15:04 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,9 @@ void	ft_draw_image(t_mlx *e)
 	lst = e->obj_list;
 	counter[0] = 0;
 	counter[1] = 0;
+	counter[2] = 0x00000000;
+	counter[3] = 0;
+	counter[4] = 0x00000000;
 	dist = 1000000;
 //	printf("camera.up_left_vec = %f\n", camera->up_left_win[0]);
 //	printf("camera.up_left_vec = %f\n", camera->up_left_win[1]);
@@ -97,7 +100,8 @@ void	ft_draw_image(t_mlx *e)
 								}
 								else
 								{
-									counter[4] = ft_sphere_ambiant(lst->content);
+									counter[4] = ft_mix_color(0x00000000, 
+											ft_sphere_ambiant(lst->content), 0.5);
 									counter[3] = 1;
 								}
 							}
@@ -112,7 +116,9 @@ void	ft_draw_image(t_mlx *e)
 								}
 								else
 								{
-									counter[4] = ft_plane_ambiant(lst->content);
+//									counter[4] = ft_plane_ambiant(lst->content);
+									counter[4] = ft_mix_color(0x00000000, 
+											ft_plane_ambiant(lst->content), 0.5);
 									counter[3] = 1;
 								}
 							}	
@@ -132,6 +138,7 @@ void	ft_draw_image(t_mlx *e)
 					ft_memcpy(e->c_img + counter[1] * 4 + counter[0] * 4 * WIN_X,
 									&counter[4], sizeof(int));
 				}
+				counter[4] = 0x00000000;
 				counter[2] = 0x00000000;
 				counter[3] = 0;
 			}

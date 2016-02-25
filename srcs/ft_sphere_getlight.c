@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/25 15:04:19 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/25 16:35:48 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/25 19:32:07 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,18 +59,18 @@ int		ft_sphere_getlight(t_sphere *obj, t_light *light, double int_coord[3],
 		angle = 0;
 	ambiant_color[0] = (obj->color & 0xFF000000);
 	ambiant_color[0] = ambiant_color[0] >> (4 * 6);
-	ambiant_color[0] = ambiant_color[0] * obj->ambiant * 0.333;
+	ambiant_color[0] = ambiant_color[0] * obj->ambiant * 0.2;
 	ambiant_color[0] = ambiant_color[0] << (4 * 6);
 	ambiant_color[1] = (obj->color & 0x00FF0000);
 	ambiant_color[1] = ambiant_color[1] >> (4 * 4);
-	ambiant_color[1] = ambiant_color[1] * obj->ambiant * 0.333;
+	ambiant_color[1] = ambiant_color[1] * obj->ambiant * 0.2;
 	ambiant_color[1] = ambiant_color[1] << (4 * 4);
 	ambiant_color[2] = (obj->color & 0x0000FF00);
 	ambiant_color[2] = ambiant_color[2] >> (4 * 2);
-	ambiant_color[2] = ambiant_color[2] * obj->ambiant * 0.333;
+	ambiant_color[2] = ambiant_color[2] * obj->ambiant * 0.2;
 	ambiant_color[2] = ambiant_color[2] << (4 * 2);
 	ambiant_color[3] = (obj->color & 0x000000FF);
-	ambiant_color[3] = ambiant_color[3] * obj->ambiant * 0.333;
+	ambiant_color[3] = ambiant_color[3] * obj->ambiant * 0.2;
 	//c1
 	if (angle > 0)
 	{
@@ -85,7 +85,7 @@ int		ft_sphere_getlight(t_sphere *obj, t_light *light, double int_coord[3],
 		ret_color[0] = (int)((factor_color[0] * ratio[0] + 
 			factor_color[1] * ratio[1]) * 255);
 //		ret_color[0] = factor_color[0] * factor_color[1] * 255;
-		ret_color[0] = ret_color[0] * obj->diffuse * angle * 0.333;
+		ret_color[0] = ret_color[0] * obj->diffuse * angle * 0.6;
 		ret_color[0] = ret_color[0] << (4 * 6);
 		//c2
 		obj_color[1] = (obj->color & 0x00FF0000);
@@ -97,7 +97,7 @@ int		ft_sphere_getlight(t_sphere *obj, t_light *light, double int_coord[3],
 		ret_color[1] = (int)((factor_color[0] * ratio[0] + 
 				factor_color[1] * ratio[1]) * 255);
 //		ret_color[1] = factor_color[0] * factor_color[1] * 255;
-		ret_color[1] = ret_color[1] * obj->diffuse * angle * 0.333;
+		ret_color[1] = ret_color[1] * obj->diffuse * angle * 0.6;
 		ret_color[1] = ret_color[1] << (4 * 4);
 		//c3
 		obj_color[2] = (obj->color & 0x0000FF00);
@@ -109,7 +109,7 @@ int		ft_sphere_getlight(t_sphere *obj, t_light *light, double int_coord[3],
 		ret_color[2] = (int)((factor_color[0] * ratio[0] + 
 				factor_color[1] * ratio[1]) * 255);
 //			ret_color[2] = factor_color[0] * factor_color[1] * 255;
-		ret_color[2] = ret_color[2] * obj->diffuse * angle * 0.333;
+		ret_color[2] = ret_color[2] * obj->diffuse * angle * 0.6;
 		ret_color[2] = ret_color[2] << (4 * 2);
 		//c4
 		obj_color[3] = (obj->color & 0x000000FF);
@@ -119,7 +119,7 @@ int		ft_sphere_getlight(t_sphere *obj, t_light *light, double int_coord[3],
 		ret_color[3] = (int)((factor_color[0] * ratio[0] + 
 				factor_color[1] * ratio[1]) * 255);
 	//		ret_color[3] = factor_color[0] * factor_color[1] * 255;
-		ret_color[3] = ret_color[3] * obj->diffuse * angle * 0.333;
+		ret_color[3] = ret_color[3] * obj->diffuse * angle * 0.6;
 		//total
 		ret_color[4] = ret_color[0] + ret_color[1] + ret_color[2] + ret_color[3];
 	//		printf("COLOR = %x\n", ret_color[4]);
@@ -132,21 +132,21 @@ int		ft_sphere_getlight(t_sphere *obj, t_light *light, double int_coord[3],
 	spec_color[0] = (obj->color & 0xFF000000);
 	spec_color[0] = spec_color[0] >> (4 * 6);
 	spec_color[0] = spec_color[0] * obj->specular * pow(spec_angle, obj->shiny)
-		* 0.333;
+		* 0.2;
 	spec_color[0] = spec_color[0] << (4 * 6);
 	spec_color[1] = (obj->color & 0x00FF0000);
 	spec_color[1] = spec_color[1] >> (4 * 4);
 	spec_color[1] = spec_color[1] * obj->specular * pow(spec_angle, obj->shiny)
-		* 0.333;
+		* 0.2;
 	spec_color[1] = spec_color[1] << (4 * 4);
 	spec_color[2] = (obj->color & 0x0000FF00);
 	spec_color[2] = spec_color[2] >> (4 * 2);
 	spec_color[2] = spec_color[2] * obj->specular * pow(spec_angle, obj->shiny)
-		* 0.333;
+		* 0.2;
 	spec_color[2] = spec_color[2] << (4 * 2);
 	spec_color[3] = (obj->color & 0x000000FF);
 	spec_color[3] = spec_color[3] * obj->specular * pow(spec_angle, obj->shiny)
-		* 0.333;
+		* 0.2;
 	}
 	else
 	{

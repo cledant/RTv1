@@ -6,7 +6,7 @@
 #    By: cledant <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/26 10:40:13 by cledant           #+#    #+#              #
-#    Updated: 2016/02/25 18:56:54 by cledant          ###   ########.fr        #
+#    Updated: 2016/02/25 20:05:29 by cledant          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ SRC_NAME = main.c ft_hook.c ft_draw_image.c ft_init_scene.c ft_calc_int_sphere.c
 		   ft_plane_material.c ft_sphere_material.c ft_getlight.c \
 		   ft_sphere_has_int.c ft_sphere_is_light_interrupt.c \
 		   ft_calc_int_sphere_light.c ft_sphere_getlight.c ft_plane_ambiant.c \
-		   ft_sphere_ambiant.c
+		   ft_sphere_ambiant.c ft_mix_color.c
 
 SRC_PATH = ./srcs/
 
