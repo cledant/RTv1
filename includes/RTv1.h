@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/15 17:33:23 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/25 20:05:11 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/26 10:21:04 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,8 +102,10 @@ void			ft_plane_material(double amb, double diff, double spec,
 					t_plane *plane);
 int				ft_plane_getlight(t_plane *obj, t_light *light,
 					double int_coord[3], double cam_vector[3]);
-int				ft_plane_has_int(t_plane *plane, t_light *light, double cur_dir[3]);
+int				ft_plane_has_int(t_plane *plane, t_light *light, double int_coord[3]);
 int				ft_calc_int_plane(t_plane *plane, t_camera *camera,
+					double cur_dir[3], double *dist);
+int				ft_calc_int_plane_light(t_plane *plane, t_light *camera,
 					double cur_dir[3], double *dist);
 void			ft_calc_int_pos(double dist, double cur_vec[3], double coord_cam[3],
 					double (*int_coord)[3]);
