@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/24 17:50:44 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/25 08:59:56 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/26 12:35:11 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@ int		ft_sphere_is_light_interrupt(t_light *light, t_sphere *sph,
 	vector[2] = int_coord[2]  - light->coord[2];
 	norm = sqrt(vector[0] * vector[0] + vector[1] * vector[1] + 
 			vector[2] * vector[2]);
-	norm_light[0] = -vector[0] / norm;
-	norm_light[1] = -vector[1] / norm;
-	norm_light[2] = -vector[2] / norm;
+	norm_light[0] = vector[0] / norm;
+	norm_light[1] = vector[1] / norm;
+	norm_light[2] = vector[2] / norm;
 //	ft_putendl("TEST LIGHT");
 	if (ft_calc_int_sphere_light(sph, light,
 				norm_light, &dist) == 1)

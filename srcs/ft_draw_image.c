@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 08:49:40 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/26 11:13:15 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/26 12:55:25 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ void	ft_draw_image(t_mlx *e)
 						ft_getlight(obj_int, light->content, 
 							int_coord, norm_cur_dir);
 									counter[4] = ft_mix_color(*ptr_color, counter[2],
-											0.5);
+											0.8);
 					ft_memcpy(e->c_img + counter[1] * 4 + counter[0] * 4 * WIN_X,
 									&counter[4], sizeof(int));
 								}
@@ -110,7 +110,7 @@ void	ft_draw_image(t_mlx *e)
 									ptr_color = (int *)(e->c_img + counter[1] * 4
 											+ counter[0] * 4 * WIN_X);
 									counter[4] = ft_mix_color(*ptr_color, 0x00000000,
-											0.1);
+											0.2);
 					ft_memcpy(e->c_img + counter[1] * 4 + counter[0] * 4 * WIN_X,
 									&counter[4], sizeof(int));
 //									counter[4] = ft_mix_color(0x00000000, 
@@ -132,7 +132,7 @@ void	ft_draw_image(t_mlx *e)
 						ft_getlight(obj_int, light->content, 
 							int_coord, norm_cur_dir);
 									counter[4] = ft_mix_color(*ptr_color, counter[2],
-											0.5);
+											0.8);
 					ft_memcpy(e->c_img + counter[1] * 4 + counter[0] * 4 * WIN_X,
 									&counter[4], sizeof(int));
 								}
@@ -145,7 +145,7 @@ void	ft_draw_image(t_mlx *e)
 									ptr_color = (int *)(e->c_img + counter[1] * 4
 											+ counter[0] * 4 * WIN_X);
 									counter[4] = ft_mix_color(*ptr_color, 0x00000000,
-											0.1);
+											0.2);
 					ft_memcpy(e->c_img + counter[1] * 4 + counter[0] * 4 * WIN_X,
 									&counter[4], sizeof(int));
 								}

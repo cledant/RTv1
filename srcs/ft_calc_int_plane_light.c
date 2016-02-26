@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/26 10:20:19 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/26 10:20:36 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/26 13:36:47 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ int		ft_calc_int_plane_light(t_plane *plane, t_light *cam, double cur_dir[3],
 	double	inf;
 	double	result;
 
-	dee = (-1 * plane->factor[0] * plane->coord[0]) + 
-			(-1 * plane->factor[1] * plane->coord[1]) + 
-				(-1 * plane->factor[2] * plane->coord[2]);
+	dee = (-1 * plane->factor[0] * -plane->coord[0]) + 
+			(-1 * plane->factor[1] * -plane->coord[1]) + 
+				(-1 * plane->factor[2] * -plane->coord[2]);
 	sup = plane->factor[0] * -(cam->coord[0] - plane->coord[0]) +
 			plane->factor[1] * -(cam->coord[1] - plane->coord[1]) +
 				plane->factor[2] * -(cam->coord[2] - plane->coord[2]) + dee;

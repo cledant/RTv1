@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 09:25:57 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/26 11:11:37 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/26 13:59:44 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	ft_init_scene(t_mlx *e)
 	e->light_list = begin;
 	tmp_coord[0] = 4;
 	tmp_coord[1] = 4;
-	tmp_coord[2] = 4;
+	tmp_coord[2] = 1;
 	if ((light = ft_light_new(tmp_coord, 0x00FFFFFF)) == NULL)
 	{
 		ft_putendl("Not enough memory");
@@ -63,58 +63,58 @@ void	ft_init_scene(t_mlx *e)
 		ft_putendl("Not enough memory");
 		key_hook(MLX_KEY_ESC, e);
 	}
-	tmp_coord[0] = 0;
-	tmp_coord[1] = 0;
-	tmp_coord[2] = 8;
-	if ((sphere = ft_sphere_new(0x0000FF00, tmp_coord, 2)) == NULL)
-	{
-		free(member);
-		ft_putendl("Not enough memory");
-		key_hook(MLX_KEY_ESC, e);	
-	}
-	ft_sphere_material(0.4, 1, 1, sphere);
-	sphere->shiny = 100;
-	member->content = sphere;
-	member->content_size = 0;
-	ft_lstpushback(begin, member);
-	if ((member = ft_lstnew(NULL, 0)) == NULL)
-	{
-		ft_putendl("Not enough memory");
-		key_hook(MLX_KEY_ESC, e);
-	}
-	tmp_coord[0] = 8;
-	tmp_coord[1] = 0;
-	tmp_coord[2] = 0;
-	if ((sphere = ft_sphere_new(0x000000FF, tmp_coord, 2)) == NULL)
-	{
-		free(member);
-		ft_putendl("Not enough memory");
-		key_hook(MLX_KEY_ESC, e);	
-	}
-	ft_sphere_material(0.4, 1, 1, sphere);
-	sphere->shiny = 100;
-	member->content = sphere;
-	member->content_size = 0;
-	ft_lstpushback(begin, member);
-	if ((member = ft_lstnew(NULL, 0)) == NULL)
-	{
-		ft_putendl("Not enough memory");
-		key_hook(MLX_KEY_ESC, e);
-	}
-	tmp_coord[0] = 0;
-	tmp_coord[1] = 8;
-	tmp_coord[2] = 0;
-	if ((sphere = ft_sphere_new(0x00FF00FF, tmp_coord, 2)) == NULL)
-	{
-		free(member);
-		ft_putendl("Not enough memory");
-		key_hook(MLX_KEY_ESC, e);	
-	}
-	ft_sphere_material(0.4, 1, 1, sphere);
-	sphere->shiny = 100;
-	member->content = sphere;
-	member->content_size = 0;
-	ft_lstpushback(begin, member);
+//	tmp_coord[0] = 0;
+//	tmp_coord[1] = 0;
+//	tmp_coord[2] = 8;
+//	if ((sphere = ft_sphere_new(0x0000FF00, tmp_coord, 2)) == NULL)
+//	{
+//		free(member);
+//		ft_putendl("Not enough memory");
+//		key_hook(MLX_KEY_ESC, e);	
+//	}
+//	ft_sphere_material(0.4, 1, 1, sphere);
+//	sphere->shiny = 100;
+//	member->content = sphere;
+//	member->content_size = 0;
+//	ft_lstpushback(begin, member);
+//	if ((member = ft_lstnew(NULL, 0)) == NULL)
+//	{
+//		ft_putendl("Not enough memory");
+//		key_hook(MLX_KEY_ESC, e);
+//	}
+//	tmp_coord[0] = 8;
+//	tmp_coord[1] = 0;
+//	tmp_coord[2] = 0;
+//	if ((sphere = ft_sphere_new(0x000000FF, tmp_coord, 2)) == NULL)
+//	{
+//		free(member);
+//		ft_putendl("Not enough memory");
+//		key_hook(MLX_KEY_ESC, e);	
+//	}
+//	ft_sphere_material(0.4, 1, 1, sphere);
+//	sphere->shiny = 100;
+//	member->content = sphere;
+//	member->content_size = 0;
+//	ft_lstpushback(begin, member);
+//	if ((member = ft_lstnew(NULL, 0)) == NULL)
+//	{
+//		ft_putendl("Not enough memory");
+//		key_hook(MLX_KEY_ESC, e);
+//	}
+//	tmp_coord[0] = 0;
+//	tmp_coord[1] = 8;
+//	tmp_coord[2] = 0;
+//	if ((sphere = ft_sphere_new(0x00FF00FF, tmp_coord, 2)) == NULL)
+//	{
+//		free(member);
+//		ft_putendl("Not enough memory");
+//		key_hook(MLX_KEY_ESC, e);	
+//	}
+//	ft_sphere_material(0.4, 1, 1, sphere);
+//	sphere->shiny = 100;
+//	member->content = sphere;
+//	member->content_size = 0;
+//	ft_lstpushback(begin, member);
 	if ((member = ft_lstnew(NULL, 0)) == NULL)
 	{
 		ft_putendl("Not enough memory");
@@ -133,7 +133,7 @@ void	ft_init_scene(t_mlx *e)
 		key_hook(MLX_KEY_ESC, e);	
 	}
 	ft_plane_material(0.7, 1, 0, plane);
-	plane->shiny = 100;
+	plane->shiny = 0;
 	member->content = plane;
 	member->content_size = 1;
 	ft_lstpushback(begin, member);
@@ -155,7 +155,7 @@ void	ft_init_scene(t_mlx *e)
 		key_hook(MLX_KEY_ESC, e);	
 	}
 	ft_plane_material(0.7, 1, 0, plane);
-	plane->shiny = 100;
+	plane->shiny = 0;
 	member->content = plane;
 	member->content_size = 1;
 	ft_lstpushback(begin, member);
@@ -177,7 +177,7 @@ void	ft_init_scene(t_mlx *e)
 		key_hook(MLX_KEY_ESC, e);	
 	}
 	ft_plane_material(0.7, 1, 0, plane);
-	plane->shiny = 100;
+	plane->shiny = 0;
 	member->content = plane;
 	member->content_size = 1;
 	ft_lstpushback(begin, member);
