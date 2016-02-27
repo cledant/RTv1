@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 09:25:57 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/26 19:01:19 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/27 18:19:55 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	ft_init_scene(t_mlx *e)
 	e->light_list = begin;
 	tmp_coord[0] = 4;
 	tmp_coord[1] = 4;
-	tmp_coord[2] = 4;
+	tmp_coord[2] = 3;
 	if ((light = ft_light_new(tmp_coord, 0x00FFFFFF)) == NULL)
 	{
 		ft_putendl("Not enough memory");
@@ -49,7 +49,7 @@ void	ft_init_scene(t_mlx *e)
 	tmp_coord[0] = 0;
 	tmp_coord[1] = 0;
 	tmp_coord[2] = 0;
-	if ((sphere = ft_sphere_new(0x00FF0000, tmp_coord, 3)) == NULL)
+	if ((sphere = ft_sphere_new(0x00FF0000, tmp_coord, 1)) == NULL)
 	{
 		ft_putendl("Not enough memory");
 		key_hook(MLX_KEY_ESC, e);	
@@ -132,8 +132,8 @@ void	ft_init_scene(t_mlx *e)
 		ft_putendl("Not enough memory");
 		key_hook(MLX_KEY_ESC, e);	
 	}
-	ft_plane_material(0.7, 1, 0, plane);
-	plane->shiny = 0;
+	ft_plane_material(0.7, 1, 0.1, plane);
+	plane->shiny = 1000;
 	member->content = plane;
 	member->content_size = 1;
 	ft_lstpushback(begin, member);
@@ -154,8 +154,8 @@ void	ft_init_scene(t_mlx *e)
 		ft_putendl("Not enough memory");
 		key_hook(MLX_KEY_ESC, e);	
 	}
-	ft_plane_material(0.7, 1, 0, plane);
-	plane->shiny = 0;
+	ft_plane_material(0.7, 1, 0.1, plane);
+	plane->shiny = 1000;
 	member->content = plane;
 	member->content_size = 1;
 	ft_lstpushback(begin, member);
@@ -176,8 +176,8 @@ void	ft_init_scene(t_mlx *e)
 		ft_putendl("Not enough memory");
 		key_hook(MLX_KEY_ESC, e);	
 	}
-	ft_plane_material(0.7, 1, 0, plane);
-	plane->shiny = 0;
+	ft_plane_material(0.7, 1, 0.1, plane);
+	plane->shiny = 1000;
 	member->content = plane;
 	member->content_size = 1;
 	ft_lstpushback(begin, member);

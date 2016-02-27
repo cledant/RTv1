@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/15 17:33:23 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/26 10:21:04 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/27 10:27:45 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,8 @@ int				ft_calc_int_plane_light(t_plane *plane, t_light *camera,
 void			ft_calc_int_pos(double dist, double cur_vec[3], double coord_cam[3],
 					double (*int_coord)[3]);
 int				ft_plane_ambiant(t_plane *obj);
+int				ft_is_light_interrupt(t_light *light, t_list *list, t_list *obj,
+					double int_coord[3]);
 int				ft_mix_color(int color1, int color2, double ratio1);
 void			ft_draw_image(t_mlx *e);
 void			ft_init_scene(t_mlx *e);

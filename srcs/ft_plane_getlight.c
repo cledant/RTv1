@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/25 16:06:03 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/26 19:26:38 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/27 16:36:36 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,12 +48,15 @@ int		ft_plane_getlight(t_plane *obj, t_light *light, double int_coord[3],
 	norm_vec_normal[0] = obj->factor[0] / norm;
 	norm_vec_normal[1] = obj->factor[1] / norm;
 	norm_vec_normal[2] = obj->factor[2] / norm;
+//	printf("norm plam = %f\n", norm_vec_normal[0]);
+//	printf("norm plan = %f\n", norm_vec_normal[1]);
+//	printf("norm plan = %f\n", norm_vec_normal[2]);
 	angle = -norm_vec_normal[0] * norm_vec_light[0] + 
 				-norm_vec_normal[1] * norm_vec_light[1] +
 					-norm_vec_normal[2] * norm_vec_light[2];
 //	printf("cos angle = %f\n", angle);
-//	if (angle < 0)
-//		angle = 0;
+	if (angle < 0)
+		angle = 0;
 	ambiant_color[0] = (obj->color & 0xFF000000);
 	ambiant_color[0] = ambiant_color[0] >> (4 * 6);
 	ambiant_color[0] = ambiant_color[0] * obj->ambiant * 0.333;
@@ -69,7 +72,7 @@ int		ft_plane_getlight(t_plane *obj, t_light *light, double int_coord[3],
 	ambiant_color[3] = (obj->color & 0x000000FF);
 	ambiant_color[3] = ambiant_color[3] * obj->ambiant * 0.333;
 	//c1
-//	if (angle > 0)
+	if (angle > 0)
 	{
 		ratio[0] = 0.5;
 		ratio[1] = 1 - ratio[0];
@@ -145,17 +148,17 @@ int		ft_plane_getlight(t_plane *obj, t_light *light, double int_coord[3],
 	spec_color[3] = spec_color[3] * obj->specular * pow(spec_angle, obj->shiny)
 		* 0.333;
 	}
-//	else
-//	{
-//		ret_color[0] = 0;
-//		ret_color[1] = 0;
-//		ret_color[2] = 0;
-//		ret_color[3] = 0;
-//		spec_color[0] = 0;
-//		spec_color[1] = 0;
-//		spec_color[2] = 0;
-//		spec_color[3] = 0;
-//	}
+	else
+	{
+		ret_color[0] = 0;
+		ret_color[1] = 0;
+		ret_color[2] = 0;
+		ret_color[3] = 0;
+		spec_color[0] = 0;
+		spec_color[1] = 0;
+		spec_color[2] = 0;
+		spec_color[3] = 0;
+	}
 	ret_color[4] = ambiant_color[0] + ret_color[0] + ambiant_color[1] + ret_color[1]
 		+ ambiant_color[2] + ret_color[2] + ambiant_color[3] + ret_color[3] +
 		spec_color[0] + spec_color[1] + spec_color[2] + spec_color[3];

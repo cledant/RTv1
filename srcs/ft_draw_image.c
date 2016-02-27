@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 08:49:40 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/26 19:26:41 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/27 18:05:27 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ void	ft_draw_image(t_mlx *e)
 					if (ft_calc_int_sphere(lst->content, camera, 
 								norm_cur_dir, &dist) == 1)
 					{
+				//		printf("dist sphere %f\n", dist);
 						obj_int = lst;
 					}
 				}
@@ -81,95 +82,41 @@ void	ft_draw_image(t_mlx *e)
 			{
 //				printf("LIGNE = %d\n", counter[0]);
 //				printf("COLONNE = %d\n", counter[1]);
+//				printf("DIST = %f\n", dist);
 				lst = e->obj_list;
 				counter[2] = 0x00000000;
+				counter[4] = 0x00000000;
 				ft_calc_int_pos(dist, norm_cur_dir, camera->coord, &int_coord);
 				while (light != NULL)
 				{
 					while (lst != NULL)
 					{
-//						if (lst != obj_int)
+						if (lst != obj_int)
 						{
-							if (lst->content_size == 0)
+							if (ft_is_light_interrupt(light->content, lst, obj_int,
+								int_coord) == 0)
 							{
-								if (ft_sphere_is_light_interrupt(light->content, 
-										lst->content, int_coord) == 0)
-								{
-//									ptr_color = (int *)(e->c_img + counter[1] * 4
-//											+ counter[0] * 4 * WIN_X);
-									counter[2] = 
-						ft_getlight(obj_int, light->content, 
-							int_coord, norm_cur_dir);
-//									counter[4] = ft_mix_color(*ptr_color, counter[2],
-//											0.1);
-					ft_memcpy(e->c_img + counter[1] * 4 + counter[0] * 4 * WIN_X,
-									&counter[2], sizeof(int));
-								break ;
-								}
-								else
-								{
-									ptr_color = (int *)(e->c_img + counter[1] * 4
-											+ counter[0] * 4 * WIN_X); 
-									counter[2] = ft_sphere_ambiant(lst->content);
-									counter[4] = ft_mix_color(counter[2], 0x00000000,
-											0.8);
-					ft_memcpy(e->c_img + counter[1] * 4 + counter[0] * 4 * WIN_X,
-									&counter[4], sizeof(int));
-//									counter[4] = ft_mix_color(0x00000000, 
-//											ft_sphere_ambiant(lst->content), 0.8);
-//									counter[3] = 1;
-								}
+								counter[2] = ft_getlight(obj_int, light->content, 
+										int_coord, norm_cur_dir);
+								counter[4] = ft_mix_color(counter[2],
+										counter[4], 0.5);
 							}
-							else if (lst->content_size == 1)
+							else
 							{
-								if (ft_plane_has_int(lst->content,
-											light->content, int_coord) == 1)
-								{
-//									counter[2] =
-//					ft_getlight(obj_int, light->content, int_coord,
-//							norm_cur_dir);
-									ptr_color = (int *)(e->c_img + counter[1] * 4
-											+ counter[0] * 4 * WIN_X);
-									counter[2] = 
-						ft_getlight(obj_int, light->content, 
-							int_coord, norm_cur_dir);
-//									counter[4] = ft_mix_color(*ptr_color, counter[2],
-//											0.1);
-					ft_memcpy(e->c_img + counter[1] * 4 + counter[0] * 4 * WIN_X,
-									&counter[2], sizeof(int));
-					break ;
-								}
-								else
-								{
-//									counter[4] = ft_plane_ambiant(lst->content);
-//									counter[4] = ft_mix_color(0x00000000, 
-//											ft_plane_ambiant(lst->content), 0.8);
-//									counter[3] = 1;
-//									ptr_color = (int *)(e->c_img + counter[1] * 4
-//											+ counter[0] * 4 * WIN_X);
-									counter[2] = ft_sphere_ambiant(lst->content);
-									counter[4] = ft_mix_color(counter[2], 0x00000000,
-											0.8);
-					ft_memcpy(e->c_img + counter[1] * 4 + counter[0] * 4 * WIN_X,
-									&counter[4], sizeof(int));
-								}
-							}	
+								counter[4] = ft_mix_color(0x00000000,
+										counter[4], 0.5);						
+							}
 						}
 						lst = lst->next;
 					}
 					lst = e->obj_list;
 					light = light->next;
 				}
-//				if (counter[2] != 0x00000000 && counter[3] == 0)
-//				{
-//					ft_memcpy(e->c_img + counter[1] * 4 + counter[0] * 4 * WIN_X,
-//									&counter[2], sizeof(int));
-//				}
-//				else if (counter[3] == 1)
-//				{
-//					ft_memcpy(e->c_img + counter[1] * 4 + counter[0] * 4 * WIN_X,
-//									&counter[4], sizeof(int));
-//				}
+//				if (counter[3] != 0)
+				{
+					ft_memcpy(e->c_img + counter[1] * 4 + counter[0] * 4 * WIN_X,
+									&counter[4], sizeof(int));
+				}
 				counter[4] = 0x00000000;
 				counter[2] = 0x00000000;
 				counter[3] = 0;

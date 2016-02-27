@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/20 13:54:53 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/26 13:34:33 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/27 15:04:30 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ int		ft_calc_int_plane(t_plane *plane, t_camera *cam, double cur_dir[3],
 	inf = plane->factor[0] * cur_dir[0] + plane->factor[1] * cur_dir[1] +
 			plane->factor[2] * cur_dir[2];
 	result = -(sup / inf);
+//	printf("DIST PLANE = %f\n", result);
 	if (result < *dist)
 	{
 		*dist = result;
