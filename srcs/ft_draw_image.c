@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 08:49:40 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/27 18:05:27 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/27 21:28:11 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,18 @@ void	ft_draw_image(t_mlx *e)
 			{
 //				printf("LIGNE = %d\n", counter[0]);
 //				printf("COLONNE = %d\n", counter[1]);
+//			if (obj_int->content_size == 0)
+//			{
+///		printf("obj_int sphere = %f\n", ((t_sphere *)obj_int->content)->coord[0]);
+//		printf("obj_int sphere = %f\n", ((t_sphere *)obj_int->content)->coord[1]);
+//		printf("obj_int sphere = %f\n", ((t_sphere *)obj_int->content)->coord[2]);
+//			}
+//			else if (obj_int->content_size == 1)
+//			{
+//		printf("obj_int plane = %f\n", ((t_plane *)obj_int->content)->coord[0]);
+//		printf("obj_int plane = %f\n", ((t_plane *)obj_int->content)->coord[1]);
+//		printf("obj_int plane = %f\n", ((t_plane *)obj_int->content)->coord[2]);
+//			}
 //				printf("DIST = %f\n", dist);
 				lst = e->obj_list;
 				counter[2] = 0x00000000;
@@ -100,11 +112,7 @@ void	ft_draw_image(t_mlx *e)
 										int_coord, norm_cur_dir);
 								counter[4] = ft_mix_color(counter[2],
 										counter[4], 0.5);
-							}
-							else
-							{
-								counter[4] = ft_mix_color(0x00000000,
-										counter[4], 0.5);						
+								counter[3] = 1;
 							}
 						}
 						lst = lst->next;
@@ -112,7 +120,7 @@ void	ft_draw_image(t_mlx *e)
 					lst = e->obj_list;
 					light = light->next;
 				}
-//				if (counter[3] != 0)
+				if (counter[3] == 1)
 				{
 					ft_memcpy(e->c_img + counter[1] * 4 + counter[0] * 4 * WIN_X,
 									&counter[4], sizeof(int));
@@ -120,6 +128,7 @@ void	ft_draw_image(t_mlx *e)
 				counter[4] = 0x00000000;
 				counter[2] = 0x00000000;
 				counter[3] = 0;
+				lst = e->obj_list;
 			}
 			obj_int = NULL;
 			dist = 1000000;

@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/25 16:06:03 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/27 16:36:36 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/27 21:26:56 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int		ft_plane_getlight(t_plane *obj, t_light *light, double int_coord[3],
 					-norm_vec_normal[2] * norm_vec_light[2];
 //	printf("cos angle = %f\n", angle);
 	if (angle < 0)
-		angle = 0;
+		angle = -angle;
 	ambiant_color[0] = (obj->color & 0xFF000000);
 	ambiant_color[0] = ambiant_color[0] >> (4 * 6);
 	ambiant_color[0] = ambiant_color[0] * obj->ambiant * 0.333;
