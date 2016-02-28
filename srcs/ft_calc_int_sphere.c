@@ -63,16 +63,26 @@ int		ft_calc_int_sphere(t_sphere *sphere, t_camera *camera,
 		{
 			if (length[1] < *dist)
 			{
-				*dist = length[1];
-				return(1);
+				if (length[1] < 0)
+					return (0);
+				else
+				{
+					*dist = length[1];
+					return(1);
+				}
 			}
 		}
 		else
 		{
 			if (length[0] < *dist)
 			{
-				*dist = length[0];
-				return(1);
+				if (length[0] < 0)
+					return (0);
+				else
+				{
+					*dist = length[0];
+					return(1);
+				}
 			}
 		}
 		return (0);
