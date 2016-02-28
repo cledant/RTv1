@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/17 18:02:06 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/27 14:18:54 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/28 18:18:53 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ int		ft_calc_int_sphere(t_sphere *sphere, t_camera *camera,
 		length[0] = (-var[1] / (2 * var[0]));
 		if (length[0] < *dist)
 		{
+			if (length[0] < 0)
+				return (0);
 			*dist = length[0];
 			return (1);
 		}

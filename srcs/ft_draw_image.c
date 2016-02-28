@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 08:49:40 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/27 21:28:11 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/28 19:14:03 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,24 +106,33 @@ void	ft_draw_image(t_mlx *e)
 						if (lst != obj_int)
 						{
 							if (ft_is_light_interrupt(light->content, lst, obj_int,
-								int_coord) == 0)
+								int_coord) == 1)
 							{
-								counter[2] = ft_getlight(obj_int, light->content, 
-										int_coord, norm_cur_dir);
-								counter[4] = ft_mix_color(counter[2],
-										counter[4], 0.5);
 								counter[3] = 1;
+								break ;
 							}
 						}
 						lst = lst->next;
 					}
+					if (counter[3] != 1)
+					{
+						counter[2] = ft_getlight(obj_int, light->content, 
+								int_coord, norm_cur_dir);
+					//	counter[4] = ft_mix_color(counter[2],
+					//						counter[4], 0.4);
+						ft_memcpy(e->c_img + counter[1] * 4 + counter[0] * 4 * WIN_X,
+										&counter[2], sizeof(int));
+					}
+					else
+					{
+						counter[2] = ft_getambiant_light(obj_int);
+						counter[4] = ft_mix_color(counter[2],
+											counter[4], 0.2);
+						ft_memcpy(e->c_img + counter[1] * 4 + counter[0] * 4 * WIN_X,
+										&counter[4], sizeof(int));
+					}
 					lst = e->obj_list;
 					light = light->next;
-				}
-				if (counter[3] == 1)
-				{
-					ft_memcpy(e->c_img + counter[1] * 4 + counter[0] * 4 * WIN_X,
-									&counter[4], sizeof(int));
 				}
 				counter[4] = 0x00000000;
 				counter[2] = 0x00000000;

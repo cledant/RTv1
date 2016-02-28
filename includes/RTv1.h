@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/15 17:33:23 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/27 10:27:45 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/28 19:12:34 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ int				key_hook(int keycode, t_mlx *e);
 void			ft_lstfree_malloc(void *content, size_t size);
 int				ft_getlight(t_list *obj, t_light *light, double int_coord[3],
 					double norm_cur_dir[3]);
+int				ft_getambiant_light(t_list *obj);
 t_light			*ft_light_new(double loc[3], int color);
 t_sphere		*ft_sphere_new(int coloration, double origin[3], double size);
 void			ft_sphere_material(double amb, double diff, double spec,
