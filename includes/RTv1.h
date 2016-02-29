@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/15 17:33:23 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/29 11:20:14 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/29 19:14:43 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,11 +113,11 @@ int				ft_calc_int_sphere_light(t_sphere *sphere, t_light *light,
 					double cur_dir[3], double *dist);
 int				ft_sphere_ambiant(t_sphere *obj);
 
-t_cylinder		*ft_cylinder_new(int coloration, double origin[3], double size
+t_cylinder		*ft_cylinder_new(int coloration, double origin[3], double size,
 					double dir[3]);
 void			ft_cylinder_material(double amb, double diff, double spec,
 					t_cylinder *cyl);
-int				ft_cylinder_getlight(t_sphere *obj, t_light *light,
+int				ft_cylinder_getlight(t_cylinder *obj, t_light *light,
 					double int_coord[3], double cam_vector[3]);
 int				ft_calc_int_cylinder(t_cylinder *cyl, t_camera *camera,
 					double cur_dir[3], double *dist);

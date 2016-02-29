@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/29 09:27:41 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/29 09:27:43 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/29 21:43:40 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int		ft_cylinder_getlight(t_cylinder *obj, t_light *light, double int_coord[3],
 	double	norm_vec_reflec[3];
 	double	spec_angle;
 	int		spec_color[5];
+	double	tmp_norm;
 
 	vector[0] = int_coord[0] - light->coord[0];
 	vector[1] = int_coord[1] - light->coord[1];
@@ -43,9 +44,14 @@ int		ft_cylinder_getlight(t_cylinder *obj, t_light *light, double int_coord[3],
 	norm_vec_light[0] = vector[0] / norm;
 	norm_vec_light[1] = vector[1] / norm;
 	norm_vec_light[2] = vector[2] / norm;
-	vector[0] = int_coord[0] - obj->coord[0];
-	vector[1] = int_coord[1] - obj->coord[1];
-	vector[2] = int_coord[2] - obj->coord[2];
+	tmp_norm = ((norm_vec_light[0] * obj->dir[0] * norm + norm_vec_light[1] *
+		obj->dir[1] * norm + norm_vec_light[2] * obj->dir[2]* norm)) + 
+		(((light->coord[0] - obj->coord[0]) * obj->dir[0]) + ((light->coord[1] -
+		obj->coord[1]) * obj->dir[1]) + ((light->coord[2] - obj->coord[2])
+		* obj->dir[2]));
+	vector[0] = int_coord[0] - obj->coord[0] - (obj->dir[0] * tmp_norm);
+	vector[1] = int_coord[1] - obj->coord[1] - (obj->dir[1] * tmp_norm);
+	vector[2] = int_coord[2] - obj->coord[2] - (obj->dir[2] * tmp_norm);
 	norm = sqrt(vector[0] * vector[0] + vector[1] * vector[1] + 
 			vector[2] * vector[2]);
 	norm_vec_normal[0] = vector[0] / norm;
@@ -121,7 +127,6 @@ int		ft_cylinder_getlight(t_cylinder *obj, t_light *light, double int_coord[3],
 	//		ret_color[3] = factor_color[0] * factor_color[1] * 255;
 		ret_color[3] = ret_color[3] * obj->diffuse * angle * 0.6;
 		//total
-		ret_color[4] = ret_color[0] + ret_color[1] + ret_color[2] + ret_color[3];
 	//		printf("COLOR = %x\n", ret_color[4]);
 	//specuclar
 	norm_vec_reflec[0] = 2 * angle * norm_vec_normal[0] - -norm_vec_light[0];

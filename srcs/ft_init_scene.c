@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 09:25:57 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/29 11:20:08 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/29 22:48:45 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,14 @@ void	ft_init_scene(t_mlx *e)
 {
 	t_sphere	*sphere;
 	t_plane		*plane;
+	t_cylinder	*cyl;
 	t_light		*light;
 	t_list		*begin;
 	t_list		*member;
 	t_camera	*cam_scene;
 	double		tmp_coord[3];
 	double		tmp_vec[3];
+	double		tmp_norm;
 
 	cam_scene = e->cam;
 	if ((begin = ft_lstnew(NULL, 0)) == NULL)
@@ -32,7 +34,7 @@ void	ft_init_scene(t_mlx *e)
 	e->light_list = begin;
 	tmp_coord[0] = 2;
 	tmp_coord[1] = 2;
-	tmp_coord[2] = 4;
+	tmp_coord[2] = 7;
 	if ((light = ft_light_new(tmp_coord, 0x00FFFFFF)) == NULL)
 	{
 		ft_putendl("Not enough memory");
@@ -176,7 +178,7 @@ void	ft_init_scene(t_mlx *e)
 		ft_putendl("Not enough memory");
 		key_hook(MLX_KEY_ESC, e);	
 	}
-	ft_plane_material(0.7, 1, 0.1, plane);
+	ft_plane_material(0.7, 1, 1, plane);
 	plane->shiny = 1000;
 	member->content = plane;
 	member->content_size = 1;
@@ -186,22 +188,28 @@ void	ft_init_scene(t_mlx *e)
 		ft_putendl("Not enough memory");
 		key_hook(MLX_KEY_ESC, e);
 	}
-	tmp_coord[0] = 4;
-	tmp_coord[1] = 4;
-	tmp_coord[2] = 4;
-	tmp_vec[0] = 0;
-	tmp_vec[1] = 0;
-	tmp_vec[2] = 1;
-	if ((cylinder = ft_cylinder_new(0x00AA00AA, tmp_coord, 1, tmp_vec)) == NULL)
+	tmp_coord[0] = 5;
+	tmp_coord[1] = 1;
+	tmp_coord[2] = 5;
+	tmp_vec[0] = 1;
+	tmp_vec[1] = 1;
+	tmp_vec[2] = 0;
+	tmp_norm = sqrt(tmp_vec[0] * tmp_vec[0] + tmp_vec[1] * tmp_vec[1] +
+		tmp_vec[2] * tmp_vec[2]);
+	tmp_vec[0] = tmp_vec[0] / tmp_norm;
+	tmp_vec[1] = tmp_vec[1] / tmp_norm;
+	tmp_vec[2] = tmp_vec[2] / tmp_norm;
+	if ((cyl = ft_cylinder_new(0x00AA00AA, tmp_coord, 1, tmp_vec)) == NULL)
 	{
 		free(member);
 		ft_putendl("Not enough memory");
 		key_hook(MLX_KEY_ESC, e);	
 	}
-	ft_cylinder_material(0.7, 1, 0.1, plane);
+	ft_cylinder_material(0.7, 1, 1, cyl);
 	cyl->shiny = 1000;
 	member->content = cyl;
 	member->content_size = 2;
+	ft_lstpushback(begin, member);
 	//debut init camera
 	cam_scene->coord[0] = 500;
 	cam_scene->coord[1] = 500;

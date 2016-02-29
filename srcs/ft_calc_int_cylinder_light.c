@@ -6,13 +6,13 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/29 09:33:09 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/29 10:50:16 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/29 22:11:58 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RTv1.h"
 
-int		ft_calc_int_cylinder(t_cylinder *cyl, t_light *light,
+int		ft_calc_int_cylinder_light(t_cylinder *cyl, t_light *light,
 								double cur_dir[3], double *dist)
 {
 	double		var[3];
@@ -44,12 +44,12 @@ int		ft_calc_int_cylinder(t_cylinder *cyl, t_light *light,
 		cyl->coord[0]) + (light->coord[1] - cyl->coord[1]) *
 		(light->coord[1] - cyl->coord[1]) + (light->coord[2] -
 		cyl->coord[2]) * (light->coord[2] - cyl->coord[2])) - (cyl->radius *
-		cyl->radius) - (((cyl->dir[0] * -(light->coord[0] - cyl->coord[0]) +
+		cyl->radius) - ((cyl->dir[0] * -(light->coord[0] - cyl->coord[0]) +
 		cyl->dir[1] * -(light->coord[1] - cyl->coord[1]) + cyl->dir[2] *
 		-(light->coord[2] - cyl->coord[2])) * (cyl->dir[0] * 
 		-(light->coord[0] - cyl->coord[0]) + cyl->dir[1] *
 		-(light->coord[1] - cyl->coord[1]) + cyl->dir[2] *
-		-(light->coord[2] - cyl->coord[2]))));
+		-(light->coord[2] - cyl->coord[2])));
 	det = var[1] * var[1] - (4 * var[0] * var[2]);
 //	printf("DET = : %f\n", det);
 	if (det < 0)

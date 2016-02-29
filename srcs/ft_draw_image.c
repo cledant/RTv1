@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 08:49:40 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/28 19:14:03 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/29 20:19:23 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,14 @@ void	ft_draw_image(t_mlx *e)
 				else if (lst->content_size == 1)
 				{
 					if (ft_calc_int_plane(lst->content, camera, 
+								norm_cur_dir, &dist) == 1)
+					{
+						obj_int = lst;
+					}
+				}
+				else if (lst->content_size == 2)
+				{
+					if (ft_calc_int_cylinder(lst->content, camera, 
 								norm_cur_dir, &dist) == 1)
 					{
 						obj_int = lst;

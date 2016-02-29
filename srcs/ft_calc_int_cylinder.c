@@ -6,14 +6,14 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/29 09:33:09 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/29 10:42:46 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/29 22:31:56 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RTv1.h"
 
 int		ft_calc_int_cylinder(t_cylinder *cyl, t_camera *camera,
-								double cur_dir[3], double *dist)
+			double cur_dir[3], double *dist)
 {
 	double		var[3];
 	double		det;

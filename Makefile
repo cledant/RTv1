@@ -6,7 +6,7 @@
 #    By: cledant <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/26 10:40:13 by cledant           #+#    #+#              #
-#    Updated: 2016/02/29 11:06:00 by cledant          ###   ########.fr        #
+#    Updated: 2016/02/29 19:10:02 by cledant          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,7 @@ SRC_NAME = main.c ft_hook.c ft_draw_image.c ft_init_scene.c ft_calc_int_sphere.c
 		   ft_sphere_ambiant.c ft_mix_color.c ft_calc_int_plane_light.c \
 		   ft_is_light_interrupt.c ft_getambiant_light.c ft_cylinder_new.c \
 		   ft_cylinder_material.c ft_cylinder_getlight.c ft_calc_int_cylinder.c \
-		   ft_calc_cylinder_light.c ft_cylinder_ambiant.c ft_dot_product.c
+		   ft_calc_int_cylinder_light.c ft_cylinder_ambiant.c ft_dot_product.c
 
 SRC_PATH = ./srcs/
 
