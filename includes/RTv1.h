@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/15 17:33:23 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/28 19:12:34 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/29 10:43:01 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,18 @@ typedef struct	s_plane
 	double	shiny;
 }				t_plane;
 
+typedef struct	s_cylinder
+{
+	int		color;
+	double	coord[3];
+	double	dir[3];
+	double	radius;
+	double	diffuse;
+	double	ambiant;
+	double	specular;
+	double	shiny;
+}				t_cylinder;
+
 typedef struct	s_light
 {
 	int		color;
@@ -79,18 +91,19 @@ typedef struct	s_mlx
 
 int				expose_hook(t_mlx *e);
 int				key_hook(int keycode, t_mlx *e);
-void			ft_lstfree_malloc(void *content, size_t size);
+
+t_light			*ft_light_new(double loc[3], int color);
+int				ft_is_light_interrupt(t_light *light, t_list *list, t_list *obj,
+					double int_coord[3]);
 int				ft_getlight(t_list *obj, t_light *light, double int_coord[3],
 					double norm_cur_dir[3]);
 int				ft_getambiant_light(t_list *obj);
-t_light			*ft_light_new(double loc[3], int color);
+
 t_sphere		*ft_sphere_new(int coloration, double origin[3], double size);
 void			ft_sphere_material(double amb, double diff, double spec,
 					t_sphere *sph);
 int				ft_sphere_getlight(t_sphere *obj, t_light *light,
 					double int_coord[3], double cam_vector[3]);
-int				ft_sphere_is_light_interrupt(t_light *light, t_sphere *sph,
-					double int_coord[3]);
 int				ft_calc_int_sphere(t_sphere *sphere, t_camera *camera,
 					double cur_dir[3], double *dist);
 int				ft_calc_int_sphere_light(t_sphere *sphere, t_light *light,
@@ -98,6 +111,16 @@ int				ft_calc_int_sphere_light(t_sphere *sphere, t_light *light,
 int				ft_sphere_has_int(t_sphere *sphere, t_light *light,
 					double cur_dir[3]);
 int				ft_sphere_ambiant(t_sphere *obj);
+int				ft_calc_int_sphere(t_sphere *sphere, t_camera *camera,
+					double cur_dir[3], double *dist);
+
+t_cylinder		*ft_cylinder_new(int coloration, double origin[3], double size
+					double dir[3]);
+void			ft_cylinder_material(double amb, double diff, double spec,
+					t_cylinder *cyl);
+int				ft_cylinder_getlight(t_sphere *obj, t_light *light,
+					double int_coord[3], double cam_vector[3]);
+
 t_plane			*ft_plane_new(int coloration, double origin[3], double vec[3]);
 void			ft_plane_material(double amb, double diff, double spec,
 					t_plane *plane);
@@ -111,11 +134,13 @@ int				ft_calc_int_plane_light(t_plane *plane, t_light *camera,
 void			ft_calc_int_pos(double dist, double cur_vec[3], double coord_cam[3],
 					double (*int_coord)[3]);
 int				ft_plane_ambiant(t_plane *obj);
-int				ft_is_light_interrupt(t_light *light, t_list *list, t_list *obj,
-					double int_coord[3]);
+
 int				ft_mix_color(int color1, int color2, double ratio1);
+
 void			ft_draw_image(t_mlx *e);
 void			ft_init_scene(t_mlx *e);
+void			ft_lstfree_malloc(void *content, size_t size);
+int				ft_dot_product(double v1[3], double v2[3]);
 void			ft_scalar_product(double v1[3], double v2[3], double (*res)[3]);
 
 #endif
