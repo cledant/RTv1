@@ -6,13 +6,13 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/29 09:27:41 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/29 21:43:40 by cledant          ###   ########.fr       */
+/*   Updated: 2016/03/01 21:14:28 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RTv1.h"
 
-int		ft_cylinder_getlight(t_cone *obj, t_light *light, double int_coord[3],
+int		ft_cone_getlight(t_cone *obj, t_light *light, double int_coord[3],
 			double cam_vector[3])
 {
 	double	vector[3];
@@ -50,11 +50,11 @@ int		ft_cylinder_getlight(t_cone *obj, t_light *light, double int_coord[3],
 		obj->coord[1]) * obj->dir[1]) + ((light->coord[2] - obj->coord[2])
 		* obj->dir[2]));
 	vector[0] = int_coord[0] - obj->coord[0] - ((obj->dir[0] * tmp_norm) *
-			(1 + cone->k * cone->k));
+			(1 + obj->k * obj->k));
 	vector[1] = int_coord[1] - obj->coord[1] - ((obj->dir[1] * tmp_norm) *
-			(1 + cone->k * cone->k));
+			(1 + obj->k * obj->k));
 	vector[2] = int_coord[2] - obj->coord[2] - ((obj->dir[2] * tmp_norm) *
-			(1 + cone->k * cone->k));
+			(1 + obj->k * obj->k));
 	norm = sqrt(vector[0] * vector[0] + vector[1] * vector[1] + 
 			vector[2] * vector[2]);
 	norm_vec_normal[0] = vector[0] / norm;

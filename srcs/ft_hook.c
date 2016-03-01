@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/11 11:27:39 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/22 16:41:31 by cledant          ###   ########.fr       */
+/*   Updated: 2016/03/01 23:14:50 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int		key_hook(int keycode, t_mlx *e)
 {
 	t_camera	*camera;
 
-	ft_putnbrendl(keycode);
+//	ft_putnbrendl(keycode);
 	camera = e->cam;
 	if (keycode == MLX_KEY_ESC)
 	{
@@ -79,63 +79,75 @@ int		key_hook(int keycode, t_mlx *e)
 	}
 	else if (keycode == MLX_KEY_UP)
 	{
-		camera->coord[0] = camera->coord[0] + 10;
+		camera->coord[0] = camera->coord[0] + 1;
 		e->render = 0;
+		expose_hook(e);
 	}
 	else if (keycode == MLX_KEY_DOWN)
 	{
-		camera->coord[0] = camera->coord[0] - 10;
+		camera->coord[0] = camera->coord[0] - 1;
 		e->render = 0;
+		expose_hook(e);
 	}
 	else if (keycode == MLX_KEY_RIGHT)
 	{
-		camera->coord[1] = camera->coord[1] + 10;
+		camera->coord[1] = camera->coord[1] + 1;
 		e->render = 0;
+		expose_hook(e);
 	}
 	else if (keycode == MLX_KEY_LEFT)
 	{
-		camera->coord[1] = camera->coord[1] - 10;
+		camera->coord[1] = camera->coord[1] - 1;
 		e->render = 0;
+		expose_hook(e);
 	}
 	else if (keycode == MLX_KEY_PLUS)
 	{
-		camera->coord[2] = camera->coord[2] + 10;
+		camera->coord[2] = camera->coord[2] + 1;
 		e->render = 0;
+		expose_hook(e);
 	}
 	else if (keycode == MLX_KEY_MINUS)
 	{
-		camera->coord[2] = camera->coord[2] - 10;
+		camera->coord[2] = camera->coord[2] - 1;
 		e->render = 0;
+		expose_hook(e);
 	}
 	else if (keycode == MLX_KEY_W)
 	{
-		camera->camera_look_at[0] = camera->camera_look_ar[0] + 0.05;
+		camera->camera_look_at[0] = camera->camera_look_at[0] + 0.5;
 		e->render = 0;
+		expose_hook(e);
 	}
 	else if (keycode == MLX_KEY_S)
 	{
-		camera->camera_look_at[0] = camera->camera_look_at[0] - 0.05;
+		camera->camera_look_at[0] = camera->camera_look_at[0] - 0.5;
 		e->render = 0;
+		expose_hook(e);
 	}
 	else if (keycode == MLX_KEY_A)
 	{
-		camera->camera_look_at[1] = camera->camera_look_at[1] + 0.05;
+		camera->camera_look_at[1] = camera->camera_look_at[1] + 0.5;
 		e->render = 0;
+		expose_hook(e);
 	}
 	else if (keycode == MLX_KEY_D)
 	{
-		camera->camera_look_at[1] = camera->camera_look_at[1] - 0.05;
+		camera->camera_look_at[1] = camera->camera_look_at[1] - 0.5;
 		e->render = 0;
+		expose_hook(e);
 	}
-	else if (keycode == MLX_KEY_Z)
+	else if (keycode == MLX_KEY_Q)
 	{
-		camera->camera_look_at[2] = camera->camera_look_at[2] + 0.05;
+		camera->camera_look_at[2] = camera->camera_look_at[2] + 0.5;
 		e->render = 0;
+		expose_hook(e);
 	}
 	else if (keycode == MLX_KEY_E)
 	{
-		camera->camera_look_at[2] = camera->camera_look_at[2] - 0.05;
+		camera->camera_look_at[2] = camera->camera_look_at[2] - 0.5;
 		e->render = 0;
+		expose_hook(e);
 	}
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 09:25:57 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/29 22:48:45 by cledant          ###   ########.fr       */
+/*   Updated: 2016/03/01 23:13:24 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ void	ft_init_scene(t_mlx *e)
 		key_hook(MLX_KEY_ESC, e);
 	}
 	e->light_list = begin;
-	tmp_coord[0] = 2;
-	tmp_coord[1] = 2;
+	tmp_coord[0] = 8;
+	tmp_coord[1] = 8;
 	tmp_coord[2] = 7;
 	if ((light = ft_light_new(tmp_coord, 0x00FFFFFF)) == NULL)
 	{
@@ -216,10 +216,10 @@ void	ft_init_scene(t_mlx *e)
 		ft_putendl("Not enough memory");
 		key_hook(MLX_KEY_ESC, e);
 	}
-	tmp_coord[0] = 7;
-	tmp_coord[1] = 3;
+	tmp_coord[0] = 3;
+	tmp_coord[1] = 7;
 	tmp_coord[2] = 5;
-	tmp_vec[0] = 0;
+	tmp_vec[0] = -1;
 	tmp_vec[1] = 0;
 	tmp_vec[2] = 1;
 	tmp_norm = sqrt(tmp_vec[0] * tmp_vec[0] + tmp_vec[1] * tmp_vec[1] +
@@ -227,13 +227,13 @@ void	ft_init_scene(t_mlx *e)
 	tmp_vec[0] = tmp_vec[0] / tmp_norm;
 	tmp_vec[1] = tmp_vec[1] / tmp_norm;
 	tmp_vec[2] = tmp_vec[2] / tmp_norm;
-	if ((cone = ft_cone_new(0x0000AAAA, tmp_coord, 1, tmp_vec)) == NULL)
+	if ((cone = ft_cone_new(0x00AAAA00, tmp_coord, 0, tmp_vec)) == NULL)
 	{
 		free(member);
 		ft_putendl("Not enough memory");
 		key_hook(MLX_KEY_ESC, e);	
 	}
-	ft_cone_angle(30, cone);
+	ft_cone_angle(20, cone);
 	ft_cone_material(0.7, 1, 1, cone);
 	cone->shiny = 1000;
 	member->content = cone;

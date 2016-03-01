@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/15 17:33:23 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/29 19:14:43 by cledant          ###   ########.fr       */
+/*   Updated: 2016/03/01 22:53:42 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,12 @@
 # define MLX_KEY_LEFT 123
 # define MLX_KEY_PLUS 69
 # define MLX_KEY_MINUS 78
-# define MLX_KEY_W 53
-# define MLX_KEY_A 53
-# define MLX_KEY_S 53
-# define MLX_KEY_D 53
-# define MLX_KEY_Z 6
-# define MLX_KEY_E 53
+# define MLX_KEY_W 13
+# define MLX_KEY_A 0
+# define MLX_KEY_S 1
+# define MLX_KEY_D 2
+# define MLX_KEY_Q 12
+# define MLX_KEY_E 14
 # define WIN_X 1000
 # define WIN_Y 1000
 

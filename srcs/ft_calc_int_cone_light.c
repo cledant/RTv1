@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/29 09:33:09 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/29 22:31:56 by cledant          ###   ########.fr       */
+/*   Updated: 2016/03/01 21:24:15 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int		ft_calc_int_cone_light(t_cone *cone, t_light *light,
 		(cur_dir[1] * cone->dir[1]) + (cur_dir[2] * cone->dir[2])) * 
 		((cone->dir[0] * -(light->coord[0] - cone->coord[0]) +
 		cone->dir[1] * -(light->coord[1] - cone->coord[1]) + cone->dir[2] *
-		-(light->coord[2] - cone->coord[2])))) * (1 + cone->k * cone->k));
+		-(light->coord[2] - cone->coord[2])))) * (1 + cone->k * cone->k)));
 	var[2] = ((light->coord[0] - cone->coord[0]) * (light->coord[0] -
 		cone->coord[0]) + (light->coord[1] - cone->coord[1]) *
 		(light->coord[1] - cone->coord[1]) + (light->coord[2] -
@@ -49,7 +49,7 @@ int		ft_calc_int_cone_light(t_cone *cone, t_light *light,
 		-(light->coord[2] - cone->coord[2])) * (cone->dir[0] * 
 		-(light->coord[0] - cone->coord[0]) + cone->dir[1] *
 		-(light->coord[1] - cone->coord[1]) + cone->dir[2] *
-		-(light->coord[2] - cone->coord[2]))) * (1 + cone->k * cone->k)));
+		-(light->coord[2] - cone->coord[2]))) * (1 + cone->k * cone->k));
 	det = var[1] * var[1] - (4 * var[0] * var[2]);
 //	printf("DET = : %f\n", det);
 	if (det < 0)
