@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calc_int_cylinder.c                             :+:      :+:    :+:   */
+/*   ft_calc_int_coneinder.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/29 09:33:09 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/29 22:11:58 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/29 22:31:56 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RTv1.h"
 
-int		ft_calc_int_cylinder_light(t_cylinder *cyl, t_light *light,
-								double cur_dir[3], double *dist)
+int		ft_calc_int_cone_light(t_cone *cone, t_light *light,
+			double cur_dir[3], double *dist)
 {
 	double		var[3];
 	double		det;
@@ -25,31 +25,31 @@ int		ft_calc_int_cylinder_light(t_cylinder *cyl, t_light *light,
 //	printf("light pos %f\n", light->coord[0]);
 //	printf("light pos %f\n", light->coord[1]);
 //	printf("light pos %f\n", light->coord[2]);
-//	printf("cyl[0] = %f\n", cyl->coord[0]);
-//	printf("cyl[1] = %f\n", cyl->coord[1]);
-//	printf("cyl[2] = %f\n", cyl->coord[2]);
+//	printf("cone[0] = %f\n", cone->coord[0]);
+//	printf("cone[1] = %f\n", cone->coord[1]);
+//	printf("cone[2] = %f\n", cone->coord[2]);
 	var[0] = ((cur_dir[0] * cur_dir[0]) + (cur_dir[1] * cur_dir[1]) +
-		(cur_dir[2] * cur_dir[2])) - (((cur_dir[0] * cyl->dir[0]) + 
-		(cur_dir[1] * cyl->dir[1]) + (cur_dir[2] * cyl->dir[2])) *
-		 ((cur_dir[0] * cyl->dir[0]) + (cur_dir[1] * cyl->dir[1]) + 
-		  (cur_dir[2] * cyl->dir[2])));
-	var[1] = 2 * ((cur_dir[0] * -(light->coord[0] - cyl->coord[0]) +
-		cur_dir[1] * -(light->coord[1] - cyl->coord[1]) +cur_dir[2] *
-		-(light->coord[2] - cyl->coord[2])) - (((cur_dir[0] * cyl->dir[0]) + 
-		(cur_dir[1] * cyl->dir[1]) + (cur_dir[2] * cyl->dir[2])) * 
-		((cyl->dir[0] * -(light->coord[0] - cyl->coord[0]) +
-		cyl->dir[1] * -(light->coord[1] - cyl->coord[1]) + cyl->dir[2] *
-		-(light->coord[2] - cyl->coord[2])))));
-	var[2] = ((light->coord[0] - cyl->coord[0]) * (light->coord[0] -
-		cyl->coord[0]) + (light->coord[1] - cyl->coord[1]) *
-		(light->coord[1] - cyl->coord[1]) + (light->coord[2] -
-		cyl->coord[2]) * (light->coord[2] - cyl->coord[2])) - (cyl->radius *
-		cyl->radius) - ((cyl->dir[0] * -(light->coord[0] - cyl->coord[0]) +
-		cyl->dir[1] * -(light->coord[1] - cyl->coord[1]) + cyl->dir[2] *
-		-(light->coord[2] - cyl->coord[2])) * (cyl->dir[0] * 
-		-(light->coord[0] - cyl->coord[0]) + cyl->dir[1] *
-		-(light->coord[1] - cyl->coord[1]) + cyl->dir[2] *
-		-(light->coord[2] - cyl->coord[2])));
+		(cur_dir[2] * cur_dir[2])) - ((((cur_dir[0] * cone->dir[0]) + 
+		(cur_dir[1] * cone->dir[1]) + (cur_dir[2] * cone->dir[2])) *
+		 ((cur_dir[0] * cone->dir[0]) + (cur_dir[1] * cone->dir[1]) + 
+		  (cur_dir[2] * cone->dir[2]))) * (1 + cone->k * cone->k));
+	var[1] = 2 * ((cur_dir[0] * -(light->coord[0] - cone->coord[0]) +
+		cur_dir[1] * -(light->coord[1] - cone->coord[1]) +cur_dir[2] *
+		-(light->coord[2] - cone->coord[2])) - ((((cur_dir[0] * cone->dir[0]) + 
+		(cur_dir[1] * cone->dir[1]) + (cur_dir[2] * cone->dir[2])) * 
+		((cone->dir[0] * -(light->coord[0] - cone->coord[0]) +
+		cone->dir[1] * -(light->coord[1] - cone->coord[1]) + cone->dir[2] *
+		-(light->coord[2] - cone->coord[2])))) * (1 + cone->k * cone->k));
+	var[2] = ((light->coord[0] - cone->coord[0]) * (light->coord[0] -
+		cone->coord[0]) + (light->coord[1] - cone->coord[1]) *
+		(light->coord[1] - cone->coord[1]) + (light->coord[2] -
+		cone->coord[2]) * (light->coord[2] - cone->coord[2])) - (cone->radius *
+		cone->radius) - (((cone->dir[0] * -(light->coord[0] - cone->coord[0]) +
+		cone->dir[1] * -(light->coord[1] - cone->coord[1]) + cone->dir[2] *
+		-(light->coord[2] - cone->coord[2])) * (cone->dir[0] * 
+		-(light->coord[0] - cone->coord[0]) + cone->dir[1] *
+		-(light->coord[1] - cone->coord[1]) + cone->dir[2] *
+		-(light->coord[2] - cone->coord[2]))) * (1 + cone->k * cone->k)));
 	det = var[1] * var[1] - (4 * var[0] * var[2]);
 //	printf("DET = : %f\n", det);
 	if (det < 0)

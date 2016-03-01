@@ -45,6 +45,8 @@ int		ft_calc_int_sphere(t_sphere *sphere, t_camera *camera,
 		return (0);
 	else if (det == 0)
 	{
+		if (var[0] == 0)
+			return (0);
 		length[0] = (-var[1] / (2 * var[0]));
 		if (length[0] < *dist)
 		{
@@ -57,6 +59,8 @@ int		ft_calc_int_sphere(t_sphere *sphere, t_camera *camera,
 	}
 	else
 	{
+		if (var[0] == 0)
+			return (0);
 		length[0] = (-var[1] + sqrt(det)) / (2 * var[0]);
 		length[1] = (-var[1] - sqrt(det)) / (2 * var[0]);
 //		printf("length 0 = %f\n", length[0]);

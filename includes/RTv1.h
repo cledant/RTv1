@@ -56,6 +56,20 @@ typedef struct	s_cylinder
 	double	shiny;
 }				t_cylinder;
 
+typedef struct	s_cone
+{
+	int		color;
+	double	coord[3];
+	double	dir[3];
+	double	angle;
+	double	k;
+	double	radius;
+	double	diffuse;
+	double	ambiant;
+	double	specular;
+	double	shiny;
+}				t_cone;
+
 typedef struct	s_light
 {
 	int		color;
@@ -124,6 +138,19 @@ int				ft_calc_int_cylinder(t_cylinder *cyl, t_camera *camera,
 int				ft_calc_int_cylinder_light(t_cylinder *cyl, t_light *light,
 					double cur_dir[3], double *dist);
 int				ft_cylinder_ambiant(t_cylinder *obj);
+
+t_cone			*ft_cone_new(int coloration, double origin[3], double size,
+					double dir[3]);
+void			ft_cone_angle(double c_angle, t_cone *cone);
+void			ft_cone_material(double amb, double diff, double spec,
+					t_cone *cone);
+int				ft_cone_getlight(t_cone *obj, t_light *light,
+					double int_coord[3], double cam_vector[3]);
+int				ft_calc_int_cone(t_cone *cone, t_camera *camera,
+					double cur_dir[3], double *dist);
+int				ft_calc_int_cone_light(t_cone *cone, t_light *light,
+					double cur_dir[3], double *dist);
+int				ft_cone_ambiant(t_cone *obj);
 
 t_plane			*ft_plane_new(int coloration, double origin[3], double vec[3]);
 void			ft_plane_material(double amb, double diff, double spec,
