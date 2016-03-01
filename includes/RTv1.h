@@ -19,6 +19,18 @@
 # include <stdio.h> //caca
 # include "libft.h"
 # define MLX_KEY_ESC 53
+# define MLX_KEY_UP 126
+# define MLX_KEY_DOWN 125
+# define MLX_KEY_RIGHT 124
+# define MLX_KEY_LEFT 123
+# define MLX_KEY_PLUS 69
+# define MLX_KEY_MINUS 78
+# define MLX_KEY_W 53
+# define MLX_KEY_A 53
+# define MLX_KEY_S 53
+# define MLX_KEY_D 53
+# define MLX_KEY_Z 6
+# define MLX_KEY_E 53
 # define WIN_X 1000
 # define WIN_Y 1000
 

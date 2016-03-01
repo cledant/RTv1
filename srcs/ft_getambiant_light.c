@@ -28,5 +28,9 @@ int		ft_getambiant_light(t_list *obj)
 	{
 		color = ft_cylinder_ambiant(obj->content);
 	}
+	else if (obj->content_size == 3)
+	{
+		color = ft_cone_ambiant(obj->content);
+	}
 	return (color);
 }

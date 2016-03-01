@@ -84,6 +84,14 @@ void	ft_draw_image(t_mlx *e)
 						obj_int = lst;
 					}
 				}
+				else if (lst->content_size == 3)
+				{
+					if (ft_calc_int_cone(lst->content, camera, 
+								norm_cur_dir, &dist) == 1)
+					{
+						obj_int = lst;
+					}
+				}
 				lst = lst->next;
 			}
 			if (obj_int != NULL)

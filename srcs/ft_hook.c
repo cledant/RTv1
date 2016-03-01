@@ -59,6 +59,10 @@ int				expose_hook(t_mlx *e)
 
 int		key_hook(int keycode, t_mlx *e)
 {
+	t_camera	*camera;
+
+	ft_putnbrendl(keycode);
+	camera = e->cam;
 	if (keycode == MLX_KEY_ESC)
 	{
 		mlx_destroy_image(e->mlx, e->img);
@@ -72,6 +76,66 @@ int		key_hook(int keycode, t_mlx *e)
 			ft_lstdel(&(e->light_list), &ft_lstfree_malloc);
 		free(e->mlx);
 		exit(0);
+	}
+	else if (keycode == MLX_KEY_UP)
+	{
+		camera->coord[0] = camera->coord[0] + 10;
+		e->render = 0;
+	}
+	else if (keycode == MLX_KEY_DOWN)
+	{
+		camera->coord[0] = camera->coord[0] - 10;
+		e->render = 0;
+	}
+	else if (keycode == MLX_KEY_RIGHT)
+	{
+		camera->coord[1] = camera->coord[1] + 10;
+		e->render = 0;
+	}
+	else if (keycode == MLX_KEY_LEFT)
+	{
+		camera->coord[1] = camera->coord[1] - 10;
+		e->render = 0;
+	}
+	else if (keycode == MLX_KEY_PLUS)
+	{
+		camera->coord[2] = camera->coord[2] + 10;
+		e->render = 0;
+	}
+	else if (keycode == MLX_KEY_MINUS)
+	{
+		camera->coord[2] = camera->coord[2] - 10;
+		e->render = 0;
+	}
+	else if (keycode == MLX_KEY_W)
+	{
+		camera->camera_look_at[0] = camera->camera_look_ar[0] + 0.05;
+		e->render = 0;
+	}
+	else if (keycode == MLX_KEY_S)
+	{
+		camera->camera_look_at[0] = camera->camera_look_at[0] - 0.05;
+		e->render = 0;
+	}
+	else if (keycode == MLX_KEY_A)
+	{
+		camera->camera_look_at[1] = camera->camera_look_at[1] + 0.05;
+		e->render = 0;
+	}
+	else if (keycode == MLX_KEY_D)
+	{
+		camera->camera_look_at[1] = camera->camera_look_at[1] - 0.05;
+		e->render = 0;
+	}
+	else if (keycode == MLX_KEY_Z)
+	{
+		camera->camera_look_at[2] = camera->camera_look_at[2] + 0.05;
+		e->render = 0;
+	}
+	else if (keycode == MLX_KEY_E)
+	{
+		camera->camera_look_at[2] = camera->camera_look_at[2] - 0.05;
+		e->render = 0;
 	}
 	return (0);
 }

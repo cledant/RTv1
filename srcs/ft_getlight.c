@@ -32,5 +32,10 @@ int		ft_getlight(t_list *obj, t_light *light, double int_coord[3],
 		color = ft_cylinder_getlight(obj->content, light, int_coord,
 				norm_cur_dir);
 	}
+	else if (obj->content_size == 3)
+	{
+		color = ft_cone_getlight(obj->content, light, int_coord,
+				norm_cur_dir);
+	}
 	return (color);
 }
