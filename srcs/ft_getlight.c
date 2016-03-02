@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/25 15:01:41 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/29 18:29:57 by cledant          ###   ########.fr       */
+/*   Updated: 2016/03/02 10:23:19 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int		ft_getlight(t_list *obj, t_light *light, double int_coord[3],
 {
 	int		color;
 
+	color = 0x00000000;
 	if (obj->content_size == 0)
 	{
 		color = ft_sphere_getlight(obj->content, light, int_coord,

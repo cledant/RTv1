@@ -6,14 +6,14 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/27 10:23:36 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/29 18:28:52 by cledant          ###   ########.fr       */
+/*   Updated: 2016/03/02 12:12:08 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RTv1.h"
 
-int		ft_is_light_interrupt(t_light *light, t_list *list, t_list *obj,
-				double int_coord[3])
+int		ft_is_light_interrupt(t_light *light, t_list *list, 
+			double int_coord[3])
 {
 	double	vector[3];
 	double	norm;
@@ -46,6 +46,10 @@ int		ft_is_light_interrupt(t_light *light, t_list *list, t_list *obj,
 	else if (list->content_size == 2)
 	{
 		ft_calc_int_cylinder_light(list->content, light, norm_light, &(dist[0]));
+	}
+	else if (list->content_size == 3)
+	{
+		ft_calc_int_cone_light(list->content, light, norm_light, &(dist[0]));
 	}
 	if (dist[0] < norm)
 		return (1);

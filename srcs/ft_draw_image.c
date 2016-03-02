@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 08:49:40 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/29 20:19:23 by cledant          ###   ########.fr       */
+/*   Updated: 2016/03/02 10:26:25 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void	ft_draw_image(t_mlx *e)
 	t_camera	*camera;
 	t_list		*lst;
 	t_list		*light;
-	int			*ptr_color;
 
 	obj_int = NULL;
 	light = e->light_list;
@@ -121,7 +120,7 @@ void	ft_draw_image(t_mlx *e)
 					{
 						if (lst != obj_int)
 						{
-							if (ft_is_light_interrupt(light->content, lst, obj_int,
+							if (ft_is_light_interrupt(light->content, lst,
 								int_coord) == 1)
 							{
 								counter[3] = 1;
