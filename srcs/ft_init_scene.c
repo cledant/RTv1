@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 09:25:57 by cledant           #+#    #+#             */
-/*   Updated: 2016/03/02 12:06:06 by cledant          ###   ########.fr       */
+/*   Updated: 2016/03/02 19:51:42 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,9 @@ void	ft_init_scene(t_mlx *e)
 		key_hook(MLX_KEY_ESC, e);
 	}
 	e->light_list = begin;
-	tmp_coord[0] = 2;
-	tmp_coord[1] = 2;
-	tmp_coord[2] = 5;
+	tmp_coord[0] = 8;
+	tmp_coord[1] = 8;
+	tmp_coord[2] = 6;
 	if ((light = ft_light_new(tmp_coord, 0x00FFFFFF)) == NULL)
 	{
 		ft_putendl("Not enough memory");
@@ -240,15 +240,15 @@ void	ft_init_scene(t_mlx *e)
 	member->content_size = 3;
 	ft_lstpushback(begin, member);
 	//debut init camera
-	cam_scene->coord[0] = 500;
-	cam_scene->coord[1] = 500;
-	cam_scene->coord[2] = 500;
+	cam_scene->coord[0] = 8;
+	cam_scene->coord[1] = 8;
+	cam_scene->coord[2] = 8;
 	cam_scene->camera_size[0] = 20;
 	cam_scene->camera_size[1] = 20;
 	cam_scene->camera_size[2] = 1;
 	cam_scene->camera_look_at[0] = 0;
 	cam_scene->camera_look_at[1] = 0;
-	cam_scene->camera_look_at[2] = 0;
+	cam_scene->camera_look_at[2] = 8;
 	cam_scene->dir_vec[0] = cam_scene->camera_look_at[0] - cam_scene->coord[0];
 	cam_scene->dir_vec[1] = cam_scene->camera_look_at[1] - cam_scene->coord[1];
 	cam_scene->dir_vec[2] = cam_scene->camera_look_at[2] - cam_scene->coord[2];
@@ -287,8 +287,10 @@ void	ft_init_scene(t_mlx *e)
 	cam_scene->right_vec[2] = 0;
 	ft_scalar_product(cam_scene->up_vec, cam_scene->norm_dir_vec,
 			&cam_scene->right_vec);
+	ft_normalize_vec(&cam_scene->right_vec);
 	ft_scalar_product(cam_scene->right_vec, cam_scene->norm_dir_vec, 
 			&cam_scene->up_vec);
+	ft_normalize_vec(&cam_scene->up_vec);
 	// fin triangle ortho
 	printf("up_vec = %f\n", cam_scene->up_vec[0]);
 	printf("up_vec = %f\n", cam_scene->up_vec[1]);

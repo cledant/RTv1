@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/11 10:42:33 by cledant           #+#    #+#             */
-/*   Updated: 2016/03/01 23:15:34 by cledant          ###   ########.fr       */
+/*   Updated: 2016/03/02 17:09:54 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ int				main(void)
 		return (0);
 	e.render = 0;
 	e.c_img = mlx_get_data_addr(e.img, &(var[0]), &(var[1]), &(var[2]));
-	ft_bzero(e.c_img, WIN_X * 4 * WIN_Y);
 	if ((e.cam = (t_camera *)malloc(1 * sizeof(t_camera))) == NULL)
 	{
 		ft_putendl("Not enough memory");

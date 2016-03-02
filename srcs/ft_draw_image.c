@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 08:49:40 by cledant           #+#    #+#             */
-/*   Updated: 2016/03/02 10:26:25 by cledant          ###   ########.fr       */
+/*   Updated: 2016/03/02 16:11:09 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void	ft_draw_image(t_mlx *e)
 	light = e->light_list;
 	camera = e->cam;
 	lst = e->obj_list;
+	ft_bzero(e->c_img, WIN_X * 4 * WIN_Y);
 	counter[0] = 0;
 	counter[1] = 0;
 	counter[2] = 0x00000000;

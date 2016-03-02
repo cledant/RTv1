@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/11 11:27:39 by cledant           #+#    #+#             */
-/*   Updated: 2016/03/02 13:22:19 by cledant          ###   ########.fr       */
+/*   Updated: 2016/03/02 19:06:56 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,7 @@ int				expose_hook(t_mlx *e)
 	{
 		if (gettimeofday(&(s_ms[0]), NULL) == -1)
 			ft_error_routine(1, e);
-		ft_putendl("avant img");
 		ft_draw_image(e);
-		ft_putendl("apres img");
 		if (gettimeofday(&(s_ms[1]), NULL) == -1)
 			ft_error_routine(1, e);
 		ms[0] = s_ms[0].tv_sec * 1000 + s_ms[0].tv_usec / 1000;
@@ -115,39 +113,61 @@ int		key_hook(int keycode, t_mlx *e)
 	}
 	else if (keycode == MLX_KEY_W)
 	{
-		ft_rot_y(&camera->up_left_win, camera->coord,MLX_ANGLE_STEP);
-		ft_rot_y(&camera->norm_dir_vec, camera->coord,MLX_ANGLE_STEP);
-		ft_rot_y(&camera->up_vec, camera->coord,MLX_ANGLE_STEP);
-		ft_rot_y(&camera->right_vec, camera->coord,MLX_ANGLE_STEP);
+		ft_rot_vec(&camera->norm_dir_vec, camera->right_vec, -MLX_ANGLE_STEP);
+		ft_rot_vec(&camera->up_vec, camera->right_vec, -MLX_ANGLE_STEP);
+		ft_rot_vec(&camera->up_left_win, camera->right_vec, -MLX_ANGLE_STEP);
+		ft_normalize_vec(&camera->norm_dir_vec);
+		ft_normalize_vec(&camera->up_vec);
 		e->render = 0;
 		expose_hook(e);
 	}
 	else if (keycode == MLX_KEY_S)
 	{
-//		ft_rot_y(&camera->up_left_win, -MLX_ANGLE_STEP);
-//		ft_rot_y(&camera->norm_dir_vec, -MLX_ANGLE_STEP);
-//		ft_rot_y(&camera->up_vec, -MLX_ANGLE_STEP);
-///		ft_rot_y(&camera->right_vec, -MLX_ANGLE_STEP);
-//		e->render = 0;
-//		expose_hook(e);
+		ft_rot_vec(&camera->norm_dir_vec, camera->right_vec, MLX_ANGLE_STEP);
+		ft_rot_vec(&camera->up_vec, camera->right_vec, MLX_ANGLE_STEP);
+		ft_rot_vec(&camera->up_left_win, camera->right_vec, MLX_ANGLE_STEP);
+		ft_normalize_vec(&camera->norm_dir_vec);
+		ft_normalize_vec(&camera->up_vec);
+		e->render = 0;
+		expose_hook(e);
 	}
 	else if (keycode == MLX_KEY_A)
 	{
+		ft_rot_vec(&camera->norm_dir_vec, camera->up_vec, -MLX_ANGLE_STEP);
+		ft_rot_vec(&camera->right_vec, camera->up_vec, -MLX_ANGLE_STEP);
+		ft_rot_vec(&camera->up_left_win, camera->up_vec, -MLX_ANGLE_STEP);
+		ft_normalize_vec(&camera->norm_dir_vec);
+		ft_normalize_vec(&camera->up_vec);
 		e->render = 0;
 		expose_hook(e);
 	}
 	else if (keycode == MLX_KEY_D)
 	{
+		ft_rot_vec(&camera->norm_dir_vec, camera->up_vec, MLX_ANGLE_STEP);
+		ft_rot_vec(&camera->right_vec, camera->up_vec, MLX_ANGLE_STEP);
+		ft_rot_vec(&camera->up_left_win, camera->up_vec, MLX_ANGLE_STEP);
+		ft_normalize_vec(&camera->norm_dir_vec);
+		ft_normalize_vec(&camera->up_vec);
 		e->render = 0;
 		expose_hook(e);
 	}
 	else if (keycode == MLX_KEY_Q)
 	{
+		ft_rot_vec(&camera->up_vec, camera->norm_dir_vec, -MLX_ANGLE_STEP);
+		ft_rot_vec(&camera->right_vec, camera->norm_dir_vec, -MLX_ANGLE_STEP);
+		ft_rot_vec(&camera->up_left_win, camera->norm_dir_vec, -MLX_ANGLE_STEP);
+		ft_normalize_vec(&camera->norm_dir_vec);
+		ft_normalize_vec(&camera->up_vec);
 		e->render = 0;
 		expose_hook(e);
 	}
 	else if (keycode == MLX_KEY_E)
 	{
+		ft_rot_vec(&camera->up_vec, camera->norm_dir_vec, MLX_ANGLE_STEP);
+		ft_rot_vec(&camera->right_vec, camera->norm_dir_vec, MLX_ANGLE_STEP);
+		ft_rot_vec(&camera->up_left_win, camera->norm_dir_vec, MLX_ANGLE_STEP);
+		ft_normalize_vec(&camera->norm_dir_vec);
+		ft_normalize_vec(&camera->up_vec);
 		e->render = 0;
 		expose_hook(e);
 	}
