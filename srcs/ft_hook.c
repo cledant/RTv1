@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/11 11:27:39 by cledant           #+#    #+#             */
-/*   Updated: 2016/03/03 21:00:26 by cledant          ###   ########.fr       */
+/*   Updated: 2016/03/03 21:41:08 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,7 +133,7 @@ int		key_hook(int keycode, t_mlx *e)
 	}
 	else if (keycode == MLX_KEY_A)
 	{
-		camera->camera_look_at[1] = camera->camera_look_at[1] - MLX_CAM_STEP;
+		camera->camera_look_at[1] = camera->camera_look_at[1] + MLX_CAM_STEP;
 		ft_camera_init(camera);
 		e->render = 0;
 		expose_hook(e);
@@ -147,7 +147,7 @@ int		key_hook(int keycode, t_mlx *e)
 	}
 	else if (keycode == MLX_KEY_Q)
 	{
-		camera->camera_look_at[0] = camera->camera_look_at[0] - MLX_CAM_STEP;
+		camera->camera_look_at[0] = camera->camera_look_at[0] + MLX_CAM_STEP;
 		ft_camera_init(camera);
 		e->render = 0;
 		expose_hook(e);
