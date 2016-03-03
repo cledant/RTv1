@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 08:49:40 by cledant           #+#    #+#             */
-/*   Updated: 2016/03/02 16:11:09 by cledant          ###   ########.fr       */
+/*   Updated: 2016/03/03 20:06:24 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,15 +43,15 @@ void	ft_draw_image(t_mlx *e)
 	{
 		while (counter[1] < WIN_X)
 		{
-			cur_dir[0] = camera->up_left_win[0] + counter[1] * camera->x_inc *
+			cur_dir[0] = -(camera->up_left_win[0] + counter[1] * camera->x_inc *
 				camera->right_vec[0] - counter[0] * camera->y_inc *
-					camera->up_vec[0];
-			cur_dir[1] = camera->up_left_win[1] + counter[1] * camera->x_inc *
+					camera->up_vec[0]) + camera->coord[0];
+			cur_dir[1] = -(camera->up_left_win[1] + counter[1] * camera->x_inc *
 				camera->right_vec[1] - counter[0] * camera->y_inc *
-					camera->up_vec[1];
-			cur_dir[2] = camera->up_left_win[2] + counter[1] * camera->x_inc *
+					camera->up_vec[1]) + camera->coord[1];
+			cur_dir[2] = -(camera->up_left_win[2] + counter[1] * camera->x_inc *
 				camera->right_vec[2] - counter[0] * camera->y_inc *
-					camera->up_vec[2];
+					camera->up_vec[2]) + camera->coord[2];
 			val_cur_dir = sqrt(cur_dir[0] * cur_dir[0] + cur_dir[1] * cur_dir[1] +
 				cur_dir[2] * cur_dir[2]);
 			norm_cur_dir[0] = cur_dir[0] / val_cur_dir;

@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/11 11:27:39 by cledant           #+#    #+#             */
-/*   Updated: 2016/03/02 19:06:56 by cledant          ###   ########.fr       */
+/*   Updated: 2016/03/03 21:00:26 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,96 +78,84 @@ int		key_hook(int keycode, t_mlx *e)
 	else if (keycode == MLX_KEY_UP)
 	{
 		camera->coord[0] = camera->coord[0] + MLX_CAM_STEP;
+		ft_camera_init(camera);
 		e->render = 0;
 		expose_hook(e);
 	}
 	else if (keycode == MLX_KEY_DOWN)
 	{
 		camera->coord[0] = camera->coord[0] - MLX_CAM_STEP;
+		ft_camera_init(camera);
 		e->render = 0;
 		expose_hook(e);
 	}
 	else if (keycode == MLX_KEY_RIGHT)
 	{
 		camera->coord[1] = camera->coord[1] + MLX_CAM_STEP;
+		ft_camera_init(camera);
 		e->render = 0;
 		expose_hook(e);
 	}
 	else if (keycode == MLX_KEY_LEFT)
 	{
 		camera->coord[1] = camera->coord[1] - MLX_CAM_STEP;
+		ft_camera_init(camera);
 		e->render = 0;
 		expose_hook(e);
 	}
 	else if (keycode == MLX_KEY_PLUS)
 	{
 		camera->coord[2] = camera->coord[2] + MLX_CAM_STEP;
+		ft_camera_init(camera);
 		e->render = 0;
 		expose_hook(e);
 	}
 	else if (keycode == MLX_KEY_MINUS)
 	{
 		camera->coord[2] = camera->coord[2] - MLX_CAM_STEP;
+		ft_camera_init(camera);
 		e->render = 0;
 		expose_hook(e);
 	}
 	else if (keycode == MLX_KEY_W)
 	{
-		ft_rot_vec(&camera->norm_dir_vec, camera->right_vec, -MLX_ANGLE_STEP);
-		ft_rot_vec(&camera->up_vec, camera->right_vec, -MLX_ANGLE_STEP);
-		ft_rot_vec(&camera->up_left_win, camera->right_vec, -MLX_ANGLE_STEP);
-		ft_normalize_vec(&camera->norm_dir_vec);
-		ft_normalize_vec(&camera->up_vec);
+		camera->camera_look_at[2] = camera->camera_look_at[2] + MLX_CAM_STEP;
+		ft_camera_init(camera);
 		e->render = 0;
 		expose_hook(e);
 	}
 	else if (keycode == MLX_KEY_S)
 	{
-		ft_rot_vec(&camera->norm_dir_vec, camera->right_vec, MLX_ANGLE_STEP);
-		ft_rot_vec(&camera->up_vec, camera->right_vec, MLX_ANGLE_STEP);
-		ft_rot_vec(&camera->up_left_win, camera->right_vec, MLX_ANGLE_STEP);
-		ft_normalize_vec(&camera->norm_dir_vec);
-		ft_normalize_vec(&camera->up_vec);
+		camera->camera_look_at[2] = camera->camera_look_at[2] - MLX_CAM_STEP;
+		ft_camera_init(camera);
 		e->render = 0;
 		expose_hook(e);
 	}
 	else if (keycode == MLX_KEY_A)
 	{
-		ft_rot_vec(&camera->norm_dir_vec, camera->up_vec, -MLX_ANGLE_STEP);
-		ft_rot_vec(&camera->right_vec, camera->up_vec, -MLX_ANGLE_STEP);
-		ft_rot_vec(&camera->up_left_win, camera->up_vec, -MLX_ANGLE_STEP);
-		ft_normalize_vec(&camera->norm_dir_vec);
-		ft_normalize_vec(&camera->up_vec);
+		camera->camera_look_at[1] = camera->camera_look_at[1] - MLX_CAM_STEP;
+		ft_camera_init(camera);
 		e->render = 0;
 		expose_hook(e);
 	}
 	else if (keycode == MLX_KEY_D)
 	{
-		ft_rot_vec(&camera->norm_dir_vec, camera->up_vec, MLX_ANGLE_STEP);
-		ft_rot_vec(&camera->right_vec, camera->up_vec, MLX_ANGLE_STEP);
-		ft_rot_vec(&camera->up_left_win, camera->up_vec, MLX_ANGLE_STEP);
-		ft_normalize_vec(&camera->norm_dir_vec);
-		ft_normalize_vec(&camera->up_vec);
+		camera->camera_look_at[1] = camera->camera_look_at[1] - MLX_CAM_STEP;
+		ft_camera_init(camera);
 		e->render = 0;
 		expose_hook(e);
 	}
 	else if (keycode == MLX_KEY_Q)
 	{
-		ft_rot_vec(&camera->up_vec, camera->norm_dir_vec, -MLX_ANGLE_STEP);
-		ft_rot_vec(&camera->right_vec, camera->norm_dir_vec, -MLX_ANGLE_STEP);
-		ft_rot_vec(&camera->up_left_win, camera->norm_dir_vec, -MLX_ANGLE_STEP);
-		ft_normalize_vec(&camera->norm_dir_vec);
-		ft_normalize_vec(&camera->up_vec);
+		camera->camera_look_at[0] = camera->camera_look_at[0] - MLX_CAM_STEP;
+		ft_camera_init(camera);
 		e->render = 0;
 		expose_hook(e);
 	}
 	else if (keycode == MLX_KEY_E)
 	{
-		ft_rot_vec(&camera->up_vec, camera->norm_dir_vec, MLX_ANGLE_STEP);
-		ft_rot_vec(&camera->right_vec, camera->norm_dir_vec, MLX_ANGLE_STEP);
-		ft_rot_vec(&camera->up_left_win, camera->norm_dir_vec, MLX_ANGLE_STEP);
-		ft_normalize_vec(&camera->norm_dir_vec);
-		ft_normalize_vec(&camera->up_vec);
+		camera->camera_look_at[0] = camera->camera_look_at[0] - MLX_CAM_STEP;
+		ft_camera_init(camera);
 		e->render = 0;
 		expose_hook(e);
 	}

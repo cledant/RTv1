@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 09:25:57 by cledant           #+#    #+#             */
-/*   Updated: 2016/03/02 19:51:42 by cledant          ###   ########.fr       */
+/*   Updated: 2016/03/03 20:50:35 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,7 +123,7 @@ void	ft_init_scene(t_mlx *e)
 		ft_putendl("Not enough memory");
 		key_hook(MLX_KEY_ESC, e);
 	}
-	tmp_coord[0] = 0;
+	tmp_coord[0] = -10;
 	tmp_coord[1] = 0;
 	tmp_coord[2] = 0;
 	tmp_vec[0] = 1;
@@ -147,7 +147,7 @@ void	ft_init_scene(t_mlx *e)
 	}
 	tmp_coord[0] = 0;
 	tmp_coord[1] = 0;
-	tmp_coord[2] = 0;
+	tmp_coord[2] = -10;
 	tmp_vec[0] = 0;
 	tmp_vec[1] = 0;
 	tmp_vec[2] = 1;
@@ -168,7 +168,7 @@ void	ft_init_scene(t_mlx *e)
 		key_hook(MLX_KEY_ESC, e);
 	}
 	tmp_coord[0] = 0;
-	tmp_coord[1] = 0;
+	tmp_coord[1] = -10;
 	tmp_coord[2] = 0;
 	tmp_vec[0] = 0;
 	tmp_vec[1] = 1;
@@ -240,15 +240,15 @@ void	ft_init_scene(t_mlx *e)
 	member->content_size = 3;
 	ft_lstpushback(begin, member);
 	//debut init camera
-	cam_scene->coord[0] = 8;
-	cam_scene->coord[1] = 8;
-	cam_scene->coord[2] = 8;
-	cam_scene->camera_size[0] = 20;
-	cam_scene->camera_size[1] = 20;
+	cam_scene->coord[0] = 20;
+	cam_scene->coord[1] = 20;
+	cam_scene->coord[2] = 10;
+	cam_scene->camera_size[0] = 0.5;
+	cam_scene->camera_size[1] = 0.5;
 	cam_scene->camera_size[2] = 1;
 	cam_scene->camera_look_at[0] = 0;
 	cam_scene->camera_look_at[1] = 0;
-	cam_scene->camera_look_at[2] = 8;
+	cam_scene->camera_look_at[2] = 10;
 	cam_scene->dir_vec[0] = cam_scene->camera_look_at[0] - cam_scene->coord[0];
 	cam_scene->dir_vec[1] = cam_scene->camera_look_at[1] - cam_scene->coord[1];
 	cam_scene->dir_vec[2] = cam_scene->camera_look_at[2] - cam_scene->coord[2];
@@ -288,7 +288,7 @@ void	ft_init_scene(t_mlx *e)
 	ft_scalar_product(cam_scene->up_vec, cam_scene->norm_dir_vec,
 			&cam_scene->right_vec);
 	ft_normalize_vec(&cam_scene->right_vec);
-	ft_scalar_product(cam_scene->right_vec, cam_scene->norm_dir_vec, 
+	ft_scalar_product(cam_scene->norm_dir_vec, cam_scene->right_vec,
 			&cam_scene->up_vec);
 	ft_normalize_vec(&cam_scene->up_vec);
 	// fin triangle ortho
