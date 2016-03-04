@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/25 16:06:03 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/28 18:08:57 by cledant          ###   ########.fr       */
+/*   Updated: 2016/03/04 12:20:11 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,8 +120,6 @@ int		ft_plane_getlight(t_plane *obj, t_light *light, double int_coord[3],
 				factor_color[1] * ratio[1]) * 255);
 	//		ret_color[3] = factor_color[0] * factor_color[1] * 255;
 		ret_color[3] = ret_color[3] * obj->diffuse * angle * 0.333;
-		//total
-		ret_color[4] = ret_color[0] + ret_color[1] + ret_color[2] + ret_color[3];
 	//		printf("COLOR = %x\n", ret_color[4]);
 	//specuclar
 	norm_vec_reflec[0] = 2 * angle * norm_vec_normal[0] - -norm_vec_light[0];
@@ -133,20 +131,28 @@ int		ft_plane_getlight(t_plane *obj, t_light *light, double int_coord[3],
 	spec_color[0] = spec_color[0] >> (4 * 6);
 	spec_color[0] = spec_color[0] * obj->specular * pow(spec_angle, obj->shiny)
 		* 0.333;
+	if (spec_color[0] > 0xFF)
+		spec_color[0] = 0xFF * 0.333;
 	spec_color[0] = spec_color[0] << (4 * 6);
 	spec_color[1] = (obj->color & 0x00FF0000);
 	spec_color[1] = spec_color[1] >> (4 * 4);
 	spec_color[1] = spec_color[1] * obj->specular * pow(spec_angle, obj->shiny)
 		* 0.333;
+	if (spec_color[1] > 0xFF)
+		spec_color[1] = 0xFF * 0.333;
 	spec_color[1] = spec_color[1] << (4 * 4);
 	spec_color[2] = (obj->color & 0x0000FF00);
 	spec_color[2] = spec_color[2] >> (4 * 2);
 	spec_color[2] = spec_color[2] * obj->specular * pow(spec_angle, obj->shiny)
 		* 0.333;
+	if (spec_color[2] > 0xFF)
+		spec_color[2] = 0xFF * 0.333;
 	spec_color[2] = spec_color[2] << (4 * 2);
 	spec_color[3] = (obj->color & 0x000000FF);
 	spec_color[3] = spec_color[3] * obj->specular * pow(spec_angle, obj->shiny)
 		* 0.333;
+	if (spec_color[3] > 0xFF)
+		spec_color[3] = 0xFF * 0.333;
 	}
 	else
 	{

@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/11 10:42:33 by cledant           #+#    #+#             */
-/*   Updated: 2016/03/02 17:09:54 by cledant          ###   ########.fr       */
+/*   Updated: 2016/03/04 11:38:46 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int				main(void)
 	}
 	e.obj_list = NULL;
 	e.light_list = NULL;
-	ft_init_scene(&e);
+	ft_init_scene_2(&e);
 	mlx_key_hook(e.win, key_hook, &e);
 	mlx_expose_hook(e.win, expose_hook, &e);
 	mlx_loop(e.mlx);
