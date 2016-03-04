@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 08:49:40 by cledant           #+#    #+#             */
-/*   Updated: 2016/03/04 14:31:36 by cledant          ###   ########.fr       */
+/*   Updated: 2016/03/04 16:09:50 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,7 +145,7 @@ void	ft_draw_image(t_mlx *e)
 						}
 						else
 						{
-							counter[2] = 0x00000000;
+							counter[2] = ft_getambiant_light(obj_int);
 						ft_memcpy(&counter[4], e->c_img + counter[1] * 4 + counter[0] * 4 * WIN_X, sizeof(int));
 						counter[4] = ft_add_color(counter[2],
 											counter[4]);

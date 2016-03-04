@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 09:25:57 by cledant           #+#    #+#             */
-/*   Updated: 2016/03/04 14:19:00 by cledant          ###   ########.fr       */
+/*   Updated: 2016/03/04 16:14:19 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ void	ft_init_scene_2(t_mlx *e)
 		ft_putendl("Not enough memory");
 		key_hook(MLX_KEY_ESC, e);	
 	}
-	ft_sphere_material(0.4, 1, 1, sphere);
+	ft_sphere_material(0.25, 0.4, 0.8, sphere);
 	sphere->shiny = 100;
 	begin->content = sphere;
 	begin->content_size = 0;
@@ -187,7 +187,7 @@ void	ft_init_scene_2(t_mlx *e)
 		ft_putendl("Not enough memory");
 		key_hook(MLX_KEY_ESC, e);	
 	}
-	ft_cylinder_material(0.7, 1, 1, cyl);
+	ft_cylinder_material(0.25, 0.4, 0.8, cyl);
 	cyl->shiny = 1000;
 	member->content = cyl;
 	member->content_size = 2;
@@ -214,7 +214,7 @@ void	ft_init_scene_2(t_mlx *e)
 		ft_putendl("Not enough memory");
 		key_hook(MLX_KEY_ESC, e);	
 	}
-	ft_cylinder_material(0.7, 1, 1, cyl);
+	ft_cylinder_material(0.25, 0.4, 0.8, cyl);
 	cyl->shiny = 1000;
 	member->content = cyl;
 	member->content_size = 2;
@@ -241,7 +241,7 @@ void	ft_init_scene_2(t_mlx *e)
 		ft_putendl("Not enough memory");
 		key_hook(MLX_KEY_ESC, e);	
 	}
-	ft_cylinder_material(0.7, 1, 1, cyl);
+	ft_cylinder_material(0.25, 0.4, 0.8, cyl);
 	cyl->shiny = 1000;
 	member->content = cyl;
 	member->content_size = 2;
@@ -268,7 +268,7 @@ void	ft_init_scene_2(t_mlx *e)
 		ft_putendl("Not enough memory");
 		key_hook(MLX_KEY_ESC, e);	
 	}
-	ft_cylinder_material(0.7, 1, 1, cyl);
+	ft_cylinder_material(0.25, 0.4, 0.8, cyl);
 	cyl->shiny = 1000;
 	member->content = cyl;
 	member->content_size = 2;
@@ -286,7 +286,7 @@ void	ft_init_scene_2(t_mlx *e)
 		ft_putendl("Not enough memory");
 		key_hook(MLX_KEY_ESC, e);	
 	}
-	ft_sphere_material(0.4, 1, 1, sphere);
+	ft_sphere_material(0.25, 0.4, 0.8, sphere);
 	sphere->shiny = 100;
 	member->content = sphere;
 	member->content_size = 0;
@@ -304,7 +304,7 @@ void	ft_init_scene_2(t_mlx *e)
 		ft_putendl("Not enough memory");
 		key_hook(MLX_KEY_ESC, e);	
 	}
-	ft_sphere_material(0.4, 1, 1, sphere);
+	ft_sphere_material(0.25, 0.4, 0.8, sphere);
 	sphere->shiny = 100;
 	member->content = sphere;
 	member->content_size = 0;
@@ -322,7 +322,7 @@ void	ft_init_scene_2(t_mlx *e)
 		ft_putendl("Not enough memory");
 		key_hook(MLX_KEY_ESC, e);	
 	}
-	ft_sphere_material(0.4, 1, 1, sphere);
+	ft_sphere_material(0.25, 0.4, 0.8, sphere);
 	sphere->shiny = 100;
 	member->content = sphere;
 	member->content_size = 0;
@@ -340,7 +340,7 @@ void	ft_init_scene_2(t_mlx *e)
 		ft_putendl("Not enough memory");
 		key_hook(MLX_KEY_ESC, e);	
 	}
-	ft_sphere_material(0.4, 1, 1, sphere);
+	ft_sphere_material(0.25, 0.4, 0.8, sphere);
 	sphere->shiny = 100;
 	member->content = sphere;
 	member->content_size = 0;
@@ -358,7 +358,7 @@ void	ft_init_scene_2(t_mlx *e)
 		ft_putendl("Not enough memory");
 		key_hook(MLX_KEY_ESC, e);	
 	}
-	ft_sphere_material(0.4, 1, 1, sphere);
+	ft_sphere_material(0.25, 0.4, 0.8, sphere);
 	sphere->shiny = 100;
 	member->content = sphere;
 	member->content_size = 0;
@@ -376,7 +376,7 @@ void	ft_init_scene_2(t_mlx *e)
 		ft_putendl("Not enough memory");
 		key_hook(MLX_KEY_ESC, e);	
 	}
-	ft_sphere_material(0.4, 1, 1, sphere);
+	ft_sphere_material(0.25, 0.4, 0.8, sphere);
 	sphere->shiny = 100;
 	member->content = sphere;
 	member->content_size = 0;
@@ -394,13 +394,13 @@ void	ft_init_scene_2(t_mlx *e)
 		ft_putendl("Not enough memory");
 		key_hook(MLX_KEY_ESC, e);	
 	}
-	ft_sphere_material(0.4, 1, 1, sphere);
+	ft_sphere_material(0.25, 0.4, 0.8, sphere);
 	sphere->shiny = 100;
 	member->content = sphere;
 	member->content_size = 0;
 	ft_lstpushback(begin, member);
 	//debut init camera
-	cam_scene->coord[0] = 200;
+	cam_scene->coord[0] = 100;
 	cam_scene->coord[1] = 0;
 	cam_scene->coord[2] = 10;
 	cam_scene->camera_look_at[0] = -20;
