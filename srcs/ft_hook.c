@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/11 11:27:39 by cledant           #+#    #+#             */
-/*   Updated: 2016/03/04 13:20:37 by cledant          ###   ########.fr       */
+/*   Updated: 2016/03/04 17:18:03 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ int				expose_hook(t_mlx *e)
 			ft_error_routine(0, e);
 		}
 		e->render = 1;
+		mlx_clear_window(e->mlx, e->win);
 		mlx_put_image_to_window(e->mlx, e->win, e->img, 0, 0);
 		mlx_string_put(e->mlx, e->win, WIN_X - 300, 50, 0x00FFFFFF, disp_fps);
 		ft_strdel(&s_fps);
@@ -77,12 +78,26 @@ int		key_hook(int keycode, t_mlx *e)
 	}
 	else if (keycode == MLX_KEY_1)
 	{
+		if (e->cam != NULL)
+			free(e->cam);
+		e->cam = NULL;
+		if (e->obj_list != NULL)
+			ft_lstdel(&(e->obj_list), &ft_lstfree_malloc);
+		if (e->light_list != NULL)
+			ft_lstdel(&(e->light_list), &ft_lstfree_malloc);
 		ft_init_scene(e);
 		e->render = 0;
 		expose_hook(e);
 	}
 	else if (keycode == MLX_KEY_2)
 	{
+		if (e->cam != NULL)
+			free(e->cam);
+		e->cam = NULL;
+		if (e->obj_list != NULL)
+			ft_lstdel(&(e->obj_list), &ft_lstfree_malloc);
+		if (e->light_list != NULL)
+			ft_lstdel(&(e->light_list), &ft_lstfree_malloc);
 		ft_init_scene_2(e);
 		e->render = 0;
 		expose_hook(e);

@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/25 16:06:03 by cledant           #+#    #+#             */
-/*   Updated: 2016/03/04 13:53:37 by cledant          ###   ########.fr       */
+/*   Updated: 2016/03/04 18:28:55 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,22 +64,6 @@ int		ft_plane_getlight(t_plane *obj, t_light *light, double int_coord[3],
 	ambiant_color[2] = ambiant_color[2] * obj->ambiant;
 	ambiant_color[3] = (obj->color & 0x000000FF);
 	ambiant_color[3] = ambiant_color[3] * obj->ambiant;
-	if (angle < 0)
-		angle = -angle;
-	if (angle > 0)
-	{
-//diffuse
-		diff_color[0] = (obj->color & 0xFF000000);
-		diff_color[0] = diff_color[0] >> (4 * 6);
-		diff_color[0] = diff_color[0] * obj->diffuse * angle;
-		diff_color[1] = (obj->color & 0x00FF0000);
-		diff_color[1] = diff_color[1] >> (4 * 4);
-		diff_color[1] = diff_color[1] * obj->diffuse * angle;
-		diff_color[2] = (obj->color & 0x0000FF00);
-		diff_color[2] = diff_color[2] >> (4 * 2);
-		diff_color[2] = diff_color[2] * obj->diffuse * angle;
-		diff_color[3] = (obj->color & 0x000000FF);
-		diff_color[3] = diff_color[3] * obj->diffuse * angle;
 //specuclar
 	norm_vec_reflec[0] = 2 * angle * norm_vec_normal[0] - -norm_vec_light[0];
 	norm_vec_reflec[1] = 2 * angle * norm_vec_normal[1] - -norm_vec_light[1];
@@ -97,17 +81,29 @@ int		ft_plane_getlight(t_plane *obj, t_light *light, double int_coord[3],
 	spec_color[2] = spec_color[2] * obj->specular * pow(spec_angle, obj->shiny);
 	spec_color[3] = (obj->color & 0x000000FF);
 	spec_color[3] = spec_color[3] * obj->specular * pow(spec_angle, obj->shiny);
+	if (angle < 0)
+		angle = -angle;
+	if (angle > 0)
+	{
+//diffuse
+		diff_color[0] = (obj->color & 0xFF000000);
+		diff_color[0] = diff_color[0] >> (4 * 6);
+		diff_color[0] = diff_color[0] * obj->diffuse * angle;
+		diff_color[1] = (obj->color & 0x00FF0000);
+		diff_color[1] = diff_color[1] >> (4 * 4);
+		diff_color[1] = diff_color[1] * obj->diffuse * angle;
+		diff_color[2] = (obj->color & 0x0000FF00);
+		diff_color[2] = diff_color[2] >> (4 * 2);
+		diff_color[2] = diff_color[2] * obj->diffuse * angle;
+		diff_color[3] = (obj->color & 0x000000FF);
+		diff_color[3] = diff_color[3] * obj->diffuse * angle;
 	}
 	else
 	{
-		ret_color[0] = 0;
-		ret_color[1] = 0;
-		ret_color[2] = 0;
-		ret_color[3] = 0;
-		spec_color[0] = 0;
-		spec_color[1] = 0;
-		spec_color[2] = 0;
-		spec_color[3] = 0;
+		diff_color[0] = 0;
+		diff_color[1] = 0;
+		diff_color[2] = 0;
+		diff_color[3] = 0;
 	}
 	ret_color[0] = ambiant_color[0] + diff_color[0] + spec_color[0];
 	if (ret_color[0] > 0xFF)

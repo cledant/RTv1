@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 08:49:40 by cledant           #+#    #+#             */
-/*   Updated: 2016/03/04 16:09:50 by cledant          ###   ########.fr       */
+/*   Updated: 2016/03/04 16:53:11 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,16 +156,16 @@ void	ft_draw_image(t_mlx *e)
 					lst = e->obj_list;
 					light = light->next;
 					count_light = 1;
+					counter[4] = 0x00000000;
+					counter[2] = 0x00000000;
+					counter[3] = 0;
 				}
-				counter[4] = 0x00000000;
-				counter[2] = 0x00000000;
-				counter[3] = 0;
-				lst = e->obj_list;
+				count_light = 0;
+				light = e->light_list;
 			}
 			obj_int = NULL;
 			dist = 1000000;
 			lst = e->obj_list;
-			light = e->light_list;
 			counter[1]++;
 		}
 		counter[1] = 0;

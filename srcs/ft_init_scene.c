@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 09:25:57 by cledant           #+#    #+#             */
-/*   Updated: 2016/03/04 10:10:37 by cledant          ###   ########.fr       */
+/*   Updated: 2016/03/04 17:11:48 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,11 @@ void	ft_init_scene(t_mlx *e)
 	double		tmp_vec[3];
 	double		tmp_norm;
 
+	if ((e->cam = (t_camera *)malloc(1 * sizeof(t_camera))) == NULL)
+	{
+		ft_putendl("Not enough memory");
+		key_hook(MLX_KEY_ESC, e);
+	}
 	cam_scene = e->cam;
 	if ((begin = ft_lstnew(NULL, 0)) == NULL)
 	{
@@ -48,8 +53,8 @@ void	ft_init_scene(t_mlx *e)
 		ft_putendl("Not enough memory");
 		key_hook(MLX_KEY_ESC, e);
 	}
-	tmp_coord[0] = -3;
-	tmp_coord[1] = -3;
+	tmp_coord[0] = -20;
+	tmp_coord[1] = -20;
 	tmp_coord[2] = 5;
 	if ((light = ft_light_new(tmp_coord, 0x00FFFFFF)) == NULL)
 	{

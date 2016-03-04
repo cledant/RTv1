@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/15 17:33:23 by cledant           #+#    #+#             */
-/*   Updated: 2016/03/04 16:16:02 by cledant          ###   ########.fr       */
+/*   Updated: 2016/03/04 17:07:13 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,6 +121,8 @@ typedef struct	s_mlx
 int				expose_hook(t_mlx *e);
 int				key_hook(int keycode, t_mlx *e);
 
+void			ft_camera_init(t_camera *cam_scene);
+
 void			ft_calc_int_pos(double dist, double cur_vec[3], double coord_cam[3],
 					double (*int_coord)[3]);
 
@@ -187,6 +189,6 @@ void			ft_lstfree_malloc(void *content, size_t size);
 int				ft_dot_product(double v1[3], double v2[3]);
 void			ft_scalar_product(double v1[3], double v2[3], double (*res)[3]);
 void			ft_normalize_vec(double (*vec)[3]);
-void			ft_camera_init(t_camera *cam_scene);
+
 
 #endif
