@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/11 11:27:39 by cledant           #+#    #+#             */
-/*   Updated: 2016/03/04 10:56:22 by cledant          ###   ########.fr       */
+/*   Updated: 2016/03/04 13:20:37 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,18 @@ int		key_hook(int keycode, t_mlx *e)
 			ft_lstdel(&(e->light_list), &ft_lstfree_malloc);
 		free(e->mlx);
 		exit(0);
+	}
+	else if (keycode == MLX_KEY_1)
+	{
+		ft_init_scene(e);
+		e->render = 0;
+		expose_hook(e);
+	}
+	else if (keycode == MLX_KEY_2)
+	{
+		ft_init_scene_2(e);
+		e->render = 0;
+		expose_hook(e);
 	}
 	else if (keycode == MLX_KEY_UP)
 	{
