@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 09:25:57 by cledant           #+#    #+#             */
-/*   Updated: 2016/03/04 20:04:40 by cledant          ###   ########.fr       */
+/*   Updated: 2016/03/04 20:11:24 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	ft_init_scene_2(t_mlx *e)
 		key_hook(MLX_KEY_ESC, e);
 	}
 	e->light_list = begin;
-	tmp_coord[0] = 5;
+	tmp_coord[0] = -5;
 	tmp_coord[1] = 0;
 	tmp_coord[2] = 5;
 	if ((light = ft_light_new(tmp_coord, 0x00FFFFFF)) == NULL)
