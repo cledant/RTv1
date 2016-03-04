@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/15 17:33:23 by cledant           #+#    #+#             */
-/*   Updated: 2016/03/03 21:08:35 by cledant          ###   ########.fr       */
+/*   Updated: 2016/03/04 10:59:53 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,9 @@
 # define MLX_KEY_D 2
 # define MLX_KEY_Q 12
 # define MLX_KEY_E 14
+# define MLX_KEY_1 18
+# define MLX_KEY_2 19
 # define MLX_CAM_STEP 0.5
-# define MLX_ANGLE_STEP 0.1
 # define WIN_X 1000
 # define WIN_Y 1000
 
@@ -179,10 +180,9 @@ int				ft_plane_ambiant(t_plane *obj);
 
 int				ft_mix_color(int color1, int color2, double ratio1);
 
-void			ft_rot_vec(double (*vec)[3], double pos_vec[3], double angle);
-
 void			ft_draw_image(t_mlx *e);
 void			ft_init_scene(t_mlx *e);
+void			ft_init_scene_2(t_mlx *e);
 void			ft_lstfree_malloc(void *content, size_t size);
 int				ft_dot_product(double v1[3], double v2[3]);
 void			ft_scalar_product(double v1[3], double v2[3], double (*res)[3]);

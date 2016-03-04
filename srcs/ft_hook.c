@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/11 11:27:39 by cledant           #+#    #+#             */
-/*   Updated: 2016/03/03 21:41:08 by cledant          ###   ########.fr       */
+/*   Updated: 2016/03/04 10:56:22 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int		key_hook(int keycode, t_mlx *e)
 {
 	t_camera	*camera;
 
-//	ft_putnbrendl(keycode);
+	ft_putnbrendl(keycode);
 	camera = e->cam;
 	if (keycode == MLX_KEY_ESC)
 	{

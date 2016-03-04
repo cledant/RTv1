@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 09:25:57 by cledant           #+#    #+#             */
-/*   Updated: 2016/03/03 22:03:39 by cledant          ###   ########.fr       */
+/*   Updated: 2016/03/04 10:10:37 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,9 @@ void	ft_init_scene(t_mlx *e)
 		key_hook(MLX_KEY_ESC, e);
 	}
 	e->light_list = begin;
-	tmp_coord[0] = 8;
-	tmp_coord[1] = 8;
-	tmp_coord[2] = 6;
+	tmp_coord[0] = 20;
+	tmp_coord[1] = 20;
+	tmp_coord[2] = 10;
 	if ((light = ft_light_new(tmp_coord, 0x00FFFFFF)) == NULL)
 	{
 		ft_putendl("Not enough memory");
@@ -43,6 +43,23 @@ void	ft_init_scene(t_mlx *e)
 	}
 	begin->content = light;
 	begin->content_size = 0;
+	if ((member = ft_lstnew(NULL, 0)) == NULL)
+	{
+		ft_putendl("Not enough memory");
+		key_hook(MLX_KEY_ESC, e);
+	}
+	tmp_coord[0] = -3;
+	tmp_coord[1] = -3;
+	tmp_coord[2] = 5;
+	if ((light = ft_light_new(tmp_coord, 0x00FFFFFF)) == NULL)
+	{
+		free(member);
+		ft_putendl("Not enough memory");
+		key_hook(MLX_KEY_ESC, e);	
+	}
+	member->content = light;
+	member->content_size = 0;
+	ft_lstpushback(begin, member);
 	if ((begin = ft_lstnew(NULL, 0)) == NULL)
 	{
 		ft_putendl("Not enough memory");
@@ -240,8 +257,8 @@ void	ft_init_scene(t_mlx *e)
 	member->content_size = 3;
 	ft_lstpushback(begin, member);
 	//debut init camera
-	cam_scene->coord[0] = 20;
-	cam_scene->coord[1] = 20;
+	cam_scene->coord[0] = 100;
+	cam_scene->coord[1] = 100;
 	cam_scene->coord[2] = 10;
 	cam_scene->camera_look_at[0] = 0;
 	cam_scene->camera_look_at[1] = 0;

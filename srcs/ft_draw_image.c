@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 08:49:40 by cledant           #+#    #+#             */
-/*   Updated: 2016/03/03 21:22:38 by cledant          ###   ########.fr       */
+/*   Updated: 2016/03/04 10:59:28 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,9 @@ void	ft_draw_image(t_mlx *e)
 	t_camera	*camera;
 	t_list		*lst;
 	t_list		*light;
+	int			count_light;
 
+	count_light = 0;
 	obj_int = NULL;
 	light = e->light_list;
 	camera = e->cam;
@@ -36,9 +38,6 @@ void	ft_draw_image(t_mlx *e)
 	counter[3] = 0;
 	counter[4] = 0x00000000;
 	dist = 1000000;
-//	printf("camera.up_left_vec = %f\n", camera->up_left_win[0]);
-//	printf("camera.up_left_vec = %f\n", camera->up_left_win[1]);
-//	printf("camera.up_left_vec = %f\n", camera->up_left_win[2]);
 	while (counter[0] < WIN_Y)
 	{
 		while (counter[1] < WIN_X)
@@ -64,7 +63,6 @@ void	ft_draw_image(t_mlx *e)
 					if (ft_calc_int_sphere(lst->content, camera, 
 								norm_cur_dir, &dist) == 1)
 					{
-				//		printf("dist sphere %f\n", dist);
 						obj_int = lst;
 					}
 				}
@@ -96,21 +94,6 @@ void	ft_draw_image(t_mlx *e)
 			}
 			if (obj_int != NULL)
 			{
-//				printf("LIGNE = %d\n", counter[0]);
-//				printf("COLONNE = %d\n", counter[1]);
-//			if (obj_int->content_size == 0)
-//			{
-///		printf("obj_int sphere = %f\n", ((t_sphere *)obj_int->content)->coord[0]);
-//		printf("obj_int sphere = %f\n", ((t_sphere *)obj_int->content)->coord[1]);
-//		printf("obj_int sphere = %f\n", ((t_sphere *)obj_int->content)->coord[2]);
-//			}
-//			else if (obj_int->content_size == 1)
-//			{
-//		printf("obj_int plane = %f\n", ((t_plane *)obj_int->content)->coord[0]);
-//		printf("obj_int plane = %f\n", ((t_plane *)obj_int->content)->coord[1]);
-//		printf("obj_int plane = %f\n", ((t_plane *)obj_int->content)->coord[2]);
-//			}
-//				printf("DIST = %f\n", dist);
 				lst = e->obj_list;
 				counter[2] = 0x00000000;
 				counter[4] = 0x00000000;
@@ -132,23 +115,47 @@ void	ft_draw_image(t_mlx *e)
 					}
 					if (counter[3] != 1)
 					{
+						if (count_light == 0)
+						{
 						counter[2] = ft_getlight(obj_int, light->content, 
 								int_coord, norm_cur_dir);
-					//	counter[4] = ft_mix_color(counter[2],
-					//						counter[4], 0.4);
 						ft_memcpy(e->c_img + counter[1] * 4 + counter[0] * 4 * WIN_X,
 										&counter[2], sizeof(int));
+						}
+						else
+						{
+						counter[2] = ft_getlight(obj_int, light->content, 
+								int_coord, norm_cur_dir);
+						ft_memcpy(&counter[4], e->c_img + counter[1] * 4 + counter[0] * 4 * WIN_X, sizeof(int));
+						counter[4] = ft_mix_color(counter[4],
+											counter[2], 0.5);
+						ft_memcpy(e->c_img + counter[1] * 4 + counter[0] * 4 * WIN_X,
+										&counter[4], sizeof(int));
+						}
 					}
 					else
 					{
+						if (count_light == 0)
+						{
 						counter[2] = ft_getambiant_light(obj_int);
-						counter[4] = ft_mix_color(counter[2],
-											counter[4], 0.2);
+						counter[4] = ft_mix_color(counter[4],
+											counter[2], 0.2);
 						ft_memcpy(e->c_img + counter[1] * 4 + counter[0] * 4 * WIN_X,
 										&counter[4], sizeof(int));
+						}
+						else
+						{
+							counter[2] = 0x00000000;
+						ft_memcpy(&counter[4], e->c_img + counter[1] * 4 + counter[0] * 4 * WIN_X, sizeof(int));
+						counter[4] = ft_mix_color(counter[2],
+											counter[4], 0.5);
+						ft_memcpy(e->c_img + counter[1] * 4 + counter[0] * 4 * WIN_X,
+										&counter[4], sizeof(int));					
+						}
 					}
 					lst = e->obj_list;
 					light = light->next;
+					count_light = 1;
 				}
 				counter[4] = 0x00000000;
 				counter[2] = 0x00000000;
