@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 08:49:40 by cledant           #+#    #+#             */
-/*   Updated: 2016/03/05 18:22:01 by cledant          ###   ########.fr       */
+/*   Updated: 2016/03/05 18:34:49 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,17 +70,6 @@ static void		ft_seek_light(t_mlx *e, t_list *obj, int (*counter)[5],
 		ft_write_in_image(*counter, e);
 		ft_reset_val(&lst, &light, counter, e);
 	}
-}
-
-static void		ft_init_values(int (*counter)[5], t_mlx *e, double *dist)
-{
-	ft_bzero(e->c_img, WIN_X * 4 * WIN_Y);
-	(*counter)[0] = 0;
-	(*counter)[1] = 0;
-	(*counter)[2] = 0x00000000;
-	(*counter)[3] = 0;
-	(*counter)[4] = 0x00000000;
-	*dist = 1000000;
 }
 
 void			ft_draw_image(t_mlx *e)
