@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/15 17:33:23 by cledant           #+#    #+#             */
-/*   Updated: 2016/03/05 14:19:07 by cledant          ###   ########.fr       */
+/*   Updated: 2016/03/05 18:21:16 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -192,5 +192,8 @@ void			ft_scalar_product(double v1[3], double v2[3], double (*res)[3]);
 void			ft_normalize_vec(double (*vec)[3]);
 double			ft_calc_spec_angle(double cam_vector[3], double norm_vec[2][3],
 					double angle);
+void			ft_write_in_image(int counter[5], t_mlx *e);
+t_list			*ft_seek_int_obj(t_list *lst, t_camera *camera, double *dist,
+					double dir[3]);
 
 #endif

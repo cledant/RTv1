@@ -1,21 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calc_int_pos.c                                  :+:      :+:    :+:   */
+/*   ft_write_in_image.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/22 20:13:34 by cledant           #+#    #+#             */
-/*   Updated: 2016/03/05 15:33:04 by cledant          ###   ########.fr       */
+/*   Created: 2016/03/05 18:11:14 by cledant           #+#    #+#             */
+/*   Updated: 2016/03/05 18:11:46 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RTv1.h"
 
-void	ft_calc_int_pos(double dist, double cur_vec[3], double coord_cam[3],
-			double (*int_coord)[3])
+void	ft_write_in_image(int counter[5], t_mlx *e)
 {
-	(*int_coord)[0] = -cur_vec[0] * dist + coord_cam[0];
-	(*int_coord)[1] = -cur_vec[1] * dist + coord_cam[1];
-	(*int_coord)[2] = -cur_vec[2] * dist + coord_cam[2];
+	ft_memcpy(&counter[4], e->c_img + counter[1] * 4 +
+		counter[0] * 4 * WIN_X, sizeof(int));
+	counter[4] = ft_add_color(counter[4], counter[2]);
+	ft_memcpy(e->c_img + counter[1] * 4 + counter[0] *
+		4 * WIN_X, &counter[4], sizeof(int));
 }
