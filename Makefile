@@ -6,7 +6,7 @@
 #    By: cledant <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/26 10:40:13 by cledant           #+#    #+#              #
-#    Updated: 2016/03/05 18:22:09 by cledant          ###   ########.fr        #
+#    Updated: 2016/03/05 19:50:21 by cledant          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,8 @@ SRC_NAME = main.c ft_hook.c ft_draw_image.c ft_init_scene.c ft_calc_int_sphere.c
 		   ft_cone_new.c ft_cone_angle.c ft_cone_material.c ft_cone_getlight.c \
 		   ft_calc_int_cone.c ft_calc_int_cone_light.c ft_cone_ambiant.c \
 		   ft_normalize_vec.c ft_camera_init.c ft_init_scene_2.c \
-		   ft_add_color.c ft_calc_norm_vec_plane.c ft_seek_int_obj.c
+		   ft_add_color.c ft_calc_norm_vec_plane.c ft_seek_int_obj.c \
+		   ft_calc_norm_vec_cylinder.c
 
 SRC_PATH = ./srcs/
 

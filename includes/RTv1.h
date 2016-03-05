@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/15 17:33:23 by cledant           #+#    #+#             */
-/*   Updated: 2016/03/05 18:35:11 by cledant          ###   ########.fr       */
+/*   Updated: 2016/03/05 19:51:40 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,6 +151,9 @@ t_cylinder		*ft_cylinder_new(int coloration, double origin[3], double size,
 					double dir[3]);
 void			ft_cylinder_material(double amb, double diff, double spec,
 					t_cylinder *cyl);
+void			ft_calc_norm_vec_cylinder(t_cylinder *obj,
+					double (*norm_vec)[2][3], double int_coord[3],
+					double light_coord[3]);
 int				ft_cylinder_getlight(t_cylinder *obj, t_light *light,
 					double int_coord[3], double cam_vector[3]);
 int				ft_calc_int_cylinder(t_cylinder *cyl, t_camera *camera,
