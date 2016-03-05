@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/05 19:22:09 by cledant           #+#    #+#             */
-/*   Updated: 2016/03/05 19:47:37 by cledant          ###   ########.fr       */
+/*   Updated: 2016/03/05 20:50:15 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ int				ft_cylinder_getlight(t_cylinder *obj, t_light *light,
 	double	angle[2];
 	int		color[3][4];
 
-	ft_calc_norm_vec_cylinder(obj, &norm_vec, int_coord, light->coord);
+	ft_calc_norm_vec_cylinder(obj, &norm_vec, int_coord, light);
 	angle[0] = -norm_vec[1][0] * norm_vec[0][0] + -norm_vec[1][1] *
 		norm_vec[0][1] + -norm_vec[1][2] * norm_vec[0][2];
 	ft_init_color(obj, &color[0], &color[1], &color[2]);
