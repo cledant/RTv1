@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/15 17:33:23 by cledant           #+#    #+#             */
-/*   Updated: 2016/03/05 12:52:23 by cledant          ###   ########.fr       */
+/*   Updated: 2016/03/05 14:19:07 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -175,6 +175,8 @@ int				ft_cone_ambiant(t_cone *obj);
 t_plane			*ft_plane_new(int coloration, double origin[3], double vec[3]);
 void			ft_plane_material(double amb, double diff, double spec,
 					t_plane *plane);
+void			ft_calc_norm_vec_plane(t_plane *obj,
+					double (*norm_vec_normal)[3]);
 int				ft_plane_getlight(t_plane *obj, t_light *light,
 					double int_coord[3], double cam_vector[3]);
 int				ft_calc_int_plane(t_plane *plane, t_camera *camera,
@@ -188,7 +190,7 @@ int				ft_add_color(int color1, int color2);
 void			ft_lstfree_malloc(void *content, size_t size);
 void			ft_scalar_product(double v1[3], double v2[3], double (*res)[3]);
 void			ft_normalize_vec(double (*vec)[3]);
-double			ft_calc_spec_angle(double cam_vector[3], double norm_vec[3][3],
+double			ft_calc_spec_angle(double cam_vector[3], double norm_vec[2][3],
 					double angle);
 
 #endif
