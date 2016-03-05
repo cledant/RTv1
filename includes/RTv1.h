@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/15 17:33:23 by cledant           #+#    #+#             */
-/*   Updated: 2016/03/04 20:05:47 by cledant          ###   ########.fr       */
+/*   Updated: 2016/03/05 12:52:23 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # include <mlx.h>
 # include <math.h>
 # include <sys/time.h>
-# include <stdio.h> //caca
 # include "libft.h"
 # define MLX_KEY_ESC 53
 # define MLX_KEY_UP 126
@@ -33,7 +32,7 @@
 # define MLX_KEY_E 14
 # define MLX_KEY_1 18
 # define MLX_KEY_2 19
-# define MLX_CAM_STEP 0.5
+# define MLX_CAM_STEP 1
 # define WIN_X 1000
 # define WIN_Y 1000
 
@@ -121,7 +120,11 @@ typedef struct	s_mlx
 int				expose_hook(t_mlx *e);
 int				key_hook(int keycode, t_mlx *e);
 
-void			ft_camera_init(t_camera *cam_scene);
+void			ft_draw_image(t_mlx *e);
+void			ft_init_scene(t_mlx *e);
+void			ft_init_scene_2(t_mlx *e);
+
+void			ft_camera_init(t_camera *cam);
 
 void			ft_calc_int_pos(double dist, double cur_vec[3], double coord_cam[3],
 					double (*int_coord)[3]);
@@ -182,13 +185,10 @@ int				ft_plane_ambiant(t_plane *obj);
 
 int				ft_add_color(int color1, int color2);
 
-void			ft_draw_image(t_mlx *e);
-void			ft_init_scene(t_mlx *e);
-void			ft_init_scene_2(t_mlx *e);
 void			ft_lstfree_malloc(void *content, size_t size);
-int				ft_dot_product(double v1[3], double v2[3]);
 void			ft_scalar_product(double v1[3], double v2[3], double (*res)[3]);
 void			ft_normalize_vec(double (*vec)[3]);
-
+double			ft_calc_spec_angle(double cam_vector[3], double norm_vec[3][3],
+					double angle);
 
 #endif
