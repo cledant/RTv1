@@ -6,11 +6,11 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/20 13:13:34 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/20 14:18:08 by cledant          ###   ########.fr       */
+/*   Updated: 2016/03/06 12:41:33 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "RTv1.h"
+#include "rtv1.h"
 
 t_plane		*ft_plane_new(int coloration, double origin[3], double vec[3])
 {

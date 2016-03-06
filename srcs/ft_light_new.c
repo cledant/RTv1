@@ -6,11 +6,11 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/22 16:28:05 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/24 11:50:27 by cledant          ###   ########.fr       */
+/*   Updated: 2016/03/06 12:40:13 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "RTv1.h"
+#include "rtv1.h"
 
 t_light		*ft_light_new(double loc[3], int coloration)
 {

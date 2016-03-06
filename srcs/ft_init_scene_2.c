@@ -6,11 +6,11 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 09:25:57 by cledant           #+#    #+#             */
-/*   Updated: 2016/03/04 20:11:24 by cledant          ###   ########.fr       */
+/*   Updated: 2016/03/06 12:39:44 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "RTv1.h"
+#include "rtv1.h"
 
 void	ft_init_scene_2(t_mlx *e)
 {

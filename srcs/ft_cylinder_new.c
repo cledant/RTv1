@@ -6,11 +6,11 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/29 09:21:30 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/29 10:42:56 by cledant          ###   ########.fr       */
+/*   Updated: 2016/03/06 12:38:28 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "RTv1.h"
+#include "rtv1.h"
 
 t_cylinder	*ft_cylinder_new(int coloration, double origin[3], double size,
 				double dir[3])

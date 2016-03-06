@@ -6,11 +6,11 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/04 14:20:23 by cledant           #+#    #+#             */
-/*   Updated: 2016/03/05 09:34:22 by cledant          ###   ########.fr       */
+/*   Updated: 2016/03/06 12:31:06 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "RTv1.h"
+#include "rtv1.h"
 
 static	int		ft_add_priv(int split_color1[4], int split_color2[4])
 {

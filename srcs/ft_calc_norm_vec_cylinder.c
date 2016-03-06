@@ -6,11 +6,11 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/05 19:26:46 by cledant           #+#    #+#             */
-/*   Updated: 2016/03/05 20:54:25 by cledant          ###   ########.fr       */
+/*   Updated: 2016/03/06 12:34:42 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "RTv1.h"
+#include "rtv1.h"
 
 void	ft_calc_norm_vec_cylinder(t_cylinder *obj, double (*norm_vec)[2][3],
 			double int_coord[3], t_light *light)

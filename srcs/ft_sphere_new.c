@@ -6,11 +6,11 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/20 10:15:01 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/20 11:14:37 by cledant          ###   ########.fr       */
+/*   Updated: 2016/03/06 12:42:48 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "RTv1.h"
+#include "rtv1.h"
 
 t_sphere	*ft_sphere_new(int coloration, double origin[3], double size)
 {

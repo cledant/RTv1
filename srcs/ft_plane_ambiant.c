@@ -6,11 +6,11 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/25 18:55:55 by cledant           #+#    #+#             */
-/*   Updated: 2016/03/05 13:05:08 by cledant          ###   ########.fr       */
+/*   Updated: 2016/03/06 12:40:55 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "RTv1.h"
+#include "rtv1.h"
 
 int		ft_plane_ambiant(t_plane *obj)
 {

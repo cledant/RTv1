@@ -6,11 +6,11 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/27 10:23:36 by cledant           #+#    #+#             */
-/*   Updated: 2016/03/05 10:19:32 by cledant          ###   ########.fr       */
+/*   Updated: 2016/03/06 12:39:57 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "RTv1.h"
+#include "rtv1.h"
 
 static void		ft_init_val(double vector[3], double *norm,
 		double (*norm_light)[3], double *dist)

@@ -6,11 +6,11 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/06 10:07:09 by cledant           #+#    #+#             */
-/*   Updated: 2016/03/06 10:07:11 by cledant          ###   ########.fr       */
+/*   Updated: 2016/03/06 12:35:53 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "RTv1.h"
+#include "rtv1.h"
 
 int		ft_cone_ambiant(t_cone *obj)
 {

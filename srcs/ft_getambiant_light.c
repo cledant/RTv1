@@ -6,11 +6,11 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/29 18:30:48 by cledant           #+#    #+#             */
-/*   Updated: 2016/03/02 10:23:22 by cledant          ###   ########.fr       */
+/*   Updated: 2016/03/06 12:38:55 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "RTv1.h"
+#include "rtv1.h"
 
 int		ft_getambiant_light(t_list *obj)
 {

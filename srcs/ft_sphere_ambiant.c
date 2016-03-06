@@ -6,11 +6,11 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/25 18:50:53 by cledant           #+#    #+#             */
-/*   Updated: 2016/03/05 11:31:02 by cledant          ###   ########.fr       */
+/*   Updated: 2016/03/06 12:42:12 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "RTv1.h"
+#include "rtv1.h"
 
 int		ft_sphere_ambiant(t_sphere *obj)
 {

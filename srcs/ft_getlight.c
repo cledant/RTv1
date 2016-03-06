@@ -6,11 +6,11 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/25 15:01:41 by cledant           #+#    #+#             */
-/*   Updated: 2016/03/02 10:23:19 by cledant          ###   ########.fr       */
+/*   Updated: 2016/03/06 12:39:07 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "RTv1.h"
+#include "rtv1.h"
 
 int		ft_getlight(t_list *obj, t_light *light, double int_coord[3],
 			double norm_cur_dir[3])

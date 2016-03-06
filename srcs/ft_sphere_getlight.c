@@ -6,11 +6,11 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/04 15:13:04 by cledant           #+#    #+#             */
-/*   Updated: 2016/03/05 12:59:08 by cledant          ###   ########.fr       */
+/*   Updated: 2016/03/06 12:42:25 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "RTv1.h"
+#include "rtv1.h"
 
 static void		ft_init_color(t_sphere *obj, int (*ambiant_color)[4],
 					int (*diff_color)[4], int (*spec_color)[4])

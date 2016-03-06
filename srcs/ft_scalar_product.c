@@ -6,11 +6,11 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/22 09:30:27 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/22 09:43:16 by cledant          ###   ########.fr       */
+/*   Updated: 2016/03/06 12:41:43 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "RTv1.h"
+#include "rtv1.h"
 
 void	ft_scalar_product(double v1[3], double v2[3], double (*res)[3])
 {

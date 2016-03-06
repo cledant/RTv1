@@ -6,11 +6,11 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/05 13:23:51 by cledant           #+#    #+#             */
-/*   Updated: 2016/03/05 14:19:33 by cledant          ###   ########.fr       */
+/*   Updated: 2016/03/06 12:34:52 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "RTv1.h"
+#include "rtv1.h"
 
 void	ft_calc_norm_vec_plane(t_plane *obj, double (*norm_vec_normal)[3])
 {

@@ -6,11 +6,11 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/22 16:13:24 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/23 13:23:11 by cledant          ###   ########.fr       */
+/*   Updated: 2016/03/06 12:42:38 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "RTv1.h"
+#include "rtv1.h"
 
 void	ft_sphere_material(double amb, double diff, double spec, t_sphere *sph)
 {

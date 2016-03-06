@@ -6,11 +6,11 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/05 18:17:56 by cledant           #+#    #+#             */
-/*   Updated: 2016/03/05 18:22:07 by cledant          ###   ########.fr       */
+/*   Updated: 2016/03/06 12:41:54 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "RTv1.h"
+#include "rtv1.h"
 
 t_list		*ft_seek_int_obj(t_list *lst, t_camera *camera, double *dist,
 					double dir[3])

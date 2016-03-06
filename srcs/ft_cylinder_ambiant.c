@@ -6,11 +6,11 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/29 11:01:56 by cledant           #+#    #+#             */
-/*   Updated: 2016/03/05 18:40:16 by cledant          ###   ########.fr       */
+/*   Updated: 2016/03/06 12:37:49 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "RTv1.h"
+#include "rtv1.h"
 
 int		ft_cylinder_ambiant(t_cylinder *obj)
 {

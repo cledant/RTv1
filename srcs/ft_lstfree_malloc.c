@@ -6,11 +6,11 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/20 10:07:24 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/24 09:51:31 by cledant          ###   ########.fr       */
+/*   Updated: 2016/03/06 12:40:31 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "RTv1.h"
+#include "rtv1.h"
 
 void	ft_lstfree_malloc(void *content, size_t size)
 {

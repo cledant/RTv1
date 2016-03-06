@@ -6,11 +6,11 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/11 10:42:33 by cledant           #+#    #+#             */
-/*   Updated: 2016/03/04 11:38:46 by cledant          ###   ########.fr       */
+/*   Updated: 2016/03/06 12:43:09 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "RTv1.h"
+#include "rtv1.h"
 
 static int		main_part1(t_mlx *e)
 {
@@ -53,7 +53,7 @@ int				main(void)
 	}
 	e.obj_list = NULL;
 	e.light_list = NULL;
-	ft_init_scene_2(&e);
+	ft_init_scene(&e);
 	mlx_key_hook(e.win, key_hook, &e);
 	mlx_expose_hook(e.win, expose_hook, &e);
 	mlx_loop(e.mlx);

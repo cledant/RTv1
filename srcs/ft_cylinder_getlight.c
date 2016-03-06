@@ -6,11 +6,11 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/05 19:22:09 by cledant           #+#    #+#             */
-/*   Updated: 2016/03/05 20:50:15 by cledant          ###   ########.fr       */
+/*   Updated: 2016/03/06 12:38:14 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "RTv1.h"
+#include "rtv1.h"
 
 static void		ft_init_color(t_cylinder *obj, int (*ambiant_color)[4],
 					int (*diff_color)[4], int (*spec_color)[4])

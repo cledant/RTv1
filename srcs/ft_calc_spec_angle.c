@@ -6,11 +6,11 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/05 12:40:47 by cledant           #+#    #+#             */
-/*   Updated: 2016/03/05 14:25:09 by cledant          ###   ########.fr       */
+/*   Updated: 2016/03/06 12:35:15 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "RTv1.h"
+#include "rtv1.h"
 
 double		ft_calc_spec_angle(double cam_vector[3], double norm_vec[2][3],
 				double angle)

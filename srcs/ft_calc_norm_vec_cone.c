@@ -6,11 +6,11 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/06 10:37:43 by cledant           #+#    #+#             */
-/*   Updated: 2016/03/06 10:42:17 by cledant          ###   ########.fr       */
+/*   Updated: 2016/03/06 12:34:28 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "RTv1.h"
+#include "rtv1.h"
 
 static void		ft_next(double (*norm_vec)[2][3])
 {
@@ -33,8 +33,8 @@ void			ft_calc_norm_vec_cone(t_cone *obj, double (*norm_vec)[2][3],
 	vector[0] = int_coord[0] - light->coord[0];
 	vector[1] = int_coord[1] - light->coord[1];
 	vector[2] = int_coord[2] - light->coord[2];
-	norm = sqrt(vector[0] * vector[0] + vector[1] * vector[1] + 
-			vector[2] * vector[2]);
+	norm = sqrt(vector[0] * vector[0] + vector[1] * vector[1] +
+		vector[2] * vector[2]);
 	(*norm_vec)[0][0] = vector[0] / norm;
 	(*norm_vec)[0][1] = vector[1] / norm;
 	(*norm_vec)[0][2] = vector[2] / norm;

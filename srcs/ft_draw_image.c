@@ -6,11 +6,11 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 08:49:40 by cledant           #+#    #+#             */
-/*   Updated: 2016/03/05 20:09:04 by cledant          ###   ########.fr       */
+/*   Updated: 2016/03/06 12:38:40 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "RTv1.h"
+#include "rtv1.h"
 
 static void		ft_init_cur_dir(t_camera *camera, int i, int j,
 					double (*norm_cur_dir)[3])

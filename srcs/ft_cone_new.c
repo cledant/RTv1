@@ -6,11 +6,11 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/06 10:06:08 by cledant           #+#    #+#             */
-/*   Updated: 2016/03/06 10:06:15 by cledant          ###   ########.fr       */
+/*   Updated: 2016/03/06 12:36:54 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "RTv1.h"
+#include "rtv1.h"
 
 t_cone		*ft_cone_new(int coloration, double origin[3], double size,
 				double dir[3])

@@ -6,11 +6,11 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/03 20:55:47 by cledant           #+#    #+#             */
-/*   Updated: 2016/03/05 09:55:26 by cledant          ###   ########.fr       */
+/*   Updated: 2016/03/06 12:35:41 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "RTv1.h"
+#include "rtv1.h"
 
 static void		ft_cam_vec(t_camera *cam)
 {

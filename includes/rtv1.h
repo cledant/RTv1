@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   RTv1.h                                             :+:      :+:    :+:   */
+/*   rtv1.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/15 17:33:23 by cledant           #+#    #+#             */
-/*   Updated: 2016/03/06 10:40:43 by cledant          ###   ########.fr       */
+/*   Created: 2016/03/06 12:30:45 by cledant           #+#    #+#             */
+/*   Updated: 2016/03/06 12:30:53 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,29 +119,23 @@ typedef struct	s_mlx
 
 int				expose_hook(t_mlx *e);
 int				key_hook(int keycode, t_mlx *e);
-
 void			ft_draw_image(t_mlx *e);
 void			ft_init_scene(t_mlx *e);
 void			ft_init_scene_2(t_mlx *e);
-
 void			ft_camera_init(t_camera *cam);
-
-void			ft_calc_int_pos(double dist, double cur_vec[3], double coord_cam[3],
-					double (*int_coord)[3]);
+void			ft_calc_int_pos(double dist, double cur_vec[3],
+					double coord_cam[3], double (*int_coord)[3]);
 double			ft_calc_spec_angle(double cam_vector[3], double norm_vec[2][3],
 					double angle);
 void			ft_scalar_product(double v1[3], double v2[3], double (*res)[3]);
 void			ft_normalize_vec(double (*vec)[3]);
-
 int				ft_add_color(int color1, int color2);
-
 t_light			*ft_light_new(double loc[3], int color);
-int				ft_is_light_interrupt(t_light *light, t_list *list, 
+int				ft_is_light_interrupt(t_light *light, t_list *list,
 					double int_coord[3]);
 int				ft_getlight(t_list *obj, t_light *light, double int_coord[3],
 					double norm_cur_dir[3]);
 int				ft_getambiant_light(t_list *obj);
-
 t_sphere		*ft_sphere_new(int coloration, double origin[3], double size);
 void			ft_sphere_material(double amb, double diff, double spec,
 					t_sphere *sph);
@@ -152,7 +146,6 @@ int				ft_calc_int_sphere(t_sphere *sphere, t_camera *camera,
 int				ft_calc_int_sphere_light(t_sphere *sphere, t_light *light,
 					double cur_dir[3], double *dist);
 int				ft_sphere_ambiant(t_sphere *obj);
-
 t_cylinder		*ft_cylinder_new(int coloration, double origin[3], double size,
 					double dir[3]);
 void			ft_cylinder_material(double amb, double diff, double spec,
@@ -167,7 +160,6 @@ int				ft_calc_int_cylinder(t_cylinder *cyl, t_camera *camera,
 int				ft_calc_int_cylinder_light(t_cylinder *cyl, t_light *light,
 					double cur_dir[3], double *dist);
 int				ft_cylinder_ambiant(t_cylinder *obj);
-
 t_cone			*ft_cone_new(int coloration, double origin[3], double size,
 					double dir[3]);
 void			ft_cone_angle(double c_angle, t_cone *cone);
@@ -183,7 +175,6 @@ int				ft_calc_int_cone(t_cone *cone, t_camera *camera,
 int				ft_calc_int_cone_light(t_cone *cone, t_light *light,
 					double cur_dir[3], double *dist);
 int				ft_cone_ambiant(t_cone *obj);
-
 t_plane			*ft_plane_new(int coloration, double origin[3], double vec[3]);
 void			ft_plane_material(double amb, double diff, double spec,
 					t_plane *plane);
@@ -196,7 +187,6 @@ int				ft_calc_int_plane(t_plane *plane, t_camera *camera,
 int				ft_calc_int_plane_light(t_plane *plane, t_light *camera,
 					double cur_dir[3], double *dist);
 int				ft_plane_ambiant(t_plane *obj);
-
 void			ft_lstfree_malloc(void *content, size_t size);
 void			ft_write_in_image(int counter[5], t_mlx *e);
 t_list			*ft_seek_int_obj(t_list *lst, t_camera *camera, double *dist,
