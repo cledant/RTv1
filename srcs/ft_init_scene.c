@@ -6,25 +6,17 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 09:25:57 by cledant           #+#    #+#             */
-/*   Updated: 2016/03/06 12:39:29 by cledant          ###   ########.fr       */
+/*   Updated: 2016/03/06 16:54:09 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-void	ft_init_scene(t_mlx *e)
+static void		ft_init_light(t_mlx *e)
 {
-	t_sphere	*sphere;
-	t_plane		*plane;
-	t_cylinder	*cyl;
-	t_cone		*cone;
-	t_light		*light;
-	t_list		*begin;
-	t_list		*member;
-	t_camera	*cam_scene;
-	double		tmp_coord[3];
-	double		tmp_vec[3];
-	double		tmp_norm;
+	t_list	*begin;
+	double	tmp_coord[3];
+	t_light	*light;
 
 	if ((begin = ft_lstnew(NULL, 0)) == NULL)
 	{
@@ -38,150 +30,16 @@ void	ft_init_scene(t_mlx *e)
 	if ((light = ft_light_new(tmp_coord, 0x00FFFFFF)) == NULL)
 	{
 		ft_putendl("Not enough memory");
-		key_hook(MLX_KEY_ESC, e);	
+		key_hook(MLX_KEY_ESC, e);
 	}
 	begin->content = light;
 	begin->content_size = 0;
-	if ((begin = ft_lstnew(NULL, 0)) == NULL)
-	{
-		ft_putendl("Not enough memory");
-		key_hook(MLX_KEY_ESC, e);
-	}
-	e->obj_list = begin;
-	tmp_coord[0] = 0;
-	tmp_coord[1] = 0;
-	tmp_coord[2] = 0;
-	if ((sphere = ft_sphere_new(0x00FF0000, tmp_coord, 8)) == NULL)
-	{
-		ft_putendl("Not enough memory");
-		key_hook(MLX_KEY_ESC, e);	
-	}
-	ft_sphere_material(0.25, 0.4, 0.8, sphere);
-	sphere->shiny = 100;
-	begin->content = sphere;
-	begin->content_size = 0;
-	if ((member = ft_lstnew(NULL, 0)) == NULL)
-	{
-		ft_putendl("Not enough memory");
-		key_hook(MLX_KEY_ESC, e);
-	}
-	tmp_coord[0] = -50;
-	tmp_coord[1] = 0;
-	tmp_coord[2] = 0;
-	tmp_vec[0] = 1;
-	tmp_vec[1] = 0;
-	tmp_vec[2] = 0;
-	if ((plane = ft_plane_new(0x00AAAAAA, tmp_coord, tmp_vec)) == NULL)
-	{
-		free(member);
-		ft_putendl("Not enough memory");
-		key_hook(MLX_KEY_ESC, e);	
-	}
-	ft_plane_material(0.25, 0.4, 0.8, plane);
-	plane->shiny = 100;
-	member->content = plane;
-	member->content_size = 1;
-	ft_lstpushback(begin, member);
-	if ((member = ft_lstnew(NULL, 0)) == NULL)
-	{
-		ft_putendl("Not enough memory");
-		key_hook(MLX_KEY_ESC, e);
-	}
-	tmp_coord[0] = 0;
-	tmp_coord[1] = 0;
-	tmp_coord[2] = -5;
-	tmp_vec[0] = 0;
-	tmp_vec[1] = 0;
-	tmp_vec[2] = 1;
-	if ((plane = ft_plane_new(0x0000AAAA, tmp_coord, tmp_vec)) == NULL)
-	{
-		free(member);
-		ft_putendl("Not enough memory");
-		key_hook(MLX_KEY_ESC, e);	
-	}
-	ft_plane_material(0.25, 0.4, 0.8, plane);
-	plane->shiny = 100;
-	member->content = plane;
-	member->content_size = 1;
-	ft_lstpushback(begin, member);
-	if ((member = ft_lstnew(NULL, 0)) == NULL)
-	{
-		ft_putendl("Not enough memory");
-		key_hook(MLX_KEY_ESC, e);
-	}
-	tmp_coord[0] = 0;
-	tmp_coord[1] = -50;
-	tmp_coord[2] = 0;
-	tmp_vec[0] = 0;
-	tmp_vec[1] = 1;
-	tmp_vec[2] = 0;
-	if ((plane = ft_plane_new(0x00AAAA00, tmp_coord, tmp_vec)) == NULL)
-	{
-		free(member);
-		ft_putendl("Not enough memory");
-		key_hook(MLX_KEY_ESC, e);	
-	}
-	ft_plane_material(0.25, 0.4, 0.8, plane);
-	plane->shiny = 100;
-	member->content = plane;
-	member->content_size = 1;
-	ft_lstpushback(begin, member);
-	if ((member = ft_lstnew(NULL, 0)) == NULL)
-	{
-		ft_putendl("Not enough memory");
-		key_hook(MLX_KEY_ESC, e);
-	}
-	tmp_coord[0] = 1;
-	tmp_coord[1] = -1;
-	tmp_coord[2] = 5;
-	tmp_vec[0] = 2;
-	tmp_vec[1] = 2;
-	tmp_vec[2] = 1;
-	tmp_norm = sqrt(tmp_vec[0] * tmp_vec[0] + tmp_vec[1] * tmp_vec[1] +
-		tmp_vec[2] * tmp_vec[2]);
-	tmp_vec[0] = tmp_vec[0] / tmp_norm;
-	tmp_vec[1] = tmp_vec[1] / tmp_norm;
-	tmp_vec[2] = tmp_vec[2] / tmp_norm;
-	if ((cyl = ft_cylinder_new(0x00AA00AA, tmp_coord, 3, tmp_vec)) == NULL)
-	{
-		free(member);
-		ft_putendl("Not enough memory");
-		key_hook(MLX_KEY_ESC, e);	
-	}
-	ft_cylinder_material(0.25, 0.4, 0.8, cyl);
-	cyl->shiny = 100;
-	member->content = cyl;
-	member->content_size = 2;
-	ft_lstpushback(begin, member);
-	if ((member = ft_lstnew(NULL, 0)) == NULL)
-	{
-		ft_putendl("Not enough memory");
-		key_hook(MLX_KEY_ESC, e);
-	}
-	tmp_coord[0] = 0;
-	tmp_coord[1] = 5;
-	tmp_coord[2] = 5;
-	tmp_vec[0] = 2;
-	tmp_vec[1] = 0;
-	tmp_vec[2] = 1;
-	tmp_norm = sqrt(tmp_vec[0] * tmp_vec[0] + tmp_vec[1] * tmp_vec[1] +
-		tmp_vec[2] * tmp_vec[2]);
-	tmp_vec[0] = tmp_vec[0] / tmp_norm;
-	tmp_vec[1] = tmp_vec[1] / tmp_norm;
-	tmp_vec[2] = tmp_vec[2] / tmp_norm;
-	if ((cone = ft_cone_new(0x000000AA, tmp_coord, 0, tmp_vec)) == NULL)
-	{
-		free(member);
-		ft_putendl("Not enough memory");
-		key_hook(MLX_KEY_ESC, e);	
-	}
-	ft_cone_angle(20, cone);
-	ft_cone_material(0.25, 0.4, 0.8, cone);
-	cone->shiny = 100;
-	member->content = cone;
-	member->content_size = 3;
-	ft_lstpushback(begin, member);
-	//debut init camera
+}
+
+static void		ft_init_cam(t_mlx *e)
+{
+	t_camera	*cam_scene;
+
 	if ((e->cam = (t_camera *)malloc(1 * sizeof(t_camera))) == NULL)
 	{
 		ft_putendl("Not enough memory");
@@ -195,5 +53,71 @@ void	ft_init_scene(t_mlx *e)
 	cam_scene->camera_look_at[1] = 0;
 	cam_scene->camera_look_at[2] = 0;
 	ft_camera_init(cam_scene);
-	//fim camera
+}
+
+static void		ft_init_obj(t_mlx *e)
+{
+	t_list		*begin;
+	double		tmp_coord[3];
+	t_sphere	*sphere;
+
+	if ((begin = ft_lstnew(NULL, 0)) == NULL)
+	{
+		ft_putendl("Not enough memory");
+		key_hook(MLX_KEY_ESC, e);
+	}
+	e->obj_list = begin;
+	tmp_coord[0] = 0;
+	tmp_coord[1] = 0;
+	tmp_coord[2] = 0;
+	if ((sphere = ft_sphere_new(0x00FF0000, tmp_coord, 8)) == NULL)
+	{
+		ft_putendl("Not enough memory");
+		key_hook(MLX_KEY_ESC, e);
+	}
+	ft_sphere_material(0.25, 0.4, 0.8, sphere);
+	sphere->shiny = 100;
+	begin->content = sphere;
+	begin->content_size = 0;
+}
+
+static void		ft_init_next(t_mlx *e)
+{
+	double		tmp_coord[3];
+	double		tmp_vec[3];
+	t_cone		*cone;
+
+	cone = NULL;
+	tmp_coord[0] = 0;
+	tmp_coord[1] = 5;
+	tmp_coord[2] = 5;
+	tmp_vec[0] = 2;
+	tmp_vec[1] = 0;
+	tmp_vec[2] = 1;
+	ft_normalize_vec(&tmp_vec);
+	ft_add_obj_15(e, tmp_coord, tmp_vec, cone);
+}
+
+void			ft_init_scene(t_mlx *e)
+{
+	double		tmp_coord[3];
+	double		tmp_vec[3];
+	t_cylinder	*cyl;
+
+	cyl = NULL;
+	ft_init_light(e);
+	ft_init_cam(e);
+	ft_init_obj(e);
+	ft_add_obj_11(e, tmp_coord, tmp_vec);
+	ft_add_obj_12(e, tmp_coord, tmp_vec);
+	ft_add_obj_13(e, tmp_coord, tmp_vec);
+	tmp_coord[0] = 1;
+	tmp_coord[1] = -1;
+	tmp_coord[2] = 5;
+	tmp_vec[0] = 2;
+	tmp_vec[1] = 2;
+	tmp_vec[2] = 1;
+	ft_normalize_vec(&tmp_vec);
+	ft_add_obj_14(e, tmp_coord, tmp_vec, cyl);
+	ft_init_next(e);
 }
