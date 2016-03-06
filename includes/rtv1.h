@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/06 12:30:45 by cledant           #+#    #+#             */
-/*   Updated: 2016/03/06 16:53:02 by cledant          ###   ########.fr       */
+/*   Updated: 2016/03/06 18:56:14 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,6 +140,27 @@ void			ft_add_obj_14(t_mlx *e, double tmp_coord[3], double tmp_vec[3],
 void			ft_add_obj_15(t_mlx *e, double tmp_coord[3], double tmp_vec[3],
 					t_cone *cone);
 void			ft_init_scene_2(t_mlx *e);
+void			ft_init_scene_21(t_mlx *e);
+void			ft_init_scene_22(t_mlx *e);
+void			ft_add_obj_21(t_mlx *e, double tmp_coord[3], double tmp_vec[3]);
+void			ft_add_obj_22(t_mlx *e, double tmp_coord[3], double tmp_vec[3]);
+void			ft_add_obj_23(t_mlx *e, double tmp_coord[3], double tmp_vec[3]);
+void			ft_add_obj_24(t_mlx *e, double tmp_coord[3], double tmp_vec[3]);
+void			ft_add_obj_25(t_mlx *e, double tmp_coord[3], double tmp_vec[3],
+					t_cylinder *cyl);
+void			ft_add_obj_26(t_mlx *e, double tmp_coord[3], double tmp_vec[3],
+					t_cylinder *cyl);
+void			ft_add_obj_27(t_mlx *e, double tmp_coord[3], double tmp_vec[3],
+					t_cylinder *cyl);
+void			ft_add_obj_28(t_mlx *e, double tmp_coord[3], double tmp_vec[3],
+					t_cylinder *cyl);
+void			ft_add_obj_29(t_mlx *e);
+void			ft_add_obj_210(t_mlx *e);
+void			ft_add_obj_211(t_mlx *e);
+void			ft_add_obj_212(t_mlx *e);
+void			ft_add_obj_213(t_mlx *e);
+void			ft_add_obj_214(t_mlx *e);
+void			ft_add_obj_215(t_mlx *e);
 void			ft_camera_init(t_camera *cam);
 void			ft_calc_int_pos(double dist, double cur_vec[3],
 					double coord_cam[3], double (*int_coord)[3]);
