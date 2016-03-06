@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/06 12:30:45 by cledant           #+#    #+#             */
-/*   Updated: 2016/03/06 12:30:53 by cledant          ###   ########.fr       */
+/*   Updated: 2016/03/06 14:54:34 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include <mlx.h>
 # include <math.h>
-# include <sys/time.h>
 # include "libft.h"
 # define MLX_KEY_ESC 53
 # define MLX_KEY_UP 126
@@ -32,6 +31,10 @@
 # define MLX_KEY_E 14
 # define MLX_KEY_1 18
 # define MLX_KEY_2 19
+# define MLX_KEY_U 32
+# define MLX_KEY_I 34
+# define MLX_KEY_O 31
+# define MLX_KEY_P 35
 # define MLX_CAM_STEP 1
 # define WIN_X 1000
 # define WIN_Y 1000
@@ -119,6 +122,14 @@ typedef struct	s_mlx
 
 int				expose_hook(t_mlx *e);
 int				key_hook(int keycode, t_mlx *e);
+void			key_hook_12(int keycode, t_camera *camera, t_mlx *e);
+void			key_hook_13(int keycode, t_camera *camera, t_mlx *e);
+void			key_hook_14(int keycode, t_camera *camera, t_mlx *e);
+void			key_hook_2(int keycode, t_camera *camera, t_mlx *e);
+void			key_hook_21(int keycode, t_camera *camera, t_mlx *e);
+void			key_hook_22(int keycode, t_camera *camera, t_mlx *e);
+void			key_hook_23(int keycode, t_mlx *e);
+void			key_hook_24(int keycode, t_mlx *e);
 void			ft_draw_image(t_mlx *e);
 void			ft_init_scene(t_mlx *e);
 void			ft_init_scene_2(t_mlx *e);

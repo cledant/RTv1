@@ -6,7 +6,7 @@
 #    By: cledant <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/26 10:40:13 by cledant           #+#    #+#              #
-#    Updated: 2016/03/06 10:41:15 by cledant          ###   ########.fr        #
+#    Updated: 2016/03/06 14:42:46 by cledant          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,7 @@ SRC_NAME = main.c ft_hook.c ft_draw_image.c ft_init_scene.c ft_calc_int_sphere.c
 		   ft_calc_int_cone.c ft_calc_int_cone_light.c ft_cone_ambiant.c \
 		   ft_normalize_vec.c ft_camera_init.c ft_init_scene_2.c \
 		   ft_add_color.c ft_calc_norm_vec_plane.c ft_seek_int_obj.c \
-		   ft_calc_norm_vec_cylinder.c ft_calc_norm_vec_cone.c
+		   ft_calc_norm_vec_cylinder.c ft_calc_norm_vec_cone.c ft_hook_2.c
 
 SRC_PATH = ./srcs/
 
@@ -45,7 +45,7 @@ SRC =	$(addprefix $(SRC_PATH),$(SRC_NAME))
 
 OBJ =	$(SRC_NAME:.c=.o)
 
-NAME = RTv1
+NAME = rtv1
 
 all :	libft libmlx $(NAME)
 
