@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/11 11:27:39 by cledant           #+#    #+#             */
-/*   Updated: 2016/03/06 14:51:34 by cledant          ###   ########.fr       */
+/*   Updated: 2016/03/06 19:30:25 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ void		key_hook_14(int keycode, t_camera *camera, t_mlx *e)
 	}
 	else if (keycode == MLX_KEY_A)
 	{
-		camera->camera_look_at[1] = camera->camera_look_at[1] + MLX_CAM_STEP;
+		camera->camera_look_at[1] = camera->camera_look_at[1] - MLX_CAM_STEP;
 		ft_camera_init(camera);
 		e->render = 0;
 		expose_hook(e);
