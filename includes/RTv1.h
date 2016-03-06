@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/15 17:33:23 by cledant           #+#    #+#             */
-/*   Updated: 2016/03/05 20:50:32 by cledant          ###   ########.fr       */
+/*   Updated: 2016/03/06 10:40:43 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,6 +128,12 @@ void			ft_camera_init(t_camera *cam);
 
 void			ft_calc_int_pos(double dist, double cur_vec[3], double coord_cam[3],
 					double (*int_coord)[3]);
+double			ft_calc_spec_angle(double cam_vector[3], double norm_vec[2][3],
+					double angle);
+void			ft_scalar_product(double v1[3], double v2[3], double (*res)[3]);
+void			ft_normalize_vec(double (*vec)[3]);
+
+int				ft_add_color(int color1, int color2);
 
 t_light			*ft_light_new(double loc[3], int color);
 int				ft_is_light_interrupt(t_light *light, t_list *list, 
@@ -167,6 +173,9 @@ t_cone			*ft_cone_new(int coloration, double origin[3], double size,
 void			ft_cone_angle(double c_angle, t_cone *cone);
 void			ft_cone_material(double amb, double diff, double spec,
 					t_cone *cone);
+void			ft_calc_norm_vec_cone(t_cone *obj,
+					double (*norm_vec)[2][3], double int_coord[3],
+					t_light *light);
 int				ft_cone_getlight(t_cone *obj, t_light *light,
 					double int_coord[3], double cam_vector[3]);
 int				ft_calc_int_cone(t_cone *cone, t_camera *camera,
@@ -188,13 +197,7 @@ int				ft_calc_int_plane_light(t_plane *plane, t_light *camera,
 					double cur_dir[3], double *dist);
 int				ft_plane_ambiant(t_plane *obj);
 
-int				ft_add_color(int color1, int color2);
-
 void			ft_lstfree_malloc(void *content, size_t size);
-void			ft_scalar_product(double v1[3], double v2[3], double (*res)[3]);
-void			ft_normalize_vec(double (*vec)[3]);
-double			ft_calc_spec_angle(double cam_vector[3], double norm_vec[2][3],
-					double angle);
 void			ft_write_in_image(int counter[5], t_mlx *e);
 t_list			*ft_seek_int_obj(t_list *lst, t_camera *camera, double *dist,
 					double dir[3]);
