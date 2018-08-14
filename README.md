@@ -1,5 +1,7 @@
 # RTv1
 
+![screenshot](/screenshot/rtv1.png?raw=true)
+
 Basic Raytracer using 42 graphic api minilibx
 
 ## Compiling
